@@ -1,0 +1,53 @@
+{
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "build": "remix build",
+    "dev": "remix dev",
+    "typecheck": "tsc",
+    "format": "prettier --ignore-unknown --write .",
+    "check": "prettier --check .",
+    "lint": "eslint --max-warnings=0 .",
+    "prepare": "husky install",
+    "icons": "npx @svgr/cli --out-dir app/components/icons -- app/assets/icons"
+  },
+  "dependencies": {
+    "@emotion/css": "^11.10.6",
+    "@remix-run/node": "^1.14.3",
+    "@remix-run/react": "^1.14.3",
+    "@remix-run/vercel": "^1.14.3",
+    "@vercel/node": "^2.6.2",
+    "clsx": "^1.2.1",
+    "framer-motion": "^10.9.1",
+    "graphql": "^16.6.0",
+    "graphql-request": "^5.1.0",
+    "isbot": "^3.6.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^3.2.2",
+    "@graphql-codegen/client-preset": "^2.1.1",
+    "@graphql-codegen/typescript-graphql-request": "^4.5.9",
+    "@remix-run/dev": "^1.14.3",
+    "@remix-run/eslint-config": "^1.14.3",
+    "@remix-run/serve": "^1.14.3",
+    "@svgr/cli": "^7.0.0",
+    "@svgr/plugin-jsx": "^7.0.0",
+    "@svgr/plugin-prettier": "^7.0.0",
+    "@svgr/plugin-svgo": "^7.0.0",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
+    "eslint": "^8.27.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
+    "npm-run-all": "^4.1.5",
+    "npm-watch": "^0.11.0",
+    "prettier": "2.8.7",
+    "tailwindcss": "^3.2.7",
+    "typescript": "^4.8.4"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
