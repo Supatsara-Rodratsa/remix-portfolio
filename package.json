@@ -9,7 +9,8 @@
     "check": "prettier --check .",
     "lint": "eslint --max-warnings=0 .",
     "prepare": "husky install",
-    "icons": "npx @svgr/cli --out-dir app/components/icons -- app/assets/icons"
+    "icons": "npx @svgr/cli --out-dir app/components/icons -- app/assets/icons",
+    "codegen": "graphql-codegen --config codegen.ts && node fixer.mjs && npm run format"
   },
   "dependencies": {
     "@emotion/css": "^11.10.6",

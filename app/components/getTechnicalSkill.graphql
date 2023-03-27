@@ -1,0 +1,9 @@
+query GetTechnicalSkill {
+  technicalSkills {
+    id
+    programingLanguage
+    image {
+      url
+    }
+  }
+}
