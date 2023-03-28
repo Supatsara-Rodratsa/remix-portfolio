@@ -10,7 +10,7 @@ const OctagonProfile = ({ profile }: OctagonProfileProps) => {
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ stiffness: 1000, damping: 20 }}
-      className="octagon-clip-path transition-all duration-700 top-1 left-1 octagon-clip-path relative w-[calc(100vw-/-2)] h-[calc(100vh-/-2)]  overflow-hidden box-border inline-block bg-lemon"
+      className="octagon-clip-path transition-all duration-700 top-1 left-1 octagon-clip-path relative w-[500px] h-[500px] tablet:w-[450px] tablet:h-[450px] mobile:w-[300px] mobile:h-[300px] overflow-hidden box-border inline-block bg-lemon"
     >
       <img
         src={profile}

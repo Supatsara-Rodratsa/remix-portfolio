@@ -18,5 +18,14 @@ query GetPersonalInfo {
       github
       linkedIn
     }
+    profileImage1 {
+      url
+    }
+    profileImage2 {
+      url
+    }
+    icon {
+      url
+    }
   }
 }

@@ -49,6 +49,7 @@ export type Asset = Node & {
   height?: Maybe<Scalars['Float']>
   /** List of Asset versions */
   history: Array<Version>
+  iconPersonalInfo: Array<PersonalInfo>
   /** The unique identifier */
   id: Scalars['ID']
   imagePersonalInfo: Array<PersonalInfo>
@@ -60,6 +61,8 @@ export type Asset = Node & {
   localizations: Array<Asset>
   /** The mime type of the file */
   mimeType?: Maybe<Scalars['String']>
+  profileImage1PersonalInfo: Array<PersonalInfo>
+  profileImage2PersonalInfo: Array<PersonalInfo>
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>
   /** User that last published this document */
@@ -105,6 +108,19 @@ export type AssetHistoryArgs = {
 }
 
 /** Asset system model */
+export type AssetIconPersonalInfoArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: InputMaybe<Array<Locale>>
+  orderBy?: InputMaybe<PersonalInfoOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<PersonalInfoWhereInput>
+}
+
+/** Asset system model */
 export type AssetImagePersonalInfoArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
@@ -147,6 +163,32 @@ export type AssetImageTechnicalSkillArgs = {
 export type AssetLocalizationsArgs = {
   includeCurrent?: Scalars['Boolean']
   locales?: Array<Locale>
+}
+
+/** Asset system model */
+export type AssetProfileImage1PersonalInfoArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: InputMaybe<Array<Locale>>
+  orderBy?: InputMaybe<PersonalInfoOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<PersonalInfoWhereInput>
+}
+
+/** Asset system model */
+export type AssetProfileImage2PersonalInfoArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: InputMaybe<Array<Locale>>
+  orderBy?: InputMaybe<PersonalInfoOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<PersonalInfoWhereInput>
 }
 
 /** Asset system model */
@@ -209,12 +251,15 @@ export type AssetCreateInput = {
   fileName: Scalars['String']
   handle: Scalars['String']
   height?: InputMaybe<Scalars['Float']>
+  iconPersonalInfo?: InputMaybe<PersonalInfoCreateManyInlineInput>
   imagePersonalInfo?: InputMaybe<PersonalInfoCreateManyInlineInput>
   imageSoftware?: InputMaybe<SoftwareCreateManyInlineInput>
   imageTechnicalSkill?: InputMaybe<TechnicalSkillCreateManyInlineInput>
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: InputMaybe<AssetCreateLocalizationsInput>
   mimeType?: InputMaybe<Scalars['String']>
+  profileImage1PersonalInfo?: InputMaybe<PersonalInfoCreateManyInlineInput>
+  profileImage2PersonalInfo?: InputMaybe<PersonalInfoCreateManyInlineInput>
   size?: InputMaybe<Scalars['Float']>
   updatedAt?: InputMaybe<Scalars['DateTime']>
   width?: InputMaybe<Scalars['Float']>
@@ -293,6 +338,9 @@ export type AssetManyWhereInput = {
   documentInStages_every?: InputMaybe<AssetWhereStageInput>
   documentInStages_none?: InputMaybe<AssetWhereStageInput>
   documentInStages_some?: InputMaybe<AssetWhereStageInput>
+  iconPersonalInfo_every?: InputMaybe<PersonalInfoWhereInput>
+  iconPersonalInfo_none?: InputMaybe<PersonalInfoWhereInput>
+  iconPersonalInfo_some?: InputMaybe<PersonalInfoWhereInput>
   id?: InputMaybe<Scalars['ID']>
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>
@@ -321,6 +369,12 @@ export type AssetManyWhereInput = {
   imageTechnicalSkill_every?: InputMaybe<TechnicalSkillWhereInput>
   imageTechnicalSkill_none?: InputMaybe<TechnicalSkillWhereInput>
   imageTechnicalSkill_some?: InputMaybe<TechnicalSkillWhereInput>
+  profileImage1PersonalInfo_every?: InputMaybe<PersonalInfoWhereInput>
+  profileImage1PersonalInfo_none?: InputMaybe<PersonalInfoWhereInput>
+  profileImage1PersonalInfo_some?: InputMaybe<PersonalInfoWhereInput>
+  profileImage2PersonalInfo_every?: InputMaybe<PersonalInfoWhereInput>
+  profileImage2PersonalInfo_none?: InputMaybe<PersonalInfoWhereInput>
+  profileImage2PersonalInfo_some?: InputMaybe<PersonalInfoWhereInput>
   publishedAt?: InputMaybe<Scalars['DateTime']>
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>
@@ -393,12 +447,15 @@ export type AssetUpdateInput = {
   fileName?: InputMaybe<Scalars['String']>
   handle?: InputMaybe<Scalars['String']>
   height?: InputMaybe<Scalars['Float']>
+  iconPersonalInfo?: InputMaybe<PersonalInfoUpdateManyInlineInput>
   imagePersonalInfo?: InputMaybe<PersonalInfoUpdateManyInlineInput>
   imageSoftware?: InputMaybe<SoftwareUpdateManyInlineInput>
   imageTechnicalSkill?: InputMaybe<TechnicalSkillUpdateManyInlineInput>
   /** Manage document localizations */
   localizations?: InputMaybe<AssetUpdateLocalizationsInput>
   mimeType?: InputMaybe<Scalars['String']>
+  profileImage1PersonalInfo?: InputMaybe<PersonalInfoUpdateManyInlineInput>
+  profileImage2PersonalInfo?: InputMaybe<PersonalInfoUpdateManyInlineInput>
   size?: InputMaybe<Scalars['Float']>
   width?: InputMaybe<Scalars['Float']>
 }
@@ -609,6 +666,9 @@ export type AssetWhereInput = {
   height_not?: InputMaybe<Scalars['Float']>
   /** All values that are not contained in given list. */
   height_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
+  iconPersonalInfo_every?: InputMaybe<PersonalInfoWhereInput>
+  iconPersonalInfo_none?: InputMaybe<PersonalInfoWhereInput>
+  iconPersonalInfo_some?: InputMaybe<PersonalInfoWhereInput>
   id?: InputMaybe<Scalars['ID']>
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>
@@ -656,6 +716,12 @@ export type AssetWhereInput = {
   mimeType_not_starts_with?: InputMaybe<Scalars['String']>
   /** All values starting with the given string. */
   mimeType_starts_with?: InputMaybe<Scalars['String']>
+  profileImage1PersonalInfo_every?: InputMaybe<PersonalInfoWhereInput>
+  profileImage1PersonalInfo_none?: InputMaybe<PersonalInfoWhereInput>
+  profileImage1PersonalInfo_some?: InputMaybe<PersonalInfoWhereInput>
+  profileImage2PersonalInfo_every?: InputMaybe<PersonalInfoWhereInput>
+  profileImage2PersonalInfo_none?: InputMaybe<PersonalInfoWhereInput>
+  profileImage2PersonalInfo_some?: InputMaybe<PersonalInfoWhereInput>
   publishedAt?: InputMaybe<Scalars['DateTime']>
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>
@@ -4793,11 +4859,14 @@ export type PersonalInfo = Node & {
   documentInStages: Array<PersonalInfo>
   /** List of PersonalInfo versions */
   history: Array<Version>
+  icon?: Maybe<Asset>
   /** The unique identifier */
   id: Scalars['ID']
   image: Asset
   introduction?: Maybe<Scalars['String']>
   name: Scalars['String']
+  profileImage1: Asset
+  profileImage2: Asset
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>
   /** User that last published this document */
@@ -4834,7 +4903,22 @@ export type PersonalInfoHistoryArgs = {
   stageOverride?: InputMaybe<Stage>
 }
 
+export type PersonalInfoIconArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  locales?: InputMaybe<Array<Locale>>
+}
+
 export type PersonalInfoImageArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type PersonalInfoProfileImage1Args = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type PersonalInfoProfileImage2Args = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
@@ -4883,9 +4967,12 @@ export type PersonalInfoCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>
   currentPosition?: InputMaybe<Scalars['String']>
   dob: Scalars['String']
+  icon?: InputMaybe<AssetCreateOneInlineInput>
   image: AssetCreateOneInlineInput
   introduction?: InputMaybe<Scalars['String']>
   name: Scalars['String']
+  profileImage1: AssetCreateOneInlineInput
+  profileImage2: AssetCreateOneInlineInput
   surname: Scalars['String']
   updatedAt?: InputMaybe<Scalars['DateTime']>
 }
@@ -5014,6 +5101,7 @@ export type PersonalInfoManyWhereInput = {
   documentInStages_every?: InputMaybe<PersonalInfoWhereStageInput>
   documentInStages_none?: InputMaybe<PersonalInfoWhereStageInput>
   documentInStages_some?: InputMaybe<PersonalInfoWhereStageInput>
+  icon?: InputMaybe<AssetWhereInput>
   id?: InputMaybe<Scalars['ID']>
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>
@@ -5072,6 +5160,8 @@ export type PersonalInfoManyWhereInput = {
   name_not_starts_with?: InputMaybe<Scalars['String']>
   /** All values starting with the given string. */
   name_starts_with?: InputMaybe<Scalars['String']>
+  profileImage1?: InputMaybe<AssetWhereInput>
+  profileImage2?: InputMaybe<AssetWhereInput>
   publishedAt?: InputMaybe<Scalars['DateTime']>
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>
@@ -5159,9 +5249,12 @@ export type PersonalInfoUpdateInput = {
   contact?: InputMaybe<ContactUpdateOneInlineInput>
   currentPosition?: InputMaybe<Scalars['String']>
   dob?: InputMaybe<Scalars['String']>
+  icon?: InputMaybe<AssetUpdateOneInlineInput>
   image?: InputMaybe<AssetUpdateOneInlineInput>
   introduction?: InputMaybe<Scalars['String']>
   name?: InputMaybe<Scalars['String']>
+  profileImage1?: InputMaybe<AssetUpdateOneInlineInput>
+  profileImage2?: InputMaybe<AssetUpdateOneInlineInput>
   surname?: InputMaybe<Scalars['String']>
 }
 
@@ -5343,6 +5436,7 @@ export type PersonalInfoWhereInput = {
   documentInStages_every?: InputMaybe<PersonalInfoWhereStageInput>
   documentInStages_none?: InputMaybe<PersonalInfoWhereStageInput>
   documentInStages_some?: InputMaybe<PersonalInfoWhereStageInput>
+  icon?: InputMaybe<AssetWhereInput>
   id?: InputMaybe<Scalars['ID']>
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>
@@ -5401,6 +5495,8 @@ export type PersonalInfoWhereInput = {
   name_not_starts_with?: InputMaybe<Scalars['String']>
   /** All values starting with the given string. */
   name_starts_with?: InputMaybe<Scalars['String']>
+  profileImage1?: InputMaybe<AssetWhereInput>
+  profileImage2?: InputMaybe<AssetWhereInput>
   publishedAt?: InputMaybe<Scalars['DateTime']>
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>
@@ -9889,16 +9985,6 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization',
 }
 
-export type GetTechnicalSkillQueryVariables = Exact<{ [key: string]: never }>
-
-export type GetTechnicalSkillQuery = {
-  technicalSkills: Array<{
-    id: string
-    programingLanguage: string
-    image?: { url: string } | null
-  }>
-}
-
 export type GetPersonalInfoQueryVariables = Exact<{ [key: string]: never }>
 
 export type GetPersonalInfoQuery = {
@@ -9919,20 +10005,22 @@ export type GetPersonalInfoQuery = {
       github?: string | null
       linkedIn?: string | null
     } | null
+    profileImage1: { url: string }
+    profileImage2: { url: string }
+    icon?: { url: string } | null
   }>
 }
 
-export const GetTechnicalSkillDocument = /*#__PURE__*/ gql`
-  query GetTechnicalSkill {
-    technicalSkills {
-      id
-      programingLanguage
-      image {
-        url
-      }
-    }
-  }
-`
+export type GetTechnicalSkillQueryVariables = Exact<{ [key: string]: never }>
+
+export type GetTechnicalSkillQuery = {
+  technicalSkills: Array<{
+    id: string
+    programingLanguage: string
+    image?: { url: string } | null
+  }>
+}
+
 export const GetPersonalInfoDocument = /*#__PURE__*/ gql`
   query GetPersonalInfo {
     personalInfos {
@@ -9953,6 +10041,26 @@ export const GetPersonalInfoDocument = /*#__PURE__*/ gql`
         email
         github
         linkedIn
+      }
+      profileImage1 {
+        url
+      }
+      profileImage2 {
+        url
+      }
+      icon {
+        url
+      }
+    }
+  }
+`
+export const GetTechnicalSkillDocument = /*#__PURE__*/ gql`
+  query GetTechnicalSkill {
+    technicalSkills {
+      id
+      programingLanguage
+      image {
+        url
       }
     }
   }
@@ -9975,21 +10083,6 @@ export function getSdk(
   withWrapper: SdkFunctionWrapper = defaultWrapper
 ) {
   return {
-    GetTechnicalSkill(
-      variables?: GetTechnicalSkillQueryVariables,
-      requestHeaders?: Dom.RequestInit['headers']
-    ): Promise<GetTechnicalSkillQuery> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<GetTechnicalSkillQuery>(
-            GetTechnicalSkillDocument,
-            variables,
-            { ...requestHeaders, ...wrappedRequestHeaders }
-          ),
-        'GetTechnicalSkill',
-        'query'
-      )
-    },
     GetPersonalInfo(
       variables?: GetPersonalInfoQueryVariables,
       requestHeaders?: Dom.RequestInit['headers']
@@ -10002,6 +10095,21 @@ export function getSdk(
             { ...requestHeaders, ...wrappedRequestHeaders }
           ),
         'GetPersonalInfo',
+        'query'
+      )
+    },
+    GetTechnicalSkill(
+      variables?: GetTechnicalSkillQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<GetTechnicalSkillQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetTechnicalSkillQuery>(
+            GetTechnicalSkillDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'GetTechnicalSkill',
         'query'
       )
     },

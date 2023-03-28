@@ -10,6 +10,8 @@ import {
 import type { ReactNode } from 'react'
 import stylesheet from '~/styles/tailwind.css'
 import NavBar from './components/NavBar'
+import IconFab from './components/IconFab'
+import { STATIC_WORD } from './constants/constant'
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: stylesheet },
@@ -38,6 +40,7 @@ export default function App() {
           <ScrollRestoration />
           <Scripts />
           <LiveReload />
+          <IconFab word={STATIC_WORD.CONTACT_FAB} />
         </Layout>
       </body>
     </html>

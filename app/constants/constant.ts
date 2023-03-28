@@ -23,3 +23,7 @@ export const NAV_TOPIC = {
   SKILL: 'Skill',
   CONTACT: 'Contact',
 } as const
+
+export const STATIC_WORD = {
+  CONTACT_FAB: 'Contact - Frontend Developer - ',
+} as const
