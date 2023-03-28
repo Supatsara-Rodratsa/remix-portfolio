@@ -3,8 +3,7 @@ import { json } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 import ErrorState from '~/components/ErrorState'
 import Introduction from '~/components/Introduction'
-
-import OctagonProfile from '~/components/OctagonProfile'
+import IntroductionInfo from '~/components/IntroductionInfo'
 import type { PersonalInfo } from '~/generated/graphql'
 import { sdk } from '~/libs/client'
 
@@ -26,6 +25,7 @@ export const ErrorBoundary = ({ error }: { error: Error }) => {
 export default function Index() {
   const personalInfo = useLoaderData<typeof loader>()
   const info = personalInfo[0] as PersonalInfo
+
   if (info) {
     return (
       <div className="w-full m-auto">
@@ -35,13 +35,13 @@ export default function Index() {
           position={info.currentPosition || ''}
           image={info.image?.url}
         />
-        <section className="w-screen -mx-[40px] m-auto h-screen relative bg-blue">
-          <div className="relative w-full h-[calc(100%_-_40px)] m-auto flex justify-center items-center">
-            <OctagonProfile profile={info.image.url} />
-          </div>
-        </section>
+        <IntroductionInfo
+          info={info.introduction || ''}
+          profileImage={info.profileImage1.url}
+        />
       </div>
     )
   }
+
   return <ErrorState error={new Error('Data Not found')} />
 }

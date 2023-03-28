@@ -6,7 +6,7 @@ export const COLORS = {
   lemon: '#DFF757',
   purple: '#6A24EC',
   blue: '#2C20F5',
-  orange: '#EE793F',
+  orange: '#EE6623',
 } as const
 
 export const WINDOW_SIZE = {
@@ -17,11 +17,12 @@ export const WINDOW_SIZE = {
 } as const
 
 export const NAV_TOPIC = {
-  ABOUT: 'About',
-  EXPERIENCE: 'Experience',
-  EDUCATION: 'Education',
-  SKILL: 'Skill',
-  CONTACT: 'Contact',
+  HOME: { name: 'Home', link: '' },
+  ABOUT: { name: 'About', link: 'about' },
+  EXPERIENCE: { name: 'Experience', link: '' },
+  EDUCATION: { name: 'Education', link: '' },
+  SKILL: { name: 'Skill', link: '' },
+  CONTACT: { name: 'Contact', link: '' },
 } as const
 
 export const STATIC_WORD = {

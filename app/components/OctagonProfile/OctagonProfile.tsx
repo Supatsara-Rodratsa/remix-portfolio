@@ -8,7 +8,7 @@ const OctagonProfile = ({ profile }: OctagonProfileProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0 }}
-      animate={{ opacity: 1, scale: 1 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       transition={{ stiffness: 1000, damping: 20 }}
       className="octagon-clip-path transition-all duration-700 top-1 left-1 octagon-clip-path relative w-[500px] h-[500px] tablet:w-[450px] tablet:h-[450px] mobile:w-[300px] mobile:h-[300px] overflow-hidden box-border inline-block bg-lemon"
     >

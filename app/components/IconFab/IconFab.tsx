@@ -11,7 +11,7 @@ const IconFab = ({ word }: IconFabProps) => {
       animate={{ opacity: 1 }}
       whileHover={{ rotate: 360, scale: 1.2 }}
       transition={{ stiffness: 1000 }}
-      className="fixed bottom-[40px] right-[40px] w-[100px] h-[100px] rounded-full shadow-md cursor-pointer flex justify-center items-center bg-orange shadow-xl"
+      className="fixed bottom-[40px] right-[40px] w-[100px] h-[100px] rounded-full cursor-pointer flex justify-center items-center bg-r_orange shadow-xl"
     >
       <motion.img
         src="assets/images/my-emoji.png"

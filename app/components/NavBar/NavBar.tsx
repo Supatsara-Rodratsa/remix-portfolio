@@ -4,6 +4,7 @@ import { COLORS, NAV_TOPIC, WINDOW_SIZE } from '~/constants/constant'
 import { motion } from 'framer-motion'
 import clsx from 'clsx'
 import { useWindowSize } from '~/hooks/widowSize'
+import { Link } from '@remix-run/react'
 
 const NavBar = () => {
   const [isOpen, setOpen] = useState(false)
@@ -25,6 +26,7 @@ const NavBar = () => {
   }
 
   const Topic = [
+    NAV_TOPIC.HOME,
     NAV_TOPIC.ABOUT,
     NAV_TOPIC.EXPERIENCE,
     NAV_TOPIC.EDUCATION,
@@ -71,7 +73,7 @@ const NavBar = () => {
         }}
         className={clsx(
           isOpen && 'show',
-          'absolute right-[40px] top-0 pt-[120px] pr-[45px] pb-[150px] pl-[105px] mobile:pt-[80px] mobile:pr-[25px] mobile:pb-[100px] mobile:pl-[85px]',
+          'absolute right-[40px] top-0 pt-[100px] pr-[45px] pb-[150px] pl-[105px] mobile:pt-[80px] mobile:pr-[25px] mobile:pb-[100px] mobile:pl-[85px]',
           'before:bg-darkBlue z-[5] before:-rotate-[15deg] before:h-[calc(100%)] before:w-[125%] before:absolute before:-top-[45px] before:-right-[90px] before:mobile:w-[120%] ',
           'after:bg-lemon z-[2] after:-rotate-[15deg] after:h-[calc(100%)] after:w-[125%] after:absolute after:-top-[60px] after:-right-[70px]  after:mobile:w-[120%] '
         )}
@@ -89,7 +91,9 @@ const NavBar = () => {
               variants={variant}
               className="flex flex-col items-end font-lalezar text-darkBlue text-3xl font-bold uppercase cursor-pointer mobile:text-2xl hover:text-black"
             >
-              {item}
+              <Link to={item.link} onClick={() => setOpen(false)}>
+                {item.name}
+              </Link>
             </motion.li>
           ))}
         </motion.ul>

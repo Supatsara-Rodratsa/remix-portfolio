@@ -12,7 +12,7 @@ module.exports = {
         lemon: '#DFF757',
         purple: '#6A24EC',
         blue: '#2C20F5',
-        orange: '#EE793F',
+        r_orange: '#EE6623',
       },
       fontFamily: {
         lalezar: ['Lalezar', 'cursive'],
@@ -36,6 +36,9 @@ module.exports = {
       },
       gridTemplateColumns: {
         fill: 'repeat( auto-fit, minmax(250px, 1fr) )',
+      },
+      boxShadow: {
+        custom: '10px 10px 0 #000',
       },
     },
   },

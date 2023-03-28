@@ -22,7 +22,7 @@ const Introduction = ({
         <OctagonProfile profile={image} />
         <motion.div
           initial={{ opacity: 0, x: -200, y: -100 }}
-          animate={{ opacity: 1, x: 0 }}
+          whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 2, stiffness: 1000 }}
           className="absolute left-[0] mb-10 text-[120px] font-lalezar text-green tablet:text-[5rem] mobile:text-4xl mobile:mt-[100px] laptop:text-[6rem]  uppercase transition-all"
         >
@@ -30,7 +30,7 @@ const Introduction = ({
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: 200, y: 100 }}
-          animate={{ opacity: 1, x: 0 }}
+          whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 2, stiffness: 1000 }}
           className="absolute right-[0] text-[120px] font-lalezar text-transparent mt-[140px] tablet:text-[5rem] mobile:text-4xl mobile:mt-0 laptop:text-[6rem] uppercase transition-all"
           style={{ WebkitTextStroke: `2px ${COLORS.green}` }}
