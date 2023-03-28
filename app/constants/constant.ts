@@ -1,5 +1,5 @@
 export const COLORS = {
-  green: '#DFF757',
+  green: '#A0E047',
   black: '#000000',
   white: '#FFFFFF',
   darkBlue: '#2E0AA8',
@@ -14,12 +14,12 @@ export const WINDOW_SIZE = {
   tablet: 768,
   laptop: 1024,
   desktop: 1440,
-}
+} as const
 
-export const NAV_CONTENT = {
+export const NAV_TOPIC = {
   ABOUT: 'About',
   EXPERIENCE: 'Experience',
   EDUCATION: 'Education',
   SKILL: 'Skill',
   CONTACT: 'Contact',
-}
+} as const

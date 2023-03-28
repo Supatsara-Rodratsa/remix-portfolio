@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        green: '#DFF757',
+        green: '#A0E047',
         black: '#000000',
         white: '#FFFFFF',
         darkBlue: '#2E0AA8',
@@ -17,7 +17,7 @@ module.exports = {
       fontFamily: {
         lalezar: ['Lalezar', 'cursive'],
         sans: ['Lato', 'sans-serif'],
-        barcode: ['Libre Barcode 128 Text', 'cursive'],
+        barcode: ['Libre Barcode 39 Text', 'cursive'],
       },
       screens: {
         mobile: { max: '425px' },

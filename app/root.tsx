@@ -46,9 +46,9 @@ export default function App() {
 
 export function Layout({ children }: LayoutProps) {
   return (
-    <main className="p-[40px] overflow-hidden w-screen relative mobile:p-[20px]">
+    <main className="p-[40px] pb-0 overflow-hidden w-screen relative m-auto">
       <NavBar />
-      <div className="m-auto flex min-h-[calc(100vh_-_240px)] w-full text-white">
+      <div className="flex min-h-[calc(100vh_-_40px)] w-full h-full text-white">
         {children}
       </div>
     </main>

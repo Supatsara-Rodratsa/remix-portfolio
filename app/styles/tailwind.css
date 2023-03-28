@@ -1,4 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:wght@300;400;900&family=Libre+Barcode+128+Text&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:wght@300;400;900&family=Libre+Barcode+39+Text&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .octagon-clip-path {
+    -webkit-clip-path: polygon(
+      20% 0,
+      80% 0,
+      100% 20%,
+      100% 80%,
+      80% 100%,
+      20% 100%,
+      0 80%,
+      0 20%
+    );
+    clip-path: polygon(
+      20% 0,
+      80% 0,
+      100% 20%,
+      100% 80%,
+      80% 100%,
+      20% 100%,
+      0 80%,
+      0 20%
+    );
+  }
+
+  .scrolling {
+    animation: scrollText 2s infinite linear;
+  }
+}
+
+@keyframes scrollText {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

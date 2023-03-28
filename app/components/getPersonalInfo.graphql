@@ -1,0 +1,22 @@
+query GetPersonalInfo {
+  personalInfos {
+    id
+    name
+    surname
+    age
+    dob
+    introduction
+    about
+    currentPosition
+    image {
+      url
+    }
+    contact {
+      id
+      phone
+      email
+      github
+      linkedIn
+    }
+  }
+}

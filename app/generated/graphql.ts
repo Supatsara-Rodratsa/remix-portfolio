@@ -51,6 +51,7 @@ export type Asset = Node & {
   history: Array<Version>
   /** The unique identifier */
   id: Scalars['ID']
+  imagePersonalInfo: Array<PersonalInfo>
   imageSoftware: Array<Software>
   imageTechnicalSkill: Array<TechnicalSkill>
   /** System Locale field */
@@ -101,6 +102,19 @@ export type AssetHistoryArgs = {
   limit?: Scalars['Int']
   skip?: Scalars['Int']
   stageOverride?: InputMaybe<Stage>
+}
+
+/** Asset system model */
+export type AssetImagePersonalInfoArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: InputMaybe<Array<Locale>>
+  orderBy?: InputMaybe<PersonalInfoOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<PersonalInfoWhereInput>
 }
 
 /** Asset system model */
@@ -195,6 +209,7 @@ export type AssetCreateInput = {
   fileName: Scalars['String']
   handle: Scalars['String']
   height?: InputMaybe<Scalars['Float']>
+  imagePersonalInfo?: InputMaybe<PersonalInfoCreateManyInlineInput>
   imageSoftware?: InputMaybe<SoftwareCreateManyInlineInput>
   imageTechnicalSkill?: InputMaybe<TechnicalSkillCreateManyInlineInput>
   /** Inline mutations for managing document localizations excluding the default locale */
@@ -297,6 +312,9 @@ export type AssetManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>
+  imagePersonalInfo_every?: InputMaybe<PersonalInfoWhereInput>
+  imagePersonalInfo_none?: InputMaybe<PersonalInfoWhereInput>
+  imagePersonalInfo_some?: InputMaybe<PersonalInfoWhereInput>
   imageSoftware_every?: InputMaybe<SoftwareWhereInput>
   imageSoftware_none?: InputMaybe<SoftwareWhereInput>
   imageSoftware_some?: InputMaybe<SoftwareWhereInput>
@@ -375,6 +393,7 @@ export type AssetUpdateInput = {
   fileName?: InputMaybe<Scalars['String']>
   handle?: InputMaybe<Scalars['String']>
   height?: InputMaybe<Scalars['Float']>
+  imagePersonalInfo?: InputMaybe<PersonalInfoUpdateManyInlineInput>
   imageSoftware?: InputMaybe<SoftwareUpdateManyInlineInput>
   imageTechnicalSkill?: InputMaybe<TechnicalSkillUpdateManyInlineInput>
   /** Manage document localizations */
@@ -609,6 +628,9 @@ export type AssetWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>
+  imagePersonalInfo_every?: InputMaybe<PersonalInfoWhereInput>
+  imagePersonalInfo_none?: InputMaybe<PersonalInfoWhereInput>
+  imagePersonalInfo_some?: InputMaybe<PersonalInfoWhereInput>
   imageSoftware_every?: InputMaybe<SoftwareWhereInput>
   imageSoftware_none?: InputMaybe<SoftwareWhereInput>
   imageSoftware_some?: InputMaybe<SoftwareWhereInput>
@@ -1227,7 +1249,7 @@ export type Contact = Node & {
   history: Array<Version>
   /** The unique identifier */
   id: Scalars['ID']
-  linnkedIn?: Maybe<Scalars['String']>
+  linkedIn?: Maybe<Scalars['String']>
   location?: Maybe<Scalars['String']>
   phone?: Maybe<Scalars['String']>
   /** The time the document was published. Null on documents in draft stage. */
@@ -1302,7 +1324,7 @@ export type ContactCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>
   email?: InputMaybe<Scalars['String']>
   github?: InputMaybe<Scalars['String']>
-  linnkedIn?: InputMaybe<Scalars['String']>
+  linkedIn?: InputMaybe<Scalars['String']>
   location?: InputMaybe<Scalars['String']>
   phone?: InputMaybe<Scalars['String']>
   updatedAt?: InputMaybe<Scalars['DateTime']>
@@ -1416,25 +1438,25 @@ export type ContactManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>
-  linnkedIn?: InputMaybe<Scalars['String']>
+  linkedIn?: InputMaybe<Scalars['String']>
   /** All values containing the given string. */
-  linnkedIn_contains?: InputMaybe<Scalars['String']>
+  linkedIn_contains?: InputMaybe<Scalars['String']>
   /** All values ending with the given string. */
-  linnkedIn_ends_with?: InputMaybe<Scalars['String']>
+  linkedIn_ends_with?: InputMaybe<Scalars['String']>
   /** All values that are contained in given list. */
-  linnkedIn_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  linkedIn_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
   /** Any other value that exists and is not equal to the given value. */
-  linnkedIn_not?: InputMaybe<Scalars['String']>
+  linkedIn_not?: InputMaybe<Scalars['String']>
   /** All values not containing the given string. */
-  linnkedIn_not_contains?: InputMaybe<Scalars['String']>
+  linkedIn_not_contains?: InputMaybe<Scalars['String']>
   /** All values not ending with the given string */
-  linnkedIn_not_ends_with?: InputMaybe<Scalars['String']>
+  linkedIn_not_ends_with?: InputMaybe<Scalars['String']>
   /** All values that are not contained in given list. */
-  linnkedIn_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  linkedIn_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
   /** All values not starting with the given string. */
-  linnkedIn_not_starts_with?: InputMaybe<Scalars['String']>
+  linkedIn_not_starts_with?: InputMaybe<Scalars['String']>
   /** All values starting with the given string. */
-  linnkedIn_starts_with?: InputMaybe<Scalars['String']>
+  linkedIn_starts_with?: InputMaybe<Scalars['String']>
   location?: InputMaybe<Scalars['String']>
   /** All values containing the given string. */
   location_contains?: InputMaybe<Scalars['String']>
@@ -1519,8 +1541,8 @@ export enum ContactOrderByInput {
   GithubDesc = 'github_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
-  LinnkedInAsc = 'linnkedIn_ASC',
-  LinnkedInDesc = 'linnkedIn_DESC',
+  LinkedInAsc = 'linkedIn_ASC',
+  LinkedInDesc = 'linkedIn_DESC',
   LocationAsc = 'location_ASC',
   LocationDesc = 'location_DESC',
   PhoneAsc = 'phone_ASC',
@@ -1535,7 +1557,7 @@ export type ContactUpdateInput = {
   clfr09qbo0nu901ui9gqr0lbe?: InputMaybe<PersonalInfoUpdateManyInlineInput>
   email?: InputMaybe<Scalars['String']>
   github?: InputMaybe<Scalars['String']>
-  linnkedIn?: InputMaybe<Scalars['String']>
+  linkedIn?: InputMaybe<Scalars['String']>
   location?: InputMaybe<Scalars['String']>
   phone?: InputMaybe<Scalars['String']>
 }
@@ -1560,7 +1582,7 @@ export type ContactUpdateManyInlineInput = {
 export type ContactUpdateManyInput = {
   email?: InputMaybe<Scalars['String']>
   github?: InputMaybe<Scalars['String']>
-  linnkedIn?: InputMaybe<Scalars['String']>
+  linkedIn?: InputMaybe<Scalars['String']>
   location?: InputMaybe<Scalars['String']>
   phone?: InputMaybe<Scalars['String']>
 }
@@ -1700,25 +1722,25 @@ export type ContactWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>
-  linnkedIn?: InputMaybe<Scalars['String']>
+  linkedIn?: InputMaybe<Scalars['String']>
   /** All values containing the given string. */
-  linnkedIn_contains?: InputMaybe<Scalars['String']>
+  linkedIn_contains?: InputMaybe<Scalars['String']>
   /** All values ending with the given string. */
-  linnkedIn_ends_with?: InputMaybe<Scalars['String']>
+  linkedIn_ends_with?: InputMaybe<Scalars['String']>
   /** All values that are contained in given list. */
-  linnkedIn_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  linkedIn_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
   /** Any other value that exists and is not equal to the given value. */
-  linnkedIn_not?: InputMaybe<Scalars['String']>
+  linkedIn_not?: InputMaybe<Scalars['String']>
   /** All values not containing the given string. */
-  linnkedIn_not_contains?: InputMaybe<Scalars['String']>
+  linkedIn_not_contains?: InputMaybe<Scalars['String']>
   /** All values not ending with the given string */
-  linnkedIn_not_ends_with?: InputMaybe<Scalars['String']>
+  linkedIn_not_ends_with?: InputMaybe<Scalars['String']>
   /** All values that are not contained in given list. */
-  linnkedIn_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  linkedIn_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
   /** All values not starting with the given string. */
-  linnkedIn_not_starts_with?: InputMaybe<Scalars['String']>
+  linkedIn_not_starts_with?: InputMaybe<Scalars['String']>
   /** All values starting with the given string. */
-  linnkedIn_starts_with?: InputMaybe<Scalars['String']>
+  linkedIn_starts_with?: InputMaybe<Scalars['String']>
   location?: InputMaybe<Scalars['String']>
   /** All values containing the given string. */
   location_contains?: InputMaybe<Scalars['String']>
@@ -4765,6 +4787,7 @@ export type PersonalInfo = Node & {
   createdAt: Scalars['DateTime']
   /** User that created this document */
   createdBy?: Maybe<User>
+  currentPosition?: Maybe<Scalars['String']>
   dob: Scalars['String']
   /** Get the document in other stages */
   documentInStages: Array<PersonalInfo>
@@ -4772,6 +4795,7 @@ export type PersonalInfo = Node & {
   history: Array<Version>
   /** The unique identifier */
   id: Scalars['ID']
+  image: Asset
   introduction?: Maybe<Scalars['String']>
   name: Scalars['String']
   /** The time the document was published. Null on documents in draft stage. */
@@ -4808,6 +4832,11 @@ export type PersonalInfoHistoryArgs = {
   limit?: Scalars['Int']
   skip?: Scalars['Int']
   stageOverride?: InputMaybe<Stage>
+}
+
+export type PersonalInfoImageArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  locales?: InputMaybe<Array<Locale>>
 }
 
 export type PersonalInfoPublishedByArgs = {
@@ -4852,7 +4881,9 @@ export type PersonalInfoCreateInput = {
   age: Scalars['Int']
   contact?: InputMaybe<ContactCreateOneInlineInput>
   createdAt?: InputMaybe<Scalars['DateTime']>
+  currentPosition?: InputMaybe<Scalars['String']>
   dob: Scalars['String']
+  image: AssetCreateOneInlineInput
   introduction?: InputMaybe<Scalars['String']>
   name: Scalars['String']
   surname: Scalars['String']
@@ -4942,6 +4973,25 @@ export type PersonalInfoManyWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
   createdBy?: InputMaybe<UserWhereInput>
+  currentPosition?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  currentPosition_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  currentPosition_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  currentPosition_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** Any other value that exists and is not equal to the given value. */
+  currentPosition_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  currentPosition_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  currentPosition_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  currentPosition_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  currentPosition_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  currentPosition_starts_with?: InputMaybe<Scalars['String']>
   dob?: InputMaybe<Scalars['String']>
   /** All values containing the given string. */
   dob_contains?: InputMaybe<Scalars['String']>
@@ -4983,6 +5033,7 @@ export type PersonalInfoManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>
+  image?: InputMaybe<AssetWhereInput>
   introduction?: InputMaybe<Scalars['String']>
   /** All values containing the given string. */
   introduction_contains?: InputMaybe<Scalars['String']>
@@ -5084,6 +5135,8 @@ export enum PersonalInfoOrderByInput {
   AgeDesc = 'age_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
+  CurrentPositionAsc = 'currentPosition_ASC',
+  CurrentPositionDesc = 'currentPosition_DESC',
   DobAsc = 'dob_ASC',
   DobDesc = 'dob_DESC',
   IdAsc = 'id_ASC',
@@ -5104,7 +5157,9 @@ export type PersonalInfoUpdateInput = {
   about?: InputMaybe<Scalars['String']>
   age?: InputMaybe<Scalars['Int']>
   contact?: InputMaybe<ContactUpdateOneInlineInput>
+  currentPosition?: InputMaybe<Scalars['String']>
   dob?: InputMaybe<Scalars['String']>
+  image?: InputMaybe<AssetUpdateOneInlineInput>
   introduction?: InputMaybe<Scalars['String']>
   name?: InputMaybe<Scalars['String']>
   surname?: InputMaybe<Scalars['String']>
@@ -5130,6 +5185,7 @@ export type PersonalInfoUpdateManyInlineInput = {
 export type PersonalInfoUpdateManyInput = {
   about?: InputMaybe<Scalars['String']>
   age?: InputMaybe<Scalars['Int']>
+  currentPosition?: InputMaybe<Scalars['String']>
   dob?: InputMaybe<Scalars['String']>
   introduction?: InputMaybe<Scalars['String']>
   name?: InputMaybe<Scalars['String']>
@@ -5246,6 +5302,25 @@ export type PersonalInfoWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
   createdBy?: InputMaybe<UserWhereInput>
+  currentPosition?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  currentPosition_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  currentPosition_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  currentPosition_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** Any other value that exists and is not equal to the given value. */
+  currentPosition_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  currentPosition_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  currentPosition_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  currentPosition_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  currentPosition_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  currentPosition_starts_with?: InputMaybe<Scalars['String']>
   dob?: InputMaybe<Scalars['String']>
   /** All values containing the given string. */
   dob_contains?: InputMaybe<Scalars['String']>
@@ -5287,6 +5362,7 @@ export type PersonalInfoWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>
+  image?: InputMaybe<AssetWhereInput>
   introduction?: InputMaybe<Scalars['String']>
   /** All values containing the given string. */
   introduction_contains?: InputMaybe<Scalars['String']>
@@ -9823,6 +9899,29 @@ export type GetTechnicalSkillQuery = {
   }>
 }
 
+export type GetPersonalInfoQueryVariables = Exact<{ [key: string]: never }>
+
+export type GetPersonalInfoQuery = {
+  personalInfos: Array<{
+    id: string
+    name: string
+    surname: string
+    age: number
+    dob: string
+    introduction?: string | null
+    about?: string | null
+    currentPosition?: string | null
+    image: { url: string }
+    contact?: {
+      id: string
+      phone?: string | null
+      email?: string | null
+      github?: string | null
+      linkedIn?: string | null
+    } | null
+  }>
+}
+
 export const GetTechnicalSkillDocument = /*#__PURE__*/ gql`
   query GetTechnicalSkill {
     technicalSkills {
@@ -9830,6 +9929,30 @@ export const GetTechnicalSkillDocument = /*#__PURE__*/ gql`
       programingLanguage
       image {
         url
+      }
+    }
+  }
+`
+export const GetPersonalInfoDocument = /*#__PURE__*/ gql`
+  query GetPersonalInfo {
+    personalInfos {
+      id
+      name
+      surname
+      age
+      dob
+      introduction
+      about
+      currentPosition
+      image {
+        url
+      }
+      contact {
+        id
+        phone
+        email
+        github
+        linkedIn
       }
     }
   }
@@ -9864,6 +9987,21 @@ export function getSdk(
             { ...requestHeaders, ...wrappedRequestHeaders }
           ),
         'GetTechnicalSkill',
+        'query'
+      )
+    },
+    GetPersonalInfo(
+      variables?: GetPersonalInfoQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<GetPersonalInfoQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetPersonalInfoQuery>(
+            GetPersonalInfoDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'GetPersonalInfo',
         'query'
       )
     },

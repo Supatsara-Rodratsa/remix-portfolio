@@ -33,7 +33,7 @@ const NavBar = () => {
   ]
 
   return (
-    <div className="flex w-full justify-between items-center overflow-hidden">
+    <div className="flex w-full justify-between items-center fixed z-[99]">
       <div
         className={clsx(
           'relative w-[200px] h-[40px] transition-all duration-700 z-30',
@@ -49,7 +49,7 @@ const NavBar = () => {
         >
           !!ROSEJHH
         </div>
-        <h1 className="text-3xl text-lemon font-bold absolute z-10 top-0 left-0 mobile:text-2xl">
+        <h1 className="text-3xl text-lemon font-bold transition-all duration-500 absolute z-10 top-0 left-0 mobile:text-2xl">
           !!ROSEJHH
         </h1>
       </div>
@@ -61,7 +61,7 @@ const NavBar = () => {
         transition={{ type: 'spring', stiffness: 260, damping: 20 }}
         width={windowSize.width < WINDOW_SIZE.mobile ? '30' : '48'}
         height={windowSize.width < WINDOW_SIZE.mobile ? '15' : '24'}
-        className={'cursor-pointer z-10'}
+        className={'cursor-pointer z-10 absolute right-[80px]'}
       />
       <motion.div
         initial={{ opacity: 0 }}
@@ -71,7 +71,7 @@ const NavBar = () => {
         }}
         className={clsx(
           isOpen && 'show',
-          'absolute right-0 top-0 pt-[120px] pr-[45px] pb-[150px] pl-[105px] mobile:pt-[80px] mobile:pr-[25px] mobile:pb-[100px] mobile:pl-[85px]',
+          'absolute right-[40px] top-0 pt-[120px] pr-[45px] pb-[150px] pl-[105px] mobile:pt-[80px] mobile:pr-[25px] mobile:pb-[100px] mobile:pl-[85px]',
           'before:bg-darkBlue z-[5] before:-rotate-[15deg] before:h-[calc(100%)] before:w-[125%] before:absolute before:-top-[45px] before:-right-[90px] before:mobile:w-[120%] ',
           'after:bg-lemon z-[2] after:-rotate-[15deg] after:h-[calc(100%)] after:w-[125%] after:absolute after:-top-[60px] after:-right-[70px]  after:mobile:w-[120%] '
         )}
