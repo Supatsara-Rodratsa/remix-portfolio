@@ -5,19 +5,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#d03125',
+        green: '#DFF757',
         black: '#000000',
         white: '#FFFFFF',
-        red: '#ff2c1f',
-        grey: '#9E9E9E',
-        lightGrey: '#D9D9D9',
-        dark: '#131212',
-        darker: '#141414',
-        'opacity-white': 'rgba(255, 255, 255, 0.2)',
+        darkBlue: '#2E0AA8',
+        lemon: '#DFF757',
+        purple: '#6A24EC',
+        blue: '#2C20F5',
+        orange: '#EE793F',
       },
       fontFamily: {
-        maven: ['Maven Pro', 'sans-serif'],
+        lalezar: ['Lalezar', 'cursive'],
         sans: ['Lato', 'sans-serif'],
+        barcode: ['Libre Barcode 128 Text', 'cursive'],
       },
       screens: {
         mobile: { max: '425px' },
