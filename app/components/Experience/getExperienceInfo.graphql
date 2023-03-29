@@ -1,19 +1,21 @@
 query GetExperienceInfo {
-  experiences {
+  experiences(orderBy: sequence_ASC) {
     id
     companyName
     location
-    positions {
+    hideName
+    position {
       id
-      positionName
-      period
-      startDate
       endDate
+      period
       isFinished
+      positionName
+      startDate
       positionDetails {
         id
         detail
       }
     }
+    hideDash
   }
 }

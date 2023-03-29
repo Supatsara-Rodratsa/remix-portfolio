@@ -2638,17 +2638,21 @@ export type Experience = Node & {
   createdBy?: Maybe<User>
   /** Get the document in other stages */
   documentInStages: Array<Experience>
+  hideDash?: Maybe<Scalars['Boolean']>
+  hideName?: Maybe<Scalars['Boolean']>
   /** List of Experience versions */
   history: Array<Version>
   /** The unique identifier */
   id: Scalars['ID']
+  link?: Maybe<Scalars['String']>
   location: Scalars['String']
-  positions: Array<Position>
+  position?: Maybe<Position>
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>
   /** User that last published this document */
   publishedBy?: Maybe<User>
   scheduledIn: Array<ScheduledOperation>
+  sequence: Scalars['Int']
   /** System stage field */
   stage: Stage
   /** The time the document was updated */
@@ -2674,16 +2678,9 @@ export type ExperienceHistoryArgs = {
   stageOverride?: InputMaybe<Stage>
 }
 
-export type ExperiencePositionsArgs = {
-  after?: InputMaybe<Scalars['String']>
-  before?: InputMaybe<Scalars['String']>
-  first?: InputMaybe<Scalars['Int']>
+export type ExperiencePositionArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']>
-  last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
-  orderBy?: InputMaybe<PositionOrderByInput>
-  skip?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<PositionWhereInput>
 }
 
 export type ExperiencePublishedByArgs = {
@@ -2726,8 +2723,12 @@ export type ExperienceConnection = {
 export type ExperienceCreateInput = {
   companyName?: InputMaybe<Scalars['String']>
   createdAt?: InputMaybe<Scalars['DateTime']>
+  hideDash?: InputMaybe<Scalars['Boolean']>
+  hideName?: InputMaybe<Scalars['Boolean']>
+  link?: InputMaybe<Scalars['String']>
   location: Scalars['String']
-  positions?: InputMaybe<PositionCreateManyInlineInput>
+  position?: InputMaybe<PositionCreateOneInlineInput>
+  sequence: Scalars['Int']
   updatedAt?: InputMaybe<Scalars['DateTime']>
 }
 
@@ -2801,6 +2802,12 @@ export type ExperienceManyWhereInput = {
   documentInStages_every?: InputMaybe<ExperienceWhereStageInput>
   documentInStages_none?: InputMaybe<ExperienceWhereStageInput>
   documentInStages_some?: InputMaybe<ExperienceWhereStageInput>
+  hideDash?: InputMaybe<Scalars['Boolean']>
+  /** Any other value that exists and is not equal to the given value. */
+  hideDash_not?: InputMaybe<Scalars['Boolean']>
+  hideName?: InputMaybe<Scalars['Boolean']>
+  /** Any other value that exists and is not equal to the given value. */
+  hideName_not?: InputMaybe<Scalars['Boolean']>
   id?: InputMaybe<Scalars['ID']>
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>
@@ -2820,6 +2827,25 @@ export type ExperienceManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>
+  link?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  link_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  link_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  link_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** Any other value that exists and is not equal to the given value. */
+  link_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  link_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  link_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  link_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  link_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  link_starts_with?: InputMaybe<Scalars['String']>
   location?: InputMaybe<Scalars['String']>
   /** All values containing the given string. */
   location_contains?: InputMaybe<Scalars['String']>
@@ -2839,9 +2865,7 @@ export type ExperienceManyWhereInput = {
   location_not_starts_with?: InputMaybe<Scalars['String']>
   /** All values starting with the given string. */
   location_starts_with?: InputMaybe<Scalars['String']>
-  positions_every?: InputMaybe<PositionWhereInput>
-  positions_none?: InputMaybe<PositionWhereInput>
-  positions_some?: InputMaybe<PositionWhereInput>
+  position?: InputMaybe<PositionWhereInput>
   publishedAt?: InputMaybe<Scalars['DateTime']>
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>
@@ -2861,6 +2885,21 @@ export type ExperienceManyWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>
+  sequence?: InputMaybe<Scalars['Int']>
+  /** All values greater than the given value. */
+  sequence_gt?: InputMaybe<Scalars['Int']>
+  /** All values greater than or equal the given value. */
+  sequence_gte?: InputMaybe<Scalars['Int']>
+  /** All values that are contained in given list. */
+  sequence_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
+  /** All values less than the given value. */
+  sequence_lt?: InputMaybe<Scalars['Int']>
+  /** All values less than or equal the given value. */
+  sequence_lte?: InputMaybe<Scalars['Int']>
+  /** Any other value that exists and is not equal to the given value. */
+  sequence_not?: InputMaybe<Scalars['Int']>
+  /** All values that are not contained in given list. */
+  sequence_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   updatedAt?: InputMaybe<Scalars['DateTime']>
   /** All values greater than the given value. */
   updatedAt_gt?: InputMaybe<Scalars['DateTime']>
@@ -2884,20 +2923,32 @@ export enum ExperienceOrderByInput {
   CompanyNameDesc = 'companyName_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
+  HideDashAsc = 'hideDash_ASC',
+  HideDashDesc = 'hideDash_DESC',
+  HideNameAsc = 'hideName_ASC',
+  HideNameDesc = 'hideName_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
+  LinkAsc = 'link_ASC',
+  LinkDesc = 'link_DESC',
   LocationAsc = 'location_ASC',
   LocationDesc = 'location_DESC',
   PublishedAtAsc = 'publishedAt_ASC',
   PublishedAtDesc = 'publishedAt_DESC',
+  SequenceAsc = 'sequence_ASC',
+  SequenceDesc = 'sequence_DESC',
   UpdatedAtAsc = 'updatedAt_ASC',
   UpdatedAtDesc = 'updatedAt_DESC',
 }
 
 export type ExperienceUpdateInput = {
   companyName?: InputMaybe<Scalars['String']>
+  hideDash?: InputMaybe<Scalars['Boolean']>
+  hideName?: InputMaybe<Scalars['Boolean']>
+  link?: InputMaybe<Scalars['String']>
   location?: InputMaybe<Scalars['String']>
-  positions?: InputMaybe<PositionUpdateManyInlineInput>
+  position?: InputMaybe<PositionUpdateOneInlineInput>
+  sequence?: InputMaybe<Scalars['Int']>
 }
 
 export type ExperienceUpdateManyInlineInput = {
@@ -2919,7 +2970,11 @@ export type ExperienceUpdateManyInlineInput = {
 
 export type ExperienceUpdateManyInput = {
   companyName?: InputMaybe<Scalars['String']>
+  hideDash?: InputMaybe<Scalars['Boolean']>
+  hideName?: InputMaybe<Scalars['Boolean']>
+  link?: InputMaybe<Scalars['String']>
   location?: InputMaybe<Scalars['String']>
+  sequence?: InputMaybe<Scalars['Int']>
 }
 
 export type ExperienceUpdateManyWithNestedWhereInput = {
@@ -3019,6 +3074,12 @@ export type ExperienceWhereInput = {
   documentInStages_every?: InputMaybe<ExperienceWhereStageInput>
   documentInStages_none?: InputMaybe<ExperienceWhereStageInput>
   documentInStages_some?: InputMaybe<ExperienceWhereStageInput>
+  hideDash?: InputMaybe<Scalars['Boolean']>
+  /** Any other value that exists and is not equal to the given value. */
+  hideDash_not?: InputMaybe<Scalars['Boolean']>
+  hideName?: InputMaybe<Scalars['Boolean']>
+  /** Any other value that exists and is not equal to the given value. */
+  hideName_not?: InputMaybe<Scalars['Boolean']>
   id?: InputMaybe<Scalars['ID']>
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>
@@ -3038,6 +3099,25 @@ export type ExperienceWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>
+  link?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  link_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  link_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  link_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** Any other value that exists and is not equal to the given value. */
+  link_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  link_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  link_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  link_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  link_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  link_starts_with?: InputMaybe<Scalars['String']>
   location?: InputMaybe<Scalars['String']>
   /** All values containing the given string. */
   location_contains?: InputMaybe<Scalars['String']>
@@ -3057,9 +3137,7 @@ export type ExperienceWhereInput = {
   location_not_starts_with?: InputMaybe<Scalars['String']>
   /** All values starting with the given string. */
   location_starts_with?: InputMaybe<Scalars['String']>
-  positions_every?: InputMaybe<PositionWhereInput>
-  positions_none?: InputMaybe<PositionWhereInput>
-  positions_some?: InputMaybe<PositionWhereInput>
+  position?: InputMaybe<PositionWhereInput>
   publishedAt?: InputMaybe<Scalars['DateTime']>
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>
@@ -3079,6 +3157,21 @@ export type ExperienceWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>
+  sequence?: InputMaybe<Scalars['Int']>
+  /** All values greater than the given value. */
+  sequence_gt?: InputMaybe<Scalars['Int']>
+  /** All values greater than or equal the given value. */
+  sequence_gte?: InputMaybe<Scalars['Int']>
+  /** All values that are contained in given list. */
+  sequence_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
+  /** All values less than the given value. */
+  sequence_lt?: InputMaybe<Scalars['Int']>
+  /** All values less than or equal the given value. */
+  sequence_lte?: InputMaybe<Scalars['Int']>
+  /** Any other value that exists and is not equal to the given value. */
+  sequence_not?: InputMaybe<Scalars['Int']>
+  /** All values that are not contained in given list. */
+  sequence_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   updatedAt?: InputMaybe<Scalars['DateTime']>
   /** All values greater than the given value. */
   updatedAt_gt?: InputMaybe<Scalars['DateTime']>
@@ -5669,7 +5762,7 @@ export type PositionConnection = {
 }
 
 export type PositionCreateInput = {
-  clfr85o2h0ttj01ueatmzanxv?: InputMaybe<ExperienceCreateManyInlineInput>
+  clftu0jf532j701up83cy8ibf?: InputMaybe<ExperienceCreateManyInlineInput>
   createdAt?: InputMaybe<Scalars['DateTime']>
   endDate?: InputMaybe<Scalars['Date']>
   isFinished?: InputMaybe<Scalars['Boolean']>
@@ -6306,7 +6399,7 @@ export enum PositionOrderByInput {
 }
 
 export type PositionUpdateInput = {
-  clfr85o2h0ttj01ueatmzanxv?: InputMaybe<ExperienceUpdateManyInlineInput>
+  clftu0jf532j701up83cy8ibf?: InputMaybe<ExperienceUpdateManyInlineInput>
   endDate?: InputMaybe<Scalars['Date']>
   isFinished?: InputMaybe<Scalars['Boolean']>
   period?: InputMaybe<Scalars['String']>
@@ -9992,15 +10085,17 @@ export type GetExperienceInfoQuery = {
     id: string
     companyName?: string | null
     location: string
-    positions: Array<{
+    hideName?: boolean | null
+    hideDash?: boolean | null
+    position?: {
       id: string
-      positionName: string
-      period?: string | null
-      startDate?: any | null
       endDate?: any | null
+      period?: string | null
       isFinished?: boolean | null
+      positionName: string
+      startDate?: any | null
       positionDetails: Array<{ id: string; detail?: string | null }>
-    }>
+    } | null
   }>
 }
 
@@ -10042,22 +10137,24 @@ export type GetTechnicalSkillQuery = {
 
 export const GetExperienceInfoDocument = /*#__PURE__*/ gql`
   query GetExperienceInfo {
-    experiences {
+    experiences(orderBy: sequence_ASC) {
       id
       companyName
       location
-      positions {
+      hideName
+      position {
         id
-        positionName
-        period
-        startDate
         endDate
+        period
         isFinished
+        positionName
+        startDate
         positionDetails {
           id
           detail
         }
       }
+      hideDash
     }
   }
 `

@@ -10,7 +10,7 @@ const SvgVector = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      stroke="#000000"
+      stroke="#FDF574"
       strokeWidth={3}
       d="m1 9 8.975-7 11.303 7 10.97-7 8.31 7 12.633-7L62 9"
     />
