@@ -1,4 +1,4 @@
-export { default as Education } from './Education'
+export { default as EducationIcon } from './EducationIcon'
 export { default as Email } from './Email'
 export { default as Github } from './Github'
 export { default as Linkedin } from './Linkedin'

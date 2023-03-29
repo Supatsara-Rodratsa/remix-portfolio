@@ -1,0 +1,16 @@
+query GetEducationInfo {
+  educations(orderBy: sequence_DESC) {
+    id
+    grade
+    location
+    isFirstClassHonours
+    period
+    program
+    programs {
+      id
+      name
+    }
+    universityName
+    link
+  }
+}

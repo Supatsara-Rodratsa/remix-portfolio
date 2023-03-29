@@ -1971,7 +1971,7 @@ export type Education = Node & {
   createdBy?: Maybe<User>
   /** Get the document in other stages */
   documentInStages: Array<Education>
-  grade?: Maybe<Scalars['Float']>
+  grade?: Maybe<Scalars['String']>
   /** List of Education versions */
   history: Array<Version>
   /** The unique identifier */
@@ -1987,6 +1987,7 @@ export type Education = Node & {
   /** User that last published this document */
   publishedBy?: Maybe<User>
   scheduledIn: Array<ScheduledOperation>
+  sequence: Scalars['Int']
   /** System stage field */
   stage: Stage
   universityName: Scalars['String']
@@ -2064,13 +2065,14 @@ export type EducationConnection = {
 
 export type EducationCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>
-  grade?: InputMaybe<Scalars['Float']>
+  grade?: InputMaybe<Scalars['String']>
   isFirstClassHonours?: InputMaybe<Scalars['Boolean']>
   link?: InputMaybe<Scalars['String']>
   location: Scalars['String']
   period?: InputMaybe<Scalars['String']>
   program: Scalars['String']
   programs?: InputMaybe<ProgramCreateManyInlineInput>
+  sequence: Scalars['Int']
   universityName: Scalars['String']
   updatedAt?: InputMaybe<Scalars['DateTime']>
 }
@@ -2126,21 +2128,25 @@ export type EducationManyWhereInput = {
   documentInStages_every?: InputMaybe<EducationWhereStageInput>
   documentInStages_none?: InputMaybe<EducationWhereStageInput>
   documentInStages_some?: InputMaybe<EducationWhereStageInput>
-  grade?: InputMaybe<Scalars['Float']>
-  /** All values greater than the given value. */
-  grade_gt?: InputMaybe<Scalars['Float']>
-  /** All values greater than or equal the given value. */
-  grade_gte?: InputMaybe<Scalars['Float']>
+  grade?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  grade_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  grade_ends_with?: InputMaybe<Scalars['String']>
   /** All values that are contained in given list. */
-  grade_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
-  /** All values less than the given value. */
-  grade_lt?: InputMaybe<Scalars['Float']>
-  /** All values less than or equal the given value. */
-  grade_lte?: InputMaybe<Scalars['Float']>
+  grade_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
   /** Any other value that exists and is not equal to the given value. */
-  grade_not?: InputMaybe<Scalars['Float']>
+  grade_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  grade_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  grade_not_ends_with?: InputMaybe<Scalars['String']>
   /** All values that are not contained in given list. */
-  grade_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
+  grade_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  grade_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  grade_starts_with?: InputMaybe<Scalars['String']>
   id?: InputMaybe<Scalars['ID']>
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>
@@ -2261,6 +2267,21 @@ export type EducationManyWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>
+  sequence?: InputMaybe<Scalars['Int']>
+  /** All values greater than the given value. */
+  sequence_gt?: InputMaybe<Scalars['Int']>
+  /** All values greater than or equal the given value. */
+  sequence_gte?: InputMaybe<Scalars['Int']>
+  /** All values that are contained in given list. */
+  sequence_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
+  /** All values less than the given value. */
+  sequence_lt?: InputMaybe<Scalars['Int']>
+  /** All values less than or equal the given value. */
+  sequence_lte?: InputMaybe<Scalars['Int']>
+  /** Any other value that exists and is not equal to the given value. */
+  sequence_not?: InputMaybe<Scalars['Int']>
+  /** All values that are not contained in given list. */
+  sequence_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   universityName?: InputMaybe<Scalars['String']>
   /** All values containing the given string. */
   universityName_contains?: InputMaybe<Scalars['String']>
@@ -2317,6 +2338,8 @@ export enum EducationOrderByInput {
   ProgramDesc = 'program_DESC',
   PublishedAtAsc = 'publishedAt_ASC',
   PublishedAtDesc = 'publishedAt_DESC',
+  SequenceAsc = 'sequence_ASC',
+  SequenceDesc = 'sequence_DESC',
   UniversityNameAsc = 'universityName_ASC',
   UniversityNameDesc = 'universityName_DESC',
   UpdatedAtAsc = 'updatedAt_ASC',
@@ -2324,13 +2347,14 @@ export enum EducationOrderByInput {
 }
 
 export type EducationUpdateInput = {
-  grade?: InputMaybe<Scalars['Float']>
+  grade?: InputMaybe<Scalars['String']>
   isFirstClassHonours?: InputMaybe<Scalars['Boolean']>
   link?: InputMaybe<Scalars['String']>
   location?: InputMaybe<Scalars['String']>
   period?: InputMaybe<Scalars['String']>
   program?: InputMaybe<Scalars['String']>
   programs?: InputMaybe<ProgramUpdateManyInlineInput>
+  sequence?: InputMaybe<Scalars['Int']>
   universityName?: InputMaybe<Scalars['String']>
 }
 
@@ -2352,12 +2376,13 @@ export type EducationUpdateManyInlineInput = {
 }
 
 export type EducationUpdateManyInput = {
-  grade?: InputMaybe<Scalars['Float']>
+  grade?: InputMaybe<Scalars['String']>
   isFirstClassHonours?: InputMaybe<Scalars['Boolean']>
   link?: InputMaybe<Scalars['String']>
   location?: InputMaybe<Scalars['String']>
   period?: InputMaybe<Scalars['String']>
   program?: InputMaybe<Scalars['String']>
+  sequence?: InputMaybe<Scalars['Int']>
   universityName?: InputMaybe<Scalars['String']>
 }
 
@@ -2439,21 +2464,25 @@ export type EducationWhereInput = {
   documentInStages_every?: InputMaybe<EducationWhereStageInput>
   documentInStages_none?: InputMaybe<EducationWhereStageInput>
   documentInStages_some?: InputMaybe<EducationWhereStageInput>
-  grade?: InputMaybe<Scalars['Float']>
-  /** All values greater than the given value. */
-  grade_gt?: InputMaybe<Scalars['Float']>
-  /** All values greater than or equal the given value. */
-  grade_gte?: InputMaybe<Scalars['Float']>
+  grade?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  grade_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  grade_ends_with?: InputMaybe<Scalars['String']>
   /** All values that are contained in given list. */
-  grade_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
-  /** All values less than the given value. */
-  grade_lt?: InputMaybe<Scalars['Float']>
-  /** All values less than or equal the given value. */
-  grade_lte?: InputMaybe<Scalars['Float']>
+  grade_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
   /** Any other value that exists and is not equal to the given value. */
-  grade_not?: InputMaybe<Scalars['Float']>
+  grade_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  grade_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  grade_not_ends_with?: InputMaybe<Scalars['String']>
   /** All values that are not contained in given list. */
-  grade_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
+  grade_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  grade_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  grade_starts_with?: InputMaybe<Scalars['String']>
   id?: InputMaybe<Scalars['ID']>
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>
@@ -2574,6 +2603,21 @@ export type EducationWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>
+  sequence?: InputMaybe<Scalars['Int']>
+  /** All values greater than the given value. */
+  sequence_gt?: InputMaybe<Scalars['Int']>
+  /** All values greater than or equal the given value. */
+  sequence_gte?: InputMaybe<Scalars['Int']>
+  /** All values that are contained in given list. */
+  sequence_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
+  /** All values less than the given value. */
+  sequence_lt?: InputMaybe<Scalars['Int']>
+  /** All values less than or equal the given value. */
+  sequence_lte?: InputMaybe<Scalars['Int']>
+  /** Any other value that exists and is not equal to the given value. */
+  sequence_not?: InputMaybe<Scalars['Int']>
+  /** All values that are not contained in given list. */
+  sequence_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   universityName?: InputMaybe<Scalars['String']>
   /** All values containing the given string. */
   universityName_contains?: InputMaybe<Scalars['String']>
@@ -10078,6 +10122,22 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization',
 }
 
+export type GetEducationInfoQueryVariables = Exact<{ [key: string]: never }>
+
+export type GetEducationInfoQuery = {
+  educations: Array<{
+    id: string
+    grade?: string | null
+    location: string
+    isFirstClassHonours?: boolean | null
+    period?: string | null
+    program: string
+    universityName: string
+    link?: string | null
+    programs: Array<{ id: string; name?: string | null }>
+  }>
+}
+
 export type GetExperienceInfoQueryVariables = Exact<{ [key: string]: never }>
 
 export type GetExperienceInfoQuery = {
@@ -10135,6 +10195,24 @@ export type GetTechnicalSkillQuery = {
   }>
 }
 
+export const GetEducationInfoDocument = /*#__PURE__*/ gql`
+  query GetEducationInfo {
+    educations(orderBy: sequence_DESC) {
+      id
+      grade
+      location
+      isFirstClassHonours
+      period
+      program
+      programs {
+        id
+        name
+      }
+      universityName
+      link
+    }
+  }
+`
 export const GetExperienceInfoDocument = /*#__PURE__*/ gql`
   query GetExperienceInfo {
     experiences(orderBy: sequence_ASC) {
@@ -10220,6 +10298,21 @@ export function getSdk(
   withWrapper: SdkFunctionWrapper = defaultWrapper
 ) {
   return {
+    GetEducationInfo(
+      variables?: GetEducationInfoQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<GetEducationInfoQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetEducationInfoQuery>(
+            GetEducationInfoDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'GetEducationInfo',
+        'query'
+      )
+    },
     GetExperienceInfo(
       variables?: GetExperienceInfoQueryVariables,
       requestHeaders?: Dom.RequestInit['headers']

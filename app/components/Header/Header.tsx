@@ -5,9 +5,15 @@ type HeaderProps = {
   label: string
   color: string
   once?: boolean
+  textColor?: string
 }
 
-const Header = ({ label, color, once = false }: HeaderProps) => {
+const Header = ({
+  label,
+  color,
+  once = false,
+  textColor = 'text-white',
+}: HeaderProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: -100 }}
@@ -15,8 +21,9 @@ const Header = ({ label, color, once = false }: HeaderProps) => {
       viewport={{ once }}
       transition={{ stiffness: 500, delay: 0.5 }}
       className={clsx(
-        'w-fit h-fit px-10 py-3 text-bolder font-lalezar text-2xl pt-[18px] transition-all duration-700 ease-in-out shadow-custom tablet:text-xl mobile:text-lg uppercase',
-        color
+        'w-fit h-fit px-10 py-3 text-bolder font-lalezar text-2xl pt-[18px] transition-all duration-700 ease-in-out shadow-custom tablet:text-xl mobile:text-lg uppercase ml-[5px]',
+        color,
+        textColor
       )}
     >
       {label}
