@@ -20,8 +20,8 @@ module.exports = {
         barcode: ['Libre Barcode 39 Text', 'cursive'],
       },
       screens: {
-        mobile: { max: '425px' },
-        tablet: { max: '768px', min: '426px' },
+        mobile: { max: '469px' },
+        tablet: { max: '768px', min: '470px' },
         laptop: { max: '1024px', min: '769px' },
         desktop: '1440px',
       },

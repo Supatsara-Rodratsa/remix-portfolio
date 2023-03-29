@@ -15,7 +15,7 @@ const AboutInfo = ({ image, details }: AboutInfoProps) => {
       id="about-details"
       className="w-screen -mx-[40px] m-auto min-h-[100vh] relative "
     >
-      <div className="relative w-full min-h-[100vh] m-auto flex justify-center items-center gap-8 mobile:flex-wrap ]">
+      <div className="relative w-full min-h-[100vh] m-auto flex justify-center items-center gap-8 mobile:flex-wrap tablet:flex-wrap">
         <div
           style={{ backgroundImage: "url('assets/icons/bg-table.svg')" }}
           className="w-[50%] flex flex-col h-screen gap-[60px] tablet:w-full mobile:w-full bg-lemon bg-[length:30px] pt-[100px] p-[40px] justify-center items-center"

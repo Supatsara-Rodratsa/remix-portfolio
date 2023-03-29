@@ -13,7 +13,7 @@ const IntroductionInfo = ({ info, profileImage }: IntroductionInfoProps) => {
     intro[1].split("a master's degree in Frontend Development program") || []
   return (
     <section className="w-screen -mx-[40px] m-auto h-full min-h-[100vh] relative bg-blue">
-      <div className="relative w-[calc(100%_-_80px)] min-h-[100vh] m-auto flex justify-center items-center mx-[40px] pt-[80px] pb-[40px] gap-8 mobile:flex-wrap mobile:pt-[100px]">
+      <div className="relative w-[calc(100%_-_80px)] min-h-[100vh] m-auto flex justify-center items-center mx-[40px] pt-[80px] pb-[40px] gap-8 mobile:flex-wrap mobile:pt-[100px] tablet:flex-wrap">
         <div className="w-[45%] flex flex-col h-fit gap-[60px] m-auto tablet:w-full mobile:w-full">
           <Header label="WHO AM I ??" color="bg-r_orange" />
           <motion.p
