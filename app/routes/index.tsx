@@ -3,9 +3,9 @@ import { json } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 import ErrorState from '~/components/ErrorState'
 import Introduction from '~/components/Introduction'
-import IntroductionInfo from '~/components/IntroductionInfo'
 import type { PersonalInfo } from '~/generated/graphql'
 import { sdk } from '~/libs/client'
+import About from '~/components/About'
 
 export const meta: MetaFunction = () => {
   return {
@@ -35,10 +35,7 @@ export default function Index() {
           position={info.currentPosition || ''}
           image={info.image?.url}
         />
-        <IntroductionInfo
-          info={info.introduction || ''}
-          profileImage={info.profileImage1.url}
-        />
+        <About details={info} />
       </div>
     )
   }

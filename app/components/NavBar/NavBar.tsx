@@ -91,7 +91,7 @@ const NavBar = () => {
               variants={variant}
               className="flex flex-col items-end font-lalezar text-darkBlue text-3xl font-bold uppercase cursor-pointer mobile:text-2xl hover:text-black"
             >
-              <Link to={item.link} onClick={() => setOpen(false)}>
+              <Link to={`#${item.link}`} onClick={() => setOpen(false)}>
                 {item.name}
               </Link>
             </motion.li>

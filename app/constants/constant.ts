@@ -19,10 +19,10 @@ export const WINDOW_SIZE = {
 export const NAV_TOPIC = {
   HOME: { name: 'Home', link: '' },
   ABOUT: { name: 'About', link: 'about' },
-  EXPERIENCE: { name: 'Experience', link: '' },
-  EDUCATION: { name: 'Education', link: '' },
-  SKILL: { name: 'Skill', link: '' },
-  CONTACT: { name: 'Contact', link: '' },
+  EXPERIENCE: { name: 'Experience', link: 'experience' },
+  EDUCATION: { name: 'Education', link: 'education' },
+  SKILL: { name: 'Skill', link: 'skill' },
+  CONTACT: { name: 'Contact', link: 'contact' },
 } as const
 
 export const STATIC_WORD = {

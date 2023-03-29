@@ -40,6 +40,9 @@ module.exports = {
       boxShadow: {
         custom: '10px 10px 0 #000',
       },
+      backgroundImage: {
+        'table-pattern': "url('~assets/icons/bg-table.svg')",
+      },
     },
   },
   plugins: [],

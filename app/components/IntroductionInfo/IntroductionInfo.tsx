@@ -31,7 +31,11 @@ const IntroductionInfo = ({ info, profileImage }: IntroductionInfoProps) => {
             {intro2[1]}
           </motion.p>
         </div>
-        <ProfileCaption image={profileImage} caption="About" link="about" />
+        <ProfileCaption
+          image={profileImage}
+          caption="About"
+          link="#about-details"
+        />
       </div>
     </section>
   )
