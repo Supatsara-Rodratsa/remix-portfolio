@@ -3,9 +3,10 @@ import { json } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 import ErrorState from '~/components/ErrorState'
 import Introduction from '~/components/Introduction'
-import type { PersonalInfo } from '~/generated/graphql'
+import type { Experience, PersonalInfo } from '~/generated/graphql'
 import { sdk } from '~/libs/client'
-import About from '~/components/About'
+import AboutSection from '~/components/About'
+import ExperienceSection from '~/components/Experience'
 
 export const meta: MetaFunction = () => {
   return {
@@ -15,7 +16,8 @@ export const meta: MetaFunction = () => {
 
 export const loader = async () => {
   const { personalInfos } = await sdk.GetPersonalInfo()
-  return json(personalInfos)
+  const { experiences } = await sdk.GetExperienceInfo()
+  return json({ personalInfos, experiences })
 }
 
 export const ErrorBoundary = ({ error }: { error: Error }) => {
@@ -23,8 +25,8 @@ export const ErrorBoundary = ({ error }: { error: Error }) => {
 }
 
 export default function Index() {
-  const personalInfo = useLoaderData<typeof loader>()
-  const info = personalInfo[0] as PersonalInfo
+  const { personalInfos, experiences } = useLoaderData<typeof loader>()
+  const info = personalInfos[0] as PersonalInfo
 
   if (info) {
     return (
@@ -35,7 +37,8 @@ export default function Index() {
           position={info.currentPosition || ''}
           image={info.image?.url}
         />
-        <About details={info} />
+        <AboutSection details={info} />
+        <ExperienceSection experience={experiences as Experience[]} />
       </div>
     )
   }

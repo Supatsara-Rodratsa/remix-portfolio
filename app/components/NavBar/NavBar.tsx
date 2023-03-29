@@ -21,8 +21,8 @@ const NavBar = () => {
   }
 
   const variant = {
-    closed: { opacity: 0 },
-    open: { opacity: 1 },
+    closed: { opacity: 0, x: 300 },
+    open: { opacity: 1, x: 0 },
   }
 
   const Topic = [
@@ -66,8 +66,8 @@ const NavBar = () => {
         className={'cursor-pointer z-10 absolute right-[80px]'}
       />
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={isOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
+        initial={{ opacity: 0, x: 400 }}
+        animate={isOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: 400 }}
         transition={{
           y: { stiffness: 1000 },
         }}

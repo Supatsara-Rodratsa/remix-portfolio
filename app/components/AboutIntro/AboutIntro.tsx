@@ -11,6 +11,7 @@ const AboutIntro = ({ name, surname }: AboutIntroProps) => {
   const x = useTransform(scrollYProgress, [0, 1], [-100, -600])
   const x2 = useTransform(scrollYProgress, [1, 0], [-100, -600])
   const fullName = Array.from(Array(4)).map((_) => name + ' ' + surname + ' ')
+  const aboutMe = Array.from(Array(4)).map((_) => '? About ME ? 🤭 ')
 
   const AboutMe = () => {
     return (
@@ -18,7 +19,7 @@ const AboutIntro = ({ name, surname }: AboutIntroProps) => {
         style={{ x: x2 }}
         className="text-[120px] tablet:text-[100px] mobile:text-[80px] font-lalezar uppercase whitespace-nowrap text-darkBlue"
       >
-        About ME ? 🤭 About ME ? 🤭 About ME ? 🤭 About ME ? 🤭
+        {aboutMe}
       </motion.div>
     )
   }
@@ -40,7 +41,7 @@ const AboutIntro = ({ name, surname }: AboutIntroProps) => {
         style={{ x }}
         className="text-[120px] tablet:text-[100px] mobile:text-[80px] font-lalezar uppercase whitespace-nowrap"
       >
-        {Array.from(Array(6)).map((_) => 'ROSEJH ')}
+        {Array.from(Array(6)).map((_) => 'ROSEJH <3 ')}
       </motion.div>
     )
   }

@@ -1,0 +1,19 @@
+query GetExperienceInfo {
+  experiences {
+    id
+    companyName
+    location
+    positions {
+      id
+      positionName
+      period
+      startDate
+      endDate
+      isFinished
+      positionDetails {
+        id
+        detail
+      }
+    }
+  }
+}

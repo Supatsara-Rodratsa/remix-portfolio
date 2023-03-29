@@ -9985,6 +9985,25 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization',
 }
 
+export type GetExperienceInfoQueryVariables = Exact<{ [key: string]: never }>
+
+export type GetExperienceInfoQuery = {
+  experiences: Array<{
+    id: string
+    companyName?: string | null
+    location: string
+    positions: Array<{
+      id: string
+      positionName: string
+      period?: string | null
+      startDate?: any | null
+      endDate?: any | null
+      isFinished?: boolean | null
+      positionDetails: Array<{ id: string; detail?: string | null }>
+    }>
+  }>
+}
+
 export type GetPersonalInfoQueryVariables = Exact<{ [key: string]: never }>
 
 export type GetPersonalInfoQuery = {
@@ -10021,6 +10040,27 @@ export type GetTechnicalSkillQuery = {
   }>
 }
 
+export const GetExperienceInfoDocument = /*#__PURE__*/ gql`
+  query GetExperienceInfo {
+    experiences {
+      id
+      companyName
+      location
+      positions {
+        id
+        positionName
+        period
+        startDate
+        endDate
+        isFinished
+        positionDetails {
+          id
+          detail
+        }
+      }
+    }
+  }
+`
 export const GetPersonalInfoDocument = /*#__PURE__*/ gql`
   query GetPersonalInfo {
     personalInfos {
@@ -10083,6 +10123,21 @@ export function getSdk(
   withWrapper: SdkFunctionWrapper = defaultWrapper
 ) {
   return {
+    GetExperienceInfo(
+      variables?: GetExperienceInfoQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<GetExperienceInfoQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetExperienceInfoQuery>(
+            GetExperienceInfoDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'GetExperienceInfo',
+        'query'
+      )
+    },
     GetPersonalInfo(
       variables?: GetPersonalInfoQueryVariables,
       requestHeaders?: Dom.RequestInit['headers']

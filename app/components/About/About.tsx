@@ -7,9 +7,9 @@ type AboutProps = {
   details: PersonalInfo
 }
 
-const About = ({ details }: AboutProps) => {
+const AboutSection = ({ details }: AboutProps) => {
   return (
-    <div id="about">
+    <section id="about">
       <AboutIntro name={details.name} surname={details.surname} />
       <IntroductionInfo
         info={details.introduction || ''}
@@ -19,8 +19,8 @@ const About = ({ details }: AboutProps) => {
         image={details.profileImage2.url}
         details={details.about || ''}
       />
-    </div>
+    </section>
   )
 }
 
-export default About
+export default AboutSection
