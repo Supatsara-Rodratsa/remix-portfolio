@@ -11,7 +11,7 @@ module.exports = {
         darkBlue: '#2E0AA8',
         lemon: '#DFF757',
         purple: '#6A24EC',
-        blue: '#2C20F5',
+        blue: '#2141b5',
         r_orange: '#EE6623',
       },
       fontFamily: {
@@ -39,9 +39,6 @@ module.exports = {
       },
       boxShadow: {
         custom: '10px 10px 0 #000',
-      },
-      backgroundImage: {
-        'table-pattern': "url('~assets/icons/bg-table.svg')",
       },
     },
   },

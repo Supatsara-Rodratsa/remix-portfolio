@@ -1,6 +1,7 @@
 import type { Experience } from '~/generated/graphql'
 import { Work } from '../icons'
 import clsx from 'clsx'
+import { motion } from 'framer-motion'
 
 type ExperienceTableProps = {
   experience: Experience[]
@@ -10,11 +11,14 @@ const ExperienceTable = ({ experience }: ExperienceTableProps) => {
   return (
     <div className="my-[40px] flex flex-col gap-8">
       {experience.map((exp, index) => (
-        <>
-          <div
-            key={exp.id}
-            className="grid grid-cols-3 gap-x-4 gap-y-8 grid-flow-row-dense mobile:grid-cols-1 tablet:grid-cols-1"
-          >
+        <motion.div
+          initial={{ x: 200 }}
+          whileInView={{ x: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          key={exp.id}
+        >
+          <div className="grid grid-cols-3 gap-x-4 gap-y-8 grid-flow-row-dense mobile:grid-cols-1 tablet:grid-cols-1">
             <div className="flex flex-row gap-5">
               <div className={clsx(exp.hideName ? 'hidden' : 'block')}>
                 <Work />
@@ -58,7 +62,7 @@ const ExperienceTable = ({ experience }: ExperienceTableProps) => {
               exp.hideDash && index != experience.length && 'hidden'
             )}
           />
-        </>
+        </motion.div>
       ))}
     </div>
   )

@@ -5,7 +5,7 @@ export const COLORS = {
   darkBlue: '#2E0AA8',
   lemon: '#DFF757',
   purple: '#6A24EC',
-  blue: '#2C20F5',
+  blue: '#2141b5',
   orange: '#EE6623',
 } as const
 
