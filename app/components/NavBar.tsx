@@ -4,12 +4,13 @@ import { COLORS, NAV_TOPIC, WINDOW_SIZE } from '~/constants/constant'
 import { motion } from 'framer-motion'
 import clsx from 'clsx'
 import { useWindowSize } from '~/hooks/widowSize'
-import { Link } from '@remix-run/react'
+import { Link, useNavigate } from '@remix-run/react'
 
 const NavBar = () => {
   const [isOpen, setOpen] = useState(false)
   const [mouseEnter, setMouseEnter] = useState(false)
   const windowSize = useWindowSize()
+  const navigate = useNavigate()
 
   const container = {
     open: {
@@ -44,6 +45,7 @@ const NavBar = () => {
         )}
         onMouseEnter={() => setMouseEnter(true)}
         onMouseLeave={() => setMouseEnter(false)}
+        onClick={() => navigate('/')}
       >
         <div
           className={clsx(
@@ -62,7 +64,7 @@ const NavBar = () => {
         strokeWidth={windowSize.width < WINDOW_SIZE.mobile ? '3' : '5'}
         color={isOpen ? COLORS.darkBlue : COLORS.lemon}
         transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-        width={windowSize.width < WINDOW_SIZE.mobile ? '30' : '48'}
+        width={windowSize.width < WINDOW_SIZE.mobile ? '24' : '40'}
         height={windowSize.width < WINDOW_SIZE.mobile ? '15' : '24'}
         className={'cursor-pointer z-10 absolute right-[80px]'}
       />
