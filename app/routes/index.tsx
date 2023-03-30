@@ -8,6 +8,7 @@ import { sdk } from '~/libs/client'
 import AboutSection from '~/components/About'
 import ExperienceSection from '~/components/Experience'
 import EducationSection from '~/components/Education'
+import Skill from '~/components/Skill'
 
 export const meta: MetaFunction = () => {
   return {
@@ -43,6 +44,7 @@ export default function Index() {
         <AboutSection details={info} />
         <ExperienceSection experience={experiences as Experience[]} />
         <EducationSection education={educations as Education[]} />
+        <Skill />
       </div>
     )
   }
