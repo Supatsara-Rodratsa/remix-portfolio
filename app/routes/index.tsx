@@ -5,16 +5,16 @@ import type {
   Education,
   Experience,
   PersonalInfo,
+  Software,
   TechnicalSkill,
 } from '~/generated/graphql'
 import { sdk } from '~/libs/client'
-import { TechnicalSkills } from '~/components/Skill/TechnicalSkill'
 import { AboutSection } from '~/components/About/About'
-import { EducationTable } from '~/components/Education/EducationTable'
 import ExperienceSection from '~/components/Experience/Experience'
 import { ErrorState } from '~/components/ErrorState'
 import { Introduction } from '~/components/Introduction/Introduction'
-import { Skill } from '~/components/Skill/Skill'
+import { SkillSoftwareSection } from '~/components/SkillSoftware/SkillSoftware'
+import { EducationSection } from '~/components/Education/Education'
 
 export const meta: MetaFunction = () => {
   return {
@@ -27,7 +27,14 @@ export const loader = async () => {
   const { experiences } = await sdk.GetExperienceInfo()
   const { educations } = await sdk.GetEducationInfo()
   const { technicalSkills } = await sdk.GetTechnicalSkill()
-  return json({ personalInfos, experiences, educations, technicalSkills })
+  const { softwares } = await sdk.GetSoftwareDetail()
+  return json({
+    personalInfos,
+    experiences,
+    educations,
+    technicalSkills,
+    softwares,
+  })
 }
 
 export const ErrorBoundary = ({ error }: { error: Error }) => {
@@ -35,7 +42,7 @@ export const ErrorBoundary = ({ error }: { error: Error }) => {
 }
 
 export default function Index() {
-  const { personalInfos, experiences, educations, technicalSkills } =
+  const { personalInfos, experiences, educations, technicalSkills, softwares } =
     useLoaderData<typeof loader>()
   const info = personalInfos[0] as PersonalInfo
 
@@ -50,9 +57,9 @@ export default function Index() {
         />
         <AboutSection details={info} />
         <ExperienceSection experience={experiences as Experience[]} />
-        <EducationTable education={educations as Education[]} />
-        <Skill />
-        <TechnicalSkills
+        <EducationSection education={educations as Education[]} />
+        <SkillSoftwareSection
+          software={softwares as Software[]}
           technicalSkills={technicalSkills as TechnicalSkill[]}
         />
       </div>

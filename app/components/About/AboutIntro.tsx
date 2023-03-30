@@ -17,7 +17,7 @@ export const AboutIntro = ({ name, surname }: AboutIntroProps) => {
     return (
       <motion.div
         style={{ x: x2 }}
-        className="text-[120px] tablet:text-[100px] mobile:text-[80px] font-lalezar uppercase whitespace-nowrap text-darkBlue"
+        className="text-[120px] tablet:text-[100px] mobile:text-[80px] font-lalezar uppercase whitespace-nowrap text-blue"
       >
         {aboutMe}
       </motion.div>

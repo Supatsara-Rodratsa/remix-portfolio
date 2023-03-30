@@ -10159,16 +10159,6 @@ export type GetExperienceInfoQuery = {
   }>
 }
 
-export type GetTechnicalSkillQueryVariables = Exact<{ [key: string]: never }>
-
-export type GetTechnicalSkillQuery = {
-  technicalSkills: Array<{
-    id: string
-    programmingLanguage: string
-    image?: { url: string; stage: Stage } | null
-  }>
-}
-
 export type GetPersonalInfoQueryVariables = Exact<{ [key: string]: never }>
 
 export type GetPersonalInfoQuery = {
@@ -10192,6 +10182,22 @@ export type GetPersonalInfoQuery = {
     profileImage1: { url: string }
     profileImage2: { url: string }
     icon?: { url: string } | null
+  }>
+}
+
+export type GetSoftwareDetailQueryVariables = Exact<{ [key: string]: never }>
+
+export type GetSoftwareDetailQuery = {
+  softwares: Array<{ id: string; name: string; image?: { url: string } | null }>
+}
+
+export type GetTechnicalSkillQueryVariables = Exact<{ [key: string]: never }>
+
+export type GetTechnicalSkillQuery = {
+  technicalSkills: Array<{
+    id: string
+    programmingLanguage: string
+    image?: { url: string; stage: Stage } | null
   }>
 }
 
@@ -10236,18 +10242,6 @@ export const GetExperienceInfoDocument = /*#__PURE__*/ gql`
     }
   }
 `
-export const GetTechnicalSkillDocument = /*#__PURE__*/ gql`
-  query GetTechnicalSkill {
-    technicalSkills {
-      id
-      programmingLanguage
-      image {
-        url
-        stage
-      }
-    }
-  }
-`
 export const GetPersonalInfoDocument = /*#__PURE__*/ gql`
   query GetPersonalInfo {
     personalInfos {
@@ -10277,6 +10271,29 @@ export const GetPersonalInfoDocument = /*#__PURE__*/ gql`
       }
       icon {
         url
+      }
+    }
+  }
+`
+export const GetSoftwareDetailDocument = /*#__PURE__*/ gql`
+  query GetSoftwareDetail {
+    softwares {
+      id
+      name
+      image {
+        url
+      }
+    }
+  }
+`
+export const GetTechnicalSkillDocument = /*#__PURE__*/ gql`
+  query GetTechnicalSkill {
+    technicalSkills {
+      id
+      programmingLanguage
+      image {
+        url
+        stage
       }
     }
   }
@@ -10329,21 +10346,6 @@ export function getSdk(
         'query'
       )
     },
-    GetTechnicalSkill(
-      variables?: GetTechnicalSkillQueryVariables,
-      requestHeaders?: Dom.RequestInit['headers']
-    ): Promise<GetTechnicalSkillQuery> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<GetTechnicalSkillQuery>(
-            GetTechnicalSkillDocument,
-            variables,
-            { ...requestHeaders, ...wrappedRequestHeaders }
-          ),
-        'GetTechnicalSkill',
-        'query'
-      )
-    },
     GetPersonalInfo(
       variables?: GetPersonalInfoQueryVariables,
       requestHeaders?: Dom.RequestInit['headers']
@@ -10356,6 +10358,36 @@ export function getSdk(
             { ...requestHeaders, ...wrappedRequestHeaders }
           ),
         'GetPersonalInfo',
+        'query'
+      )
+    },
+    GetSoftwareDetail(
+      variables?: GetSoftwareDetailQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<GetSoftwareDetailQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetSoftwareDetailQuery>(
+            GetSoftwareDetailDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'GetSoftwareDetail',
+        'query'
+      )
+    },
+    GetTechnicalSkill(
+      variables?: GetTechnicalSkillQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<GetTechnicalSkillQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetTechnicalSkillQuery>(
+            GetTechnicalSkillDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'GetTechnicalSkill',
         'query'
       )
     },

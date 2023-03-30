@@ -1,0 +1,9 @@
+query GetSoftwareDetail {
+  softwares {
+    id
+    name
+    image {
+      url
+    }
+  }
+}
