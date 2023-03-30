@@ -2,6 +2,7 @@ import type { PersonalInfo } from '~/generated/graphql'
 import { AboutIntro } from './AboutIntro'
 import { AboutInfo } from './AboutInfo'
 import { IntroductionInfo } from '../Introduction/IntroductionInfo'
+import { NAV_TOPIC } from '~/constants/constant'
 
 type AboutProps = {
   details: PersonalInfo
@@ -9,7 +10,7 @@ type AboutProps = {
 
 export const AboutSection = ({ details }: AboutProps) => {
   return (
-    <section id="about">
+    <section id={NAV_TOPIC.ABOUT.link}>
       <AboutIntro name={details.name} surname={details.surname} />
       <IntroductionInfo
         info={details.introduction || ''}

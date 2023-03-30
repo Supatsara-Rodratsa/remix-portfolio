@@ -3,6 +3,7 @@ import { Header } from '../Header'
 import { motion } from 'framer-motion'
 import { EducationTable } from './EducationTable'
 import { IntroHeading } from '../IntroHeading'
+import { NAV_TOPIC } from '~/constants/constant'
 
 type EducationProps = {
   education: Education[]
@@ -10,7 +11,7 @@ type EducationProps = {
 
 export const EducationSection = ({ education }: EducationProps) => {
   return (
-    <section id="education">
+    <section id={NAV_TOPIC.EDUCATION.link}>
       <IntroHeading
         color="bg-lemon"
         textColor="text-darkBlue"
@@ -32,7 +33,7 @@ export const EducationSection = ({ education }: EducationProps) => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ stiffness: 500, delay: 1.3 }}
+              transition={{ stiffness: 500 }}
               className="relative w-[110px] h-[110px]"
             >
               <img src="assets/images/my-emoji-2.png" alt="experience" />

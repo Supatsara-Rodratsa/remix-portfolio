@@ -1,6 +1,7 @@
 import type { Project } from '~/generated/graphql'
 import { ProjectDetail } from './ProjectDetail'
 import { ProjectIntro } from './ProjectIntro'
+import { NAV_TOPIC } from '~/constants/constant'
 
 type ProjectSectionProps = {
   projects: Project[]
@@ -8,7 +9,7 @@ type ProjectSectionProps = {
 
 export const ProjectSection = ({ projects }: ProjectSectionProps) => {
   return (
-    <section id="projects">
+    <section id={NAV_TOPIC.PROJECT.link}>
       <ProjectIntro />
       <ProjectDetail projects={projects} />
     </section>

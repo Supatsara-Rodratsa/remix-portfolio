@@ -47,7 +47,10 @@ export const AboutIntro = ({ name, surname }: AboutIntroProps) => {
   }
 
   return (
-    <section className="w-screen -mx-[40px] m-auto h-full min-h-[100vh] relative bg-r_orange pb-[20px] overflow-hidden">
+    <section
+      // style={{ backgroundImage: "url('assets/icons/bg-table.svg')" }}
+      className="bg-[length:30px] w-screen -mx-[40px] m-auto h-full min-h-[100vh] relative bg-r_orange pb-[20px] overflow-hidden"
+    >
       <div className="relative w-[calc(100%_-_80px)] h-full m-auto flex mx-[40px] pt-[80px] gap-8 mobile:flex-wrap mobile:pt-[100px] flex-col">
         <AboutName />
         <AboutMe />

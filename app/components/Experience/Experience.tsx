@@ -3,6 +3,7 @@ import { Header } from '../Header'
 import { motion } from 'framer-motion'
 import { ExperienceTable } from './ExperienceTable'
 import { IntroHeading } from '../IntroHeading'
+import { NAV_TOPIC } from '~/constants/constant'
 
 type ExperienceProps = {
   experience: Experience[]
@@ -10,7 +11,7 @@ type ExperienceProps = {
 
 export const ExperienceSection = ({ experience }: ExperienceProps) => {
   return (
-    <section id="experience">
+    <section id={NAV_TOPIC.EXPERIENCE.link}>
       <IntroHeading
         bg="bg-green"
         color="bg-r_orange"

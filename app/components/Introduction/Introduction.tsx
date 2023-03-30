@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { COLORS } from '~/constants/constant'
+import { COLORS, NAV_TOPIC } from '~/constants/constant'
 import { ParallaxText } from '../ParallaxText'
 import { OctagonProfile } from '../OctagonProfile'
 
@@ -17,7 +17,10 @@ export const Introduction = ({
   position,
 }: IntroductionProps) => {
   return (
-    <section className="w-full m-auto h-[calc(100vh_-_40px)] relative">
+    <section
+      id={NAV_TOPIC.HOME.link}
+      className="w-full m-auto h-[calc(100vh_-_40px)] relative"
+    >
       <div className="relative w-full h-[calc(100%_-_40px)] m-auto flex justify-center items-center">
         <OctagonProfile profile={image} />
         <motion.div

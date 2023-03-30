@@ -17,6 +17,9 @@ query GetPersonalInfo {
       email
       github
       linkedIn
+      cv {
+        url
+      }
     }
     profileImage1 {
       url

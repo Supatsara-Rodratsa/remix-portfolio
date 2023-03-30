@@ -42,10 +42,7 @@ const IntroHeading = ({
     </div>
   )
   return (
-    <section
-      id="education"
-      className="w-screen -mx-[40px] m-auto h-screen mobile:h-fit mobile:min-h-screen relative overflow-hidden bg-black border-[20px] border-black"
-    >
+    <section className="w-screen -mx-[40px] m-auto h-screen mobile:h-fit mobile:min-h-screen relative overflow-hidden bg-black border-[20px] border-black">
       <div className="flex mobile:flex-wrap gap-4 h-full">
         {isHeadingLeft && <Heading />}
         <div className="w-full flex flex-col gap-4">

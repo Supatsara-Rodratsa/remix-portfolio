@@ -19,6 +19,7 @@ import { SkillSoftwareSection } from '~/components/SkillSoftware/SkillSoftware'
 import { EducationSection } from '~/components/Education/Education'
 import { ProjectSection } from '~/components/Project/ProjectSection'
 import { ContactSection } from '~/components/Contact/ContactSection'
+import { motion, useScroll, useSpring } from 'framer-motion'
 
 export const meta: MetaFunction = () => {
   return {
@@ -63,10 +64,22 @@ export default function Index() {
     videos,
   } = useLoaderData<typeof loader>()
   const info = personalInfos[0] as PersonalInfo
+  const { scrollYProgress } = useScroll()
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  })
 
   if (info) {
     return (
       <div className="w-full m-auto">
+        <motion.div
+          className="fixed w-full bottom-0 left-0 right-0 h-[10px] bg-lemon z-[99]"
+          style={{ scaleX, transformOrigin: '0%' }}
+        >
+          Hhi
+        </motion.div>
         <Introduction
           name={info.name}
           surname={info.surname}

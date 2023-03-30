@@ -39,6 +39,7 @@ export type Asset = Node & {
   createdAt: Scalars['DateTime']
   /** User that created this document */
   createdBy?: Maybe<User>
+  cvContact: Array<Contact>
   /** Get the document in other stages */
   documentInStages: Array<Asset>
   /** The file name */
@@ -93,6 +94,19 @@ export type AssetCreatedAtArgs = {
 export type AssetCreatedByArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
+}
+
+/** Asset system model */
+export type AssetCvContactArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: InputMaybe<Array<Locale>>
+  orderBy?: InputMaybe<ContactOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<ContactWhereInput>
 }
 
 /** Asset system model */
@@ -276,6 +290,7 @@ export type AssetConnection = {
 
 export type AssetCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>
+  cvContact?: InputMaybe<ContactCreateManyInlineInput>
   fileName: Scalars['String']
   handle: Scalars['String']
   height?: InputMaybe<Scalars['Float']>
@@ -365,6 +380,9 @@ export type AssetManyWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
   createdBy?: InputMaybe<UserWhereInput>
+  cvContact_every?: InputMaybe<ContactWhereInput>
+  cvContact_none?: InputMaybe<ContactWhereInput>
+  cvContact_some?: InputMaybe<ContactWhereInput>
   documentInStages_every?: InputMaybe<AssetWhereStageInput>
   documentInStages_none?: InputMaybe<AssetWhereStageInput>
   documentInStages_some?: InputMaybe<AssetWhereStageInput>
@@ -480,6 +498,7 @@ export type AssetTransformationInput = {
 }
 
 export type AssetUpdateInput = {
+  cvContact?: InputMaybe<ContactUpdateManyInlineInput>
   fileName?: InputMaybe<Scalars['String']>
   handle?: InputMaybe<Scalars['String']>
   height?: InputMaybe<Scalars['Float']>
@@ -648,6 +667,9 @@ export type AssetWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
   createdBy?: InputMaybe<UserWhereInput>
+  cvContact_every?: InputMaybe<ContactWhereInput>
+  cvContact_none?: InputMaybe<ContactWhereInput>
+  cvContact_some?: InputMaybe<ContactWhereInput>
   documentInStages_every?: InputMaybe<AssetWhereStageInput>
   documentInStages_none?: InputMaybe<AssetWhereStageInput>
   documentInStages_some?: InputMaybe<AssetWhereStageInput>
@@ -1351,6 +1373,7 @@ export type Contact = Node & {
   createdAt: Scalars['DateTime']
   /** User that created this document */
   createdBy?: Maybe<User>
+  cv?: Maybe<Asset>
   /** Get the document in other stages */
   documentInStages: Array<Contact>
   email?: Maybe<Scalars['String']>
@@ -1376,6 +1399,11 @@ export type Contact = Node & {
 }
 
 export type ContactCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type ContactCvArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
@@ -1432,6 +1460,7 @@ export type ContactConnection = {
 export type ContactCreateInput = {
   clfr09qbo0nu901ui9gqr0lbe?: InputMaybe<PersonalInfoCreateManyInlineInput>
   createdAt?: InputMaybe<Scalars['DateTime']>
+  cv?: InputMaybe<AssetCreateOneInlineInput>
   email?: InputMaybe<Scalars['String']>
   github?: InputMaybe<Scalars['String']>
   linkedIn?: InputMaybe<Scalars['String']>
@@ -1488,6 +1517,7 @@ export type ContactManyWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
   createdBy?: InputMaybe<UserWhereInput>
+  cv?: InputMaybe<AssetWhereInput>
   documentInStages_every?: InputMaybe<ContactWhereStageInput>
   documentInStages_none?: InputMaybe<ContactWhereStageInput>
   documentInStages_some?: InputMaybe<ContactWhereStageInput>
@@ -1665,6 +1695,7 @@ export enum ContactOrderByInput {
 
 export type ContactUpdateInput = {
   clfr09qbo0nu901ui9gqr0lbe?: InputMaybe<PersonalInfoUpdateManyInlineInput>
+  cv?: InputMaybe<AssetUpdateOneInlineInput>
   email?: InputMaybe<Scalars['String']>
   github?: InputMaybe<Scalars['String']>
   linkedIn?: InputMaybe<Scalars['String']>
@@ -1772,6 +1803,7 @@ export type ContactWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
   createdBy?: InputMaybe<UserWhereInput>
+  cv?: InputMaybe<AssetWhereInput>
   documentInStages_every?: InputMaybe<ContactWhereStageInput>
   documentInStages_none?: InputMaybe<ContactWhereStageInput>
   documentInStages_some?: InputMaybe<ContactWhereStageInput>
@@ -11550,6 +11582,7 @@ export type GetPersonalInfoQuery = {
       email?: string | null
       github?: string | null
       linkedIn?: string | null
+      cv?: { url: string } | null
     } | null
     profileImage1: { url: string }
     profileImage2: { url: string }
@@ -11655,6 +11688,9 @@ export const GetPersonalInfoDocument = /*#__PURE__*/ gql`
         email
         github
         linkedIn
+        cv {
+          url
+        }
       }
       profileImage1 {
         url

@@ -62,7 +62,7 @@ const NavBar = () => {
         isOpen={isOpen}
         onClick={() => setOpen(!isOpen)}
         strokeWidth={windowSize.width < WINDOW_SIZE.mobile ? '3' : '5'}
-        color={isOpen ? COLORS.darkBlue : COLORS.lemon}
+        color={isOpen ? COLORS.darkBlue : COLORS.white}
         transition={{ type: 'spring', stiffness: 260, damping: 20 }}
         width={windowSize.width < WINDOW_SIZE.mobile ? '24' : '40'}
         height={windowSize.width < WINDOW_SIZE.mobile ? '15' : '24'}

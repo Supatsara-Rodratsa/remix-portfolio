@@ -4,6 +4,7 @@ import { Header } from '../Header'
 import { useEffect, useRef, useState } from 'react'
 import { useInView } from 'framer-motion'
 import ReactPlayer from 'react-player'
+import { NAV_TOPIC } from '~/constants/constant'
 
 type ContactSectionProps = {
   video: string
@@ -26,15 +27,20 @@ export const ContactSection = ({ video, contact }: ContactSectionProps) => {
     </div>
   )
 
-  const Detail = ({ detail }: { detail: string }) => (
-    <div style={{ overflowWrap: 'anywhere' }} className="text-base">
-      {detail}
-    </div>
+  const Detail = ({ detail, title }: { detail: string; title: string }) => (
+    <a
+      href={detail}
+      target="__blank"
+      style={{ overflowWrap: 'anywhere' }}
+      className="text-base hover:underline"
+    >
+      {title}
+    </a>
   )
 
   return (
     <section
-      id="contact"
+      id={NAV_TOPIC.CONTACT.link}
       className="w-screen -mx-[40px] m-auto h-screen mobile:h-fit mobile:min-h-screen relative overflow-hidden bg-black border-[20px] border-black"
       ref={ref}
     >
@@ -58,24 +64,49 @@ export const ContactSection = ({ video, contact }: ContactSectionProps) => {
             'w-full bg-[length:10px] mobile:min-h-[300px] bg-green flex justify-center items-center'
           )}
         >
-          <div className="flex flex-col gap-12 min-w-[300px] mobile:max-w-[300px] justify-center bg-green m-[40px] p-10 rounded-lg text-black border-[10px] border-black">
+          <div className="flex flex-col gap-12 min-w-[300px] mobile:max-w-[300px] justify-center bg-lemon m-[40px] p-10 rounded-lg text-black border-[10px] border-black">
             <Header label="Contact" color="bg-blue" isAnimate={false} />
             <div className="flex flex-col gap-4">
               <div className="flex gap-4">
                 <Topic title="Phone" />
-                <Detail detail={contact.phone || '-'} />
+                <a
+                  style={{ overflowWrap: 'anywhere' }}
+                  className="text-base hover:underline"
+                  href={`tel:${contact.email}`}
+                >
+                  {contact.phone}
+                </a>
               </div>
               <div className="flex gap-4">
                 <Topic title="Email" />
-                <Detail detail={contact.email || '-'} />
+                <a
+                  style={{ overflowWrap: 'anywhere' }}
+                  className="text-base hover:underline"
+                  href={`mailto:${contact.email}`}
+                >
+                  {contact.email}
+                </a>
               </div>
               <div className="flex gap-4">
                 <Topic title="GitHub" />
-                <Detail detail={contact.github || '-'} />
+                <Detail
+                  detail={`https://${contact.github}` || '-'}
+                  title={contact.github || '-'}
+                />
               </div>
               <div className="flex gap-4">
                 <Topic title="LinkedIn" />
-                <Detail detail={contact.linkedIn || '-'} />
+                <Detail
+                  detail={`https://${contact.linkedIn}` || '-'}
+                  title={contact.linkedIn || '-'}
+                />
+              </div>
+              <div className="flex gap-4">
+                <Topic title="CV" />
+                <Detail
+                  detail={contact.cv?.url || '-'}
+                  title="Check out my CV"
+                />
               </div>
             </div>
           </div>

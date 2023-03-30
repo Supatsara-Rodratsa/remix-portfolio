@@ -2,6 +2,7 @@ import type { Software, TechnicalSkill } from '~/generated/graphql'
 import { TechnicalSkills } from './TechnicalSkill'
 import { SoftwareSection } from './Software'
 import { IntroHeading } from '../IntroHeading'
+import { NAV_TOPIC } from '~/constants/constant'
 
 type SkillSoftwareProps = {
   technicalSkills: TechnicalSkill[]
@@ -13,7 +14,7 @@ const SkillSoftwareSection = ({
   software,
 }: SkillSoftwareProps) => {
   return (
-    <section id="skill&software">
+    <section id={NAV_TOPIC.SKILL.link}>
       <IntroHeading
         bg="bg-lemon"
         color="bg-purple"
