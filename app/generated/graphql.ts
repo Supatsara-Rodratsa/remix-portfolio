@@ -9209,7 +9209,7 @@ export type TechnicalSkill = Node & {
   /** The unique identifier */
   id: Scalars['ID']
   image?: Maybe<Asset>
-  programingLanguage: Scalars['String']
+  programmingLanguage: Scalars['String']
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>
   /** User that last published this document */
@@ -9285,7 +9285,7 @@ export type TechnicalSkillConnection = {
 export type TechnicalSkillCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>
   image?: InputMaybe<AssetCreateOneInlineInput>
-  programingLanguage: Scalars['String']
+  programmingLanguage: Scalars['String']
   updatedAt?: InputMaybe<Scalars['DateTime']>
 }
 
@@ -9360,25 +9360,25 @@ export type TechnicalSkillManyWhereInput = {
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>
   image?: InputMaybe<AssetWhereInput>
-  programingLanguage?: InputMaybe<Scalars['String']>
+  programmingLanguage?: InputMaybe<Scalars['String']>
   /** All values containing the given string. */
-  programingLanguage_contains?: InputMaybe<Scalars['String']>
+  programmingLanguage_contains?: InputMaybe<Scalars['String']>
   /** All values ending with the given string. */
-  programingLanguage_ends_with?: InputMaybe<Scalars['String']>
+  programmingLanguage_ends_with?: InputMaybe<Scalars['String']>
   /** All values that are contained in given list. */
-  programingLanguage_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  programmingLanguage_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
   /** Any other value that exists and is not equal to the given value. */
-  programingLanguage_not?: InputMaybe<Scalars['String']>
+  programmingLanguage_not?: InputMaybe<Scalars['String']>
   /** All values not containing the given string. */
-  programingLanguage_not_contains?: InputMaybe<Scalars['String']>
+  programmingLanguage_not_contains?: InputMaybe<Scalars['String']>
   /** All values not ending with the given string */
-  programingLanguage_not_ends_with?: InputMaybe<Scalars['String']>
+  programmingLanguage_not_ends_with?: InputMaybe<Scalars['String']>
   /** All values that are not contained in given list. */
-  programingLanguage_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  programmingLanguage_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
   /** All values not starting with the given string. */
-  programingLanguage_not_starts_with?: InputMaybe<Scalars['String']>
+  programmingLanguage_not_starts_with?: InputMaybe<Scalars['String']>
   /** All values starting with the given string. */
-  programingLanguage_starts_with?: InputMaybe<Scalars['String']>
+  programmingLanguage_starts_with?: InputMaybe<Scalars['String']>
   publishedAt?: InputMaybe<Scalars['DateTime']>
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>
@@ -9421,8 +9421,8 @@ export enum TechnicalSkillOrderByInput {
   CreatedAtDesc = 'createdAt_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
-  ProgramingLanguageAsc = 'programingLanguage_ASC',
-  ProgramingLanguageDesc = 'programingLanguage_DESC',
+  ProgrammingLanguageAsc = 'programmingLanguage_ASC',
+  ProgrammingLanguageDesc = 'programmingLanguage_DESC',
   PublishedAtAsc = 'publishedAt_ASC',
   PublishedAtDesc = 'publishedAt_DESC',
   UpdatedAtAsc = 'updatedAt_ASC',
@@ -9431,7 +9431,7 @@ export enum TechnicalSkillOrderByInput {
 
 export type TechnicalSkillUpdateInput = {
   image?: InputMaybe<AssetUpdateOneInlineInput>
-  programingLanguage?: InputMaybe<Scalars['String']>
+  programmingLanguage?: InputMaybe<Scalars['String']>
 }
 
 export type TechnicalSkillUpdateManyInlineInput = {
@@ -9452,7 +9452,7 @@ export type TechnicalSkillUpdateManyInlineInput = {
 }
 
 export type TechnicalSkillUpdateManyInput = {
-  programingLanguage?: InputMaybe<Scalars['String']>
+  programmingLanguage?: InputMaybe<Scalars['String']>
 }
 
 export type TechnicalSkillUpdateManyWithNestedWhereInput = {
@@ -9553,25 +9553,25 @@ export type TechnicalSkillWhereInput = {
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>
   image?: InputMaybe<AssetWhereInput>
-  programingLanguage?: InputMaybe<Scalars['String']>
+  programmingLanguage?: InputMaybe<Scalars['String']>
   /** All values containing the given string. */
-  programingLanguage_contains?: InputMaybe<Scalars['String']>
+  programmingLanguage_contains?: InputMaybe<Scalars['String']>
   /** All values ending with the given string. */
-  programingLanguage_ends_with?: InputMaybe<Scalars['String']>
+  programmingLanguage_ends_with?: InputMaybe<Scalars['String']>
   /** All values that are contained in given list. */
-  programingLanguage_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  programmingLanguage_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
   /** Any other value that exists and is not equal to the given value. */
-  programingLanguage_not?: InputMaybe<Scalars['String']>
+  programmingLanguage_not?: InputMaybe<Scalars['String']>
   /** All values not containing the given string. */
-  programingLanguage_not_contains?: InputMaybe<Scalars['String']>
+  programmingLanguage_not_contains?: InputMaybe<Scalars['String']>
   /** All values not ending with the given string */
-  programingLanguage_not_ends_with?: InputMaybe<Scalars['String']>
+  programmingLanguage_not_ends_with?: InputMaybe<Scalars['String']>
   /** All values that are not contained in given list. */
-  programingLanguage_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  programmingLanguage_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
   /** All values not starting with the given string. */
-  programingLanguage_not_starts_with?: InputMaybe<Scalars['String']>
+  programmingLanguage_not_starts_with?: InputMaybe<Scalars['String']>
   /** All values starting with the given string. */
-  programingLanguage_starts_with?: InputMaybe<Scalars['String']>
+  programmingLanguage_starts_with?: InputMaybe<Scalars['String']>
   publishedAt?: InputMaybe<Scalars['DateTime']>
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>
@@ -10159,6 +10159,16 @@ export type GetExperienceInfoQuery = {
   }>
 }
 
+export type GetTechnicalSkillQueryVariables = Exact<{ [key: string]: never }>
+
+export type GetTechnicalSkillQuery = {
+  technicalSkills: Array<{
+    id: string
+    programmingLanguage: string
+    image?: { url: string; stage: Stage } | null
+  }>
+}
+
 export type GetPersonalInfoQueryVariables = Exact<{ [key: string]: never }>
 
 export type GetPersonalInfoQuery = {
@@ -10182,16 +10192,6 @@ export type GetPersonalInfoQuery = {
     profileImage1: { url: string }
     profileImage2: { url: string }
     icon?: { url: string } | null
-  }>
-}
-
-export type GetTechnicalSkillQueryVariables = Exact<{ [key: string]: never }>
-
-export type GetTechnicalSkillQuery = {
-  technicalSkills: Array<{
-    id: string
-    programingLanguage: string
-    image?: { url: string } | null
   }>
 }
 
@@ -10236,6 +10236,18 @@ export const GetExperienceInfoDocument = /*#__PURE__*/ gql`
     }
   }
 `
+export const GetTechnicalSkillDocument = /*#__PURE__*/ gql`
+  query GetTechnicalSkill {
+    technicalSkills {
+      id
+      programmingLanguage
+      image {
+        url
+        stage
+      }
+    }
+  }
+`
 export const GetPersonalInfoDocument = /*#__PURE__*/ gql`
   query GetPersonalInfo {
     personalInfos {
@@ -10264,17 +10276,6 @@ export const GetPersonalInfoDocument = /*#__PURE__*/ gql`
         url
       }
       icon {
-        url
-      }
-    }
-  }
-`
-export const GetTechnicalSkillDocument = /*#__PURE__*/ gql`
-  query GetTechnicalSkill {
-    technicalSkills {
-      id
-      programingLanguage
-      image {
         url
       }
     }
@@ -10328,21 +10329,6 @@ export function getSdk(
         'query'
       )
     },
-    GetPersonalInfo(
-      variables?: GetPersonalInfoQueryVariables,
-      requestHeaders?: Dom.RequestInit['headers']
-    ): Promise<GetPersonalInfoQuery> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<GetPersonalInfoQuery>(
-            GetPersonalInfoDocument,
-            variables,
-            { ...requestHeaders, ...wrappedRequestHeaders }
-          ),
-        'GetPersonalInfo',
-        'query'
-      )
-    },
     GetTechnicalSkill(
       variables?: GetTechnicalSkillQueryVariables,
       requestHeaders?: Dom.RequestInit['headers']
@@ -10355,6 +10341,21 @@ export function getSdk(
             { ...requestHeaders, ...wrappedRequestHeaders }
           ),
         'GetTechnicalSkill',
+        'query'
+      )
+    },
+    GetPersonalInfo(
+      variables?: GetPersonalInfoQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<GetPersonalInfoQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetPersonalInfoQuery>(
+            GetPersonalInfoDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'GetPersonalInfo',
         'query'
       )
     },

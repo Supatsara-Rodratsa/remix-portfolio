@@ -1,9 +1,10 @@
 query GetTechnicalSkill {
   technicalSkills {
     id
-    programingLanguage
+    programmingLanguage
     image {
       url
+      stage
     }
   }
 }

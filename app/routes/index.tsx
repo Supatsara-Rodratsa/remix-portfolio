@@ -3,12 +3,18 @@ import { json } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 import ErrorState from '~/components/ErrorState'
 import Introduction from '~/components/Introduction'
-import type { Education, Experience, PersonalInfo } from '~/generated/graphql'
+import type {
+  Education,
+  Experience,
+  PersonalInfo,
+  TechnicalSkill,
+} from '~/generated/graphql'
 import { sdk } from '~/libs/client'
 import AboutSection from '~/components/About'
 import ExperienceSection from '~/components/Experience'
 import EducationSection from '~/components/Education'
 import Skill from '~/components/Skill'
+import TechnicalSkills from '~/components/TechnicalSkill'
 
 export const meta: MetaFunction = () => {
   return {
@@ -20,7 +26,8 @@ export const loader = async () => {
   const { personalInfos } = await sdk.GetPersonalInfo()
   const { experiences } = await sdk.GetExperienceInfo()
   const { educations } = await sdk.GetEducationInfo()
-  return json({ personalInfos, experiences, educations })
+  const { technicalSkills } = await sdk.GetTechnicalSkill()
+  return json({ personalInfos, experiences, educations, technicalSkills })
 }
 
 export const ErrorBoundary = ({ error }: { error: Error }) => {
@@ -28,7 +35,7 @@ export const ErrorBoundary = ({ error }: { error: Error }) => {
 }
 
 export default function Index() {
-  const { personalInfos, experiences, educations } =
+  const { personalInfos, experiences, educations, technicalSkills } =
     useLoaderData<typeof loader>()
   const info = personalInfos[0] as PersonalInfo
 
@@ -45,6 +52,9 @@ export default function Index() {
         <ExperienceSection experience={experiences as Experience[]} />
         <EducationSection education={educations as Education[]} />
         <Skill />
+        <TechnicalSkills
+          technicalSkills={technicalSkills as TechnicalSkill[]}
+        />
       </div>
     )
   }
