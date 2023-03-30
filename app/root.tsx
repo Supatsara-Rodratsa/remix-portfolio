@@ -12,7 +12,6 @@ import stylesheet from '~/styles/tailwind.css'
 import { NavBar } from './components/NavBar'
 import { STATIC_WORD } from './constants/constant'
 import { IconFab } from './components/IconFab'
-import { motion, useScroll } from 'framer-motion'
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: stylesheet },
@@ -29,7 +28,6 @@ export type LayoutProps = {
 }
 
 export default function App() {
-  const { scrollYProgress } = useScroll()
   return (
     <html lang="en" className="bg-purple">
       <head>
@@ -38,10 +36,6 @@ export default function App() {
       </head>
       <body>
         <Layout>
-          <motion.div
-            className="fixed top-0 left-0 right-0 h-[10px] bg-red origin-[0%]"
-            style={{ scaleX: scrollYProgress }}
-          />
           <Outlet />
           <ScrollRestoration />
           <Scripts />

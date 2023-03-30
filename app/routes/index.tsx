@@ -77,9 +77,7 @@ export default function Index() {
         <motion.div
           className="fixed w-full bottom-0 left-0 right-0 h-[10px] bg-lemon z-[99]"
           style={{ scaleX, transformOrigin: '0%' }}
-        >
-          Hhi
-        </motion.div>
+        />
         <Introduction
           name={info.name}
           surname={info.surname}
