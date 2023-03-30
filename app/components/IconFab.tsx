@@ -1,10 +1,13 @@
+import { useNavigate } from '@remix-run/react'
 import { motion } from 'framer-motion'
 
 type IconFabProps = {
   word: string
+  link: string
 }
 
-export const IconFab = ({ word }: IconFabProps) => {
+export const IconFab = ({ word, link }: IconFabProps) => {
+  const navigate = useNavigate()
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -12,6 +15,7 @@ export const IconFab = ({ word }: IconFabProps) => {
       whileHover={{ rotate: 360, scale: 1.2 }}
       transition={{ stiffness: 1000 }}
       className="fixed bottom-[40px] right-[40px] w-[100px] h-[100px] rounded-full cursor-pointer flex justify-center items-center bg-r_orange shadow-xl"
+      onClick={() => navigate(`#${link}`)}
     >
       <motion.img
         src="assets/images/my-emoji.png"

@@ -40,7 +40,7 @@ export default function App() {
           <ScrollRestoration />
           <Scripts />
           <LiveReload />
-          <IconFab word={STATIC_WORD.CONTACT_FAB} />
+          <IconFab word={STATIC_WORD.CONTACT_FAB} link="contact" />
         </Layout>
       </body>
     </html>
