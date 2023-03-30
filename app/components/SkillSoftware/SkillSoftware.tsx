@@ -13,9 +13,9 @@ const SkillSoftwareSection = ({
   software,
 }: SkillSoftwareProps) => {
   return (
-    <>
+    <section id="skill">
       <IntroHeading
-        bg="bg-green"
+        bg="bg-lemon"
         color="bg-purple"
         textColor="text-white"
         label="Skill & Software"
@@ -26,7 +26,7 @@ const SkillSoftwareSection = ({
         <TechnicalSkills technicalSkills={technicalSkills} />
         <SoftwareSection software={software} />
       </section>
-    </>
+    </section>
   )
 }
 

@@ -5,7 +5,7 @@ type IntroHeadingProps = {
   color: string
   label: string
   firstMeme: string
-  secondMeme: string
+  secondMeme?: string
   textColor: string
   bg?: string
   isHeadingLeft?: boolean
@@ -50,15 +50,20 @@ const IntroHeading = ({
         {isHeadingLeft && <Heading />}
         <div className="w-full flex flex-col gap-4">
           <img
-            className="h-[50%] rounded-lg object-cover object-bottom"
+            className={clsx(
+              'rounded-lg object-cover object-bottom',
+              secondMeme ? 'h-[50%]' : 'h-full'
+            )}
             src={firstMeme}
             alt="meme"
           />
-          <img
-            className="h-[50%] object-cover rounded-lg"
-            src={secondMeme}
-            alt="meme"
-          />
+          {secondMeme && (
+            <img
+              className="h-[50%] object-cover rounded-lg"
+              src={secondMeme}
+              alt="meme"
+            />
+          )}
         </div>
         {!isHeadingLeft && <Heading />}
       </div>
