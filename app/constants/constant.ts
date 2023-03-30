@@ -21,7 +21,8 @@ export const NAV_TOPIC = {
   ABOUT: { name: 'About', link: 'about' },
   EXPERIENCE: { name: 'Experience', link: 'experience' },
   EDUCATION: { name: 'Education', link: 'education' },
-  SKILL: { name: 'Skill', link: 'skill' },
+  SKILL: { name: 'Skill & Software', link: 'skill&software' },
+  PROJECT: { name: 'Project', link: 'projects' },
   CONTACT: { name: 'Contact', link: 'contact' },
 } as const
 

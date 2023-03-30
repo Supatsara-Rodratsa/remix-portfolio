@@ -32,7 +32,7 @@ export const ExperienceSection = ({ experience }: ExperienceProps) => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ stiffness: 500, delay: 1.3 }}
+              transition={{ stiffness: 500 }}
               className="relative w-[110px] h-[110px]"
             >
               <img src="assets/images/my-emoji-2.png" alt="experience" />

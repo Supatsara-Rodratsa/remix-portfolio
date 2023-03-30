@@ -13,7 +13,7 @@ const SkillSoftwareSection = ({
   software,
 }: SkillSoftwareProps) => {
   return (
-    <section id="skill">
+    <section id="skill&software">
       <IntroHeading
         bg="bg-lemon"
         color="bg-purple"
@@ -22,7 +22,7 @@ const SkillSoftwareSection = ({
         firstMeme="assets/images/meme.gif"
         secondMeme="assets/images/meme3.gif"
       />
-      <section className="w-screen -mx-[40px] m-auto h-full min-h-[100vh] relative pb-[20px] overflow-hidden bg-blue">
+      <section className="w-screen -mx-[40px] m-auto h-full min-h-[100vh] relative pb-[50px] overflow-hidden bg-blue">
         <TechnicalSkills technicalSkills={technicalSkills} />
         <SoftwareSection software={software} />
       </section>

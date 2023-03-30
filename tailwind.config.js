@@ -39,6 +39,7 @@ module.exports = {
       },
       boxShadow: {
         custom: '10px 10px 0 #000',
+        customGreen: '10px 10px 0 #A0E047',
       },
     },
   },

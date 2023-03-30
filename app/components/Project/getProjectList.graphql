@@ -1,0 +1,11 @@
+query getProjectList {
+  projects(orderBy: sequence_ASC) {
+    id
+    name
+    link
+    image {
+      url
+    }
+    description
+  }
+}

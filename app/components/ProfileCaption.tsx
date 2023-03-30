@@ -13,7 +13,7 @@ const ProfileCaption = ({ image, caption, link }: ProfileCaptionProp) => {
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ stiffness: 200, delay: 1 }}
+      transition={{ stiffness: 500 }}
       className="relative m-auto overflow-hidden border-white border-[10px] rounded-[20px] max-w-[500px] max-h-[500px] tablet:max-w-[400px] tablet:max-h-[400px] cursor-pointer"
       onClick={() => navigate(link)}
     >
