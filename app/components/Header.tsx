@@ -25,7 +25,7 @@ export const Header = ({
 }: HeaderProps) => {
   return (
     <motion.div
-      initial={isAnimate ? { opacity: 0, y: -50 } : { opacity: 1 }}
+      initial={isAnimate ? { y: -50 } : { opacity: 1 }}
       whileInView={
         isAnimate ? { opacity: 1, y: 0, rotate: isRotate ? -10 : 0 } : {}
       }
