@@ -21,4 +21,4 @@ const OctagonProfile = ({ profile }: OctagonProfileProps) => {
   )
 }
 
-export default OctagonProfile
+export { OctagonProfile }

@@ -24,4 +24,4 @@ const Profile = ({ image }: ProfileProps) => {
   )
 }
 
-export default Profile
+export { Profile }

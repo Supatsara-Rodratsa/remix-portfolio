@@ -1,4 +1,4 @@
-import Header from '../Header'
+import { Header } from '../Header'
 
 const Skill = () => {
   return (
@@ -39,4 +39,4 @@ const Skill = () => {
   )
 }
 
-export default Skill
+export { Skill }

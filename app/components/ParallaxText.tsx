@@ -66,4 +66,4 @@ const ParallaxText = ({ children, baseVelocity = 100 }: ParallaxProps) => {
   )
 }
 
-export default ParallaxText
+export { ParallaxText }

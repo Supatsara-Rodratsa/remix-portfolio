@@ -12,7 +12,7 @@ type HeaderProps = {
   enabledClick?: boolean
 }
 
-const Header = ({
+export const Header = ({
   label,
   color,
   once = false,
@@ -41,5 +41,3 @@ const Header = ({
     </motion.div>
   )
 }
-
-export default Header

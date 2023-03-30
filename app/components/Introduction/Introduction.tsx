@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
-import OctagonProfile from '../OctagonProfile'
 import { COLORS } from '~/constants/constant'
-import ParallaxText from '../ParallaxText'
+import { ParallaxText } from '../ParallaxText'
+import { OctagonProfile } from '../OctagonProfile'
 
 type IntroductionProps = {
   name: string
@@ -10,7 +10,7 @@ type IntroductionProps = {
   position: string
 }
 
-const Introduction = ({
+export const Introduction = ({
   name,
   surname,
   image,
@@ -44,5 +44,3 @@ const Introduction = ({
     </section>
   )
 }
-
-export default Introduction

@@ -30,4 +30,4 @@ const ProfileCaption = ({ image, caption, link }: ProfileCaptionProp) => {
   )
 }
 
-export default ProfileCaption
+export { ProfileCaption }

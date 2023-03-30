@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { MenuButton } from '../MenuButton/MenuButton'
+import { MenuButton } from './MenuButton'
 import { COLORS, NAV_TOPIC, WINDOW_SIZE } from '~/constants/constant'
 import { motion } from 'framer-motion'
 import clsx from 'clsx'
@@ -102,4 +102,4 @@ const NavBar = () => {
   )
 }
 
-export default NavBar
+export { NavBar }

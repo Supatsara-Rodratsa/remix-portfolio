@@ -1,13 +1,13 @@
 import type { Education } from '~/generated/graphql'
-import Header from '../Header'
+import { Header } from '../Header'
 import { motion } from 'framer-motion'
-import EducationTable from '../EducationTable/EducationTable'
+import { EducationTable } from './EducationTable'
 
 type EducationProps = {
   education: Education[]
 }
 
-const EducationSection = ({ education }: EducationProps) => {
+export const EducationSection = ({ education }: EducationProps) => {
   return (
     <section
       id="education"
@@ -36,5 +36,3 @@ const EducationSection = ({ education }: EducationProps) => {
     </section>
   )
 }
-
-export default EducationSection

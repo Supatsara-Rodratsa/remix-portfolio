@@ -1,13 +1,16 @@
 import { motion } from 'framer-motion'
-import Header from '../Header'
-import ProfileCaption from '../ProfileCaption'
+import { Header } from '../Header'
+import { ProfileCaption } from '../ProfileCaption'
 
 type IntroductionInfoProps = {
   info: string
   profileImage: string
 }
 
-const IntroductionInfo = ({ info, profileImage }: IntroductionInfoProps) => {
+export const IntroductionInfo = ({
+  info,
+  profileImage,
+}: IntroductionInfoProps) => {
   const intro = info.split('application consultant') || []
   const intro2 =
     intro[1].split("a master's degree in Frontend Development program") || []
@@ -40,5 +43,3 @@ const IntroductionInfo = ({ info, profileImage }: IntroductionInfoProps) => {
     </section>
   )
 }
-
-export default IntroductionInfo

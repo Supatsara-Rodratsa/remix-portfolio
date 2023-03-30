@@ -1,13 +1,13 @@
 import type { Experience } from '~/generated/graphql'
-import Header from '../Header'
-import ExperienceTable from '../ExperienceTable'
+import { Header } from '../Header'
 import { motion } from 'framer-motion'
+import { ExperienceTable } from './ExperienceTable'
 
 type ExperienceProps = {
   experience: Experience[]
 }
 
-const ExperienceSection = ({ experience }: ExperienceProps) => {
+export const ExperienceSection = ({ experience }: ExperienceProps) => {
   return (
     <section
       id="experience"

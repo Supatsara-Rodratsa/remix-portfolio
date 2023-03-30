@@ -1,8 +1,6 @@
 import type { MetaFunction } from '@remix-run/node'
 import { json } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
-import ErrorState from '~/components/ErrorState'
-import Introduction from '~/components/Introduction'
 import type {
   Education,
   Experience,
@@ -10,11 +8,13 @@ import type {
   TechnicalSkill,
 } from '~/generated/graphql'
 import { sdk } from '~/libs/client'
-import AboutSection from '~/components/About'
-import ExperienceSection from '~/components/Experience'
-import EducationSection from '~/components/Education'
-import Skill from '~/components/Skill'
-import TechnicalSkills from '~/components/TechnicalSkill'
+import { TechnicalSkills } from '~/components/Skill/TechnicalSkill'
+import { AboutSection } from '~/components/About/About'
+import { EducationTable } from '~/components/Education/EducationTable'
+import ExperienceSection from '~/components/Experience/Experience'
+import { ErrorState } from '~/components/ErrorState'
+import { Introduction } from '~/components/Introduction/Introduction'
+import { Skill } from '~/components/Skill/Skill'
 
 export const meta: MetaFunction = () => {
   return {
@@ -50,7 +50,7 @@ export default function Index() {
         />
         <AboutSection details={info} />
         <ExperienceSection experience={experiences as Experience[]} />
-        <EducationSection education={educations as Education[]} />
+        <EducationTable education={educations as Education[]} />
         <Skill />
         <TechnicalSkills
           technicalSkills={technicalSkills as TechnicalSkill[]}

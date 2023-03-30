@@ -1,7 +1,7 @@
 type ErrorStateProps = {
   error: Error
 }
-const ErrorState = ({ error }: ErrorStateProps) => {
+export const ErrorState = ({ error }: ErrorStateProps) => {
   return (
     <div className="m-auto flex flex-col items-center justify-center gap-9">
       <div className="flex flex-col items-center gap-4">
@@ -13,5 +13,3 @@ const ErrorState = ({ error }: ErrorStateProps) => {
     </div>
   )
 }
-
-export default ErrorState

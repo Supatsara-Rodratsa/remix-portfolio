@@ -4,7 +4,7 @@ type IconFabProps = {
   word: string
 }
 
-const IconFab = ({ word }: IconFabProps) => {
+export const IconFab = ({ word }: IconFabProps) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -36,5 +36,3 @@ const IconFab = ({ word }: IconFabProps) => {
     </motion.div>
   )
 }
-
-export default IconFab

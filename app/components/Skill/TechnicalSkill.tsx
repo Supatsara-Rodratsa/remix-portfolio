@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
-import Header from '../Header'
 import type { TechnicalSkill } from '~/generated/graphql'
 import { useRef } from 'react'
+import { Header } from '../Header'
 
 type TechnicalSkillProps = {
   technicalSkills: TechnicalSkill[]
@@ -52,4 +52,4 @@ const TechnicalSkills = ({ technicalSkills }: TechnicalSkillProps) => {
   )
 }
 
-export default TechnicalSkills
+export { TechnicalSkills }

@@ -9,9 +9,9 @@ import {
 } from '@remix-run/react'
 import type { ReactNode } from 'react'
 import stylesheet from '~/styles/tailwind.css'
-import NavBar from './components/NavBar'
-import IconFab from './components/IconFab'
+import { NavBar } from './components/NavBar'
 import { STATIC_WORD } from './constants/constant'
+import { IconFab } from './components/IconFab'
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: stylesheet },

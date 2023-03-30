@@ -1,13 +1,13 @@
 import type { PersonalInfo } from '~/generated/graphql'
-import AboutIntro from '../AboutIntro'
-import IntroductionInfo from '../IntroductionInfo'
-import AboutInfo from '../AboutInfo'
+import { AboutIntro } from './AboutIntro'
+import { AboutInfo } from './AboutInfo'
+import { IntroductionInfo } from '../Introduction/IntroductionInfo'
 
 type AboutProps = {
   details: PersonalInfo
 }
 
-const AboutSection = ({ details }: AboutProps) => {
+export const AboutSection = ({ details }: AboutProps) => {
   return (
     <section id="about">
       <AboutIntro name={details.name} surname={details.surname} />
@@ -22,5 +22,3 @@ const AboutSection = ({ details }: AboutProps) => {
     </section>
   )
 }
-
-export default AboutSection

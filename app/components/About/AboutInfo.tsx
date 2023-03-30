@@ -1,13 +1,13 @@
 import { motion } from 'framer-motion'
-import Header from '../Header'
-import Profile from '../Profile'
+import { Header } from '../Header'
+import { Profile } from '../Profile'
 
 type AboutInfoProps = {
   image: string
   details: string
 }
 
-const AboutInfo = ({ image, details }: AboutInfoProps) => {
+export const AboutInfo = ({ image, details }: AboutInfoProps) => {
   const info =
     details.split('Frontend Developer and Experience Consultant') || []
   return (
@@ -41,5 +41,3 @@ const AboutInfo = ({ image, details }: AboutInfoProps) => {
     </section>
   )
 }
-
-export default AboutInfo

@@ -5,7 +5,7 @@ type AboutIntroProps = {
   surname: string
 }
 
-const AboutIntro = ({ name, surname }: AboutIntroProps) => {
+export const AboutIntro = ({ name, surname }: AboutIntroProps) => {
   const { scrollYProgress } = useScroll()
 
   const x = useTransform(scrollYProgress, [0, 1], [-100, -600])
@@ -58,5 +58,3 @@ const AboutIntro = ({ name, surname }: AboutIntroProps) => {
     </section>
   )
 }
-
-export default AboutIntro
