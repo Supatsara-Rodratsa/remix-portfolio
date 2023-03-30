@@ -38,7 +38,7 @@ export const loader = async () => {
   ])
 
   return json({
-    personalInfos: { ...data[0].personalInfos },
+    personalInfos: data[0].personalInfos,
     experiences: data[1].experiences,
     educations: data[2].educations,
     technicalSkills: data[3].technicalSkills,
