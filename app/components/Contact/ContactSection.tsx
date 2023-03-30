@@ -21,7 +21,7 @@ export const ContactSection = ({ video, contact }: ContactSectionProps) => {
   }, [])
 
   const Topic = ({ title }: { title: string }) => (
-    <div className="text-xl font-lalezar min-w-[100px] mobile:min-w-[80px] mobile:text-lg">
+    <div className="text-xl font-lalezar min-w-[100px] mobile:min-w-[60px] mobile:text-lg">
       {title}:
     </div>
   )

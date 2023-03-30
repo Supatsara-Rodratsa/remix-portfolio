@@ -8,7 +8,7 @@ const Profile = ({ image }: ProfileProps) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
       className="transition-all duration-700 relative w-[calc(100vw_/_3)] h-[calc(100vw_/_3)] min-w-[300px] min-h-[300px] inline-block -ml-[50px] -mt-[50px]"
     >

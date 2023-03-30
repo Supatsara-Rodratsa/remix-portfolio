@@ -27,21 +27,24 @@ export const meta: MetaFunction = () => {
 }
 
 export const loader = async () => {
-  const { personalInfos } = await sdk.GetPersonalInfo()
-  const { experiences } = await sdk.GetExperienceInfo()
-  const { educations } = await sdk.GetEducationInfo()
-  const { technicalSkills } = await sdk.GetTechnicalSkill()
-  const { softwares } = await sdk.GetSoftwareDetail()
-  const { projects } = await sdk.GetProjectList()
-  const { videos } = await sdk.GetVideoMeme()
+  const data = await Promise.all([
+    sdk.GetPersonalInfo(),
+    sdk.GetExperienceInfo(),
+    sdk.GetEducationInfo(),
+    sdk.GetTechnicalSkill(),
+    sdk.GetSoftwareDetail(),
+    sdk.GetProjectList(),
+    sdk.GetVideoMeme(),
+  ])
+
   return json({
-    personalInfos,
-    experiences,
-    educations,
-    technicalSkills,
-    softwares,
-    projects,
-    videos,
+    personalInfos: { ...data[0].personalInfos },
+    experiences: data[1].experiences,
+    educations: data[2].educations,
+    technicalSkills: data[3].technicalSkills,
+    softwares: data[4].softwares,
+    projects: data[5].projects,
+    videos: data[6].videos,
   })
 }
 
