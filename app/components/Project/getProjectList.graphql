@@ -1,4 +1,4 @@
-query getProjectList {
+query GetProjectList {
   projects(orderBy: sequence_ASC) {
     id
     name

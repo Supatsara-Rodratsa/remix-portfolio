@@ -2,6 +2,7 @@ import type { MetaFunction } from '@remix-run/node'
 import { json } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 import type {
+  Contact,
   Education,
   Experience,
   PersonalInfo,
@@ -17,6 +18,7 @@ import { Introduction } from '~/components/Introduction/Introduction'
 import { SkillSoftwareSection } from '~/components/SkillSoftware/SkillSoftware'
 import { EducationSection } from '~/components/Education/Education'
 import { ProjectSection } from '~/components/Project/ProjectSection'
+import { ContactSection } from '~/components/Contact/ContactSection'
 
 export const meta: MetaFunction = () => {
   return {
@@ -30,7 +32,8 @@ export const loader = async () => {
   const { educations } = await sdk.GetEducationInfo()
   const { technicalSkills } = await sdk.GetTechnicalSkill()
   const { softwares } = await sdk.GetSoftwareDetail()
-  const { projects } = await sdk.getProjectList()
+  const { projects } = await sdk.GetProjectList()
+  const { videos } = await sdk.GetVideoMeme()
   return json({
     personalInfos,
     experiences,
@@ -38,6 +41,7 @@ export const loader = async () => {
     technicalSkills,
     softwares,
     projects,
+    videos,
   })
 }
 
@@ -53,6 +57,7 @@ export default function Index() {
     technicalSkills,
     softwares,
     projects,
+    videos,
   } = useLoaderData<typeof loader>()
   const info = personalInfos[0] as PersonalInfo
 
@@ -73,6 +78,10 @@ export default function Index() {
           technicalSkills={technicalSkills as TechnicalSkill[]}
         />
         <ProjectSection projects={projects as Project[]} />
+        <ContactSection
+          contact={info.contact as Contact}
+          video={videos[0].video?.url as string}
+        />
       </div>
     )
   }

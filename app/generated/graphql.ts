@@ -79,6 +79,7 @@ export type Asset = Node & {
   updatedBy?: Maybe<User>
   /** Get the url for the asset with provided transformations applied. */
   url: Scalars['String']
+  videoVideo: Array<Video>
   /** The file width */
   width?: Maybe<Scalars['Float']>
 }
@@ -244,6 +245,19 @@ export type AssetUrlArgs = {
   transformation?: InputMaybe<AssetTransformationInput>
 }
 
+/** Asset system model */
+export type AssetVideoVideoArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: InputMaybe<Array<Locale>>
+  orderBy?: InputMaybe<VideoOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<VideoWhereInput>
+}
+
 export type AssetConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
   position?: InputMaybe<ConnectPositionInput>
@@ -277,6 +291,7 @@ export type AssetCreateInput = {
   profileImage2PersonalInfo?: InputMaybe<PersonalInfoCreateManyInlineInput>
   size?: InputMaybe<Scalars['Float']>
   updatedAt?: InputMaybe<Scalars['DateTime']>
+  videoVideo?: InputMaybe<VideoCreateManyInlineInput>
   width?: InputMaybe<Scalars['Float']>
 }
 
@@ -428,6 +443,9 @@ export type AssetManyWhereInput = {
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
   updatedBy?: InputMaybe<UserWhereInput>
+  videoVideo_every?: InputMaybe<VideoWhereInput>
+  videoVideo_none?: InputMaybe<VideoWhereInput>
+  videoVideo_some?: InputMaybe<VideoWhereInput>
 }
 
 export enum AssetOrderByInput {
@@ -476,6 +494,7 @@ export type AssetUpdateInput = {
   profileImage1PersonalInfo?: InputMaybe<PersonalInfoUpdateManyInlineInput>
   profileImage2PersonalInfo?: InputMaybe<PersonalInfoUpdateManyInlineInput>
   size?: InputMaybe<Scalars['Float']>
+  videoVideo?: InputMaybe<VideoUpdateManyInlineInput>
   width?: InputMaybe<Scalars['Float']>
 }
 
@@ -794,6 +813,9 @@ export type AssetWhereInput = {
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
   updatedBy?: InputMaybe<UserWhereInput>
+  videoVideo_every?: InputMaybe<VideoWhereInput>
+  videoVideo_none?: InputMaybe<VideoWhereInput>
+  videoVideo_some?: InputMaybe<VideoWhereInput>
   width?: InputMaybe<Scalars['Float']>
   /** All values greater than the given value. */
   width_gt?: InputMaybe<Scalars['Float']>
@@ -3355,6 +3377,8 @@ export type Mutation = {
   createSoftware?: Maybe<Software>
   /** Create one technicalSkill */
   createTechnicalSkill?: Maybe<TechnicalSkill>
+  /** Create one video */
+  createVideo?: Maybe<Video>
   /** Delete one asset from _all_ existing stages. Returns deleted document. */
   deleteAsset?: Maybe<Asset>
   /** Delete one certificate from _all_ existing stages. Returns deleted document. */
@@ -3449,6 +3473,13 @@ export type Mutation = {
   deleteManyTechnicalSkills: BatchPayload
   /** Delete many TechnicalSkill documents, return deleted documents */
   deleteManyTechnicalSkillsConnection: TechnicalSkillConnection
+  /**
+   * Delete many Video documents
+   * @deprecated Please use the new paginated many mutation (deleteManyVideosConnection)
+   */
+  deleteManyVideos: BatchPayload
+  /** Delete many Video documents, return deleted documents */
+  deleteManyVideosConnection: VideoConnection
   /** Delete one personalInfo from _all_ existing stages. Returns deleted document. */
   deletePersonalInfo?: Maybe<PersonalInfo>
   /** Delete one position from _all_ existing stages. Returns deleted document. */
@@ -3467,6 +3498,8 @@ export type Mutation = {
   deleteSoftware?: Maybe<Software>
   /** Delete one technicalSkill from _all_ existing stages. Returns deleted document. */
   deleteTechnicalSkill?: Maybe<TechnicalSkill>
+  /** Delete one video from _all_ existing stages. Returns deleted document. */
+  deleteVideo?: Maybe<Video>
   /** Publish one asset */
   publishAsset?: Maybe<Asset>
   /** Publish one certificate */
@@ -3561,6 +3594,13 @@ export type Mutation = {
   publishManyTechnicalSkills: BatchPayload
   /** Publish many TechnicalSkill documents */
   publishManyTechnicalSkillsConnection: TechnicalSkillConnection
+  /**
+   * Publish many Video documents
+   * @deprecated Please use the new paginated many mutation (publishManyVideosConnection)
+   */
+  publishManyVideos: BatchPayload
+  /** Publish many Video documents */
+  publishManyVideosConnection: VideoConnection
   /** Publish one personalInfo */
   publishPersonalInfo?: Maybe<PersonalInfo>
   /** Publish one position */
@@ -3575,6 +3615,8 @@ export type Mutation = {
   publishSoftware?: Maybe<Software>
   /** Publish one technicalSkill */
   publishTechnicalSkill?: Maybe<TechnicalSkill>
+  /** Publish one video */
+  publishVideo?: Maybe<Video>
   /** Schedule to publish one asset */
   schedulePublishAsset?: Maybe<Asset>
   /** Schedule to publish one certificate */
@@ -3599,6 +3641,8 @@ export type Mutation = {
   schedulePublishSoftware?: Maybe<Software>
   /** Schedule to publish one technicalSkill */
   schedulePublishTechnicalSkill?: Maybe<TechnicalSkill>
+  /** Schedule to publish one video */
+  schedulePublishVideo?: Maybe<Video>
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishAsset?: Maybe<Asset>
   /** Unpublish one certificate from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -3623,6 +3667,8 @@ export type Mutation = {
   scheduleUnpublishSoftware?: Maybe<Software>
   /** Unpublish one technicalSkill from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishTechnicalSkill?: Maybe<TechnicalSkill>
+  /** Unpublish one video from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishVideo?: Maybe<Video>
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishAsset?: Maybe<Asset>
   /** Unpublish one certificate from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -3717,6 +3763,13 @@ export type Mutation = {
   unpublishManyTechnicalSkills: BatchPayload
   /** Find many TechnicalSkill documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyTechnicalSkillsConnection: TechnicalSkillConnection
+  /**
+   * Unpublish many Video documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyVideosConnection)
+   */
+  unpublishManyVideos: BatchPayload
+  /** Find many Video documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyVideosConnection: VideoConnection
   /** Unpublish one personalInfo from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishPersonalInfo?: Maybe<PersonalInfo>
   /** Unpublish one position from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -3731,6 +3784,8 @@ export type Mutation = {
   unpublishSoftware?: Maybe<Software>
   /** Unpublish one technicalSkill from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishTechnicalSkill?: Maybe<TechnicalSkill>
+  /** Unpublish one video from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishVideo?: Maybe<Video>
   /** Update one asset */
   updateAsset?: Maybe<Asset>
   /** Update one certificate */
@@ -3825,6 +3880,13 @@ export type Mutation = {
   updateManyTechnicalSkills: BatchPayload
   /** Update many TechnicalSkill documents */
   updateManyTechnicalSkillsConnection: TechnicalSkillConnection
+  /**
+   * Update many videos
+   * @deprecated Please use the new paginated many mutation (updateManyVideosConnection)
+   */
+  updateManyVideos: BatchPayload
+  /** Update many Video documents */
+  updateManyVideosConnection: VideoConnection
   /** Update one personalInfo */
   updatePersonalInfo?: Maybe<PersonalInfo>
   /** Update one position */
@@ -3841,6 +3903,8 @@ export type Mutation = {
   updateSoftware?: Maybe<Software>
   /** Update one technicalSkill */
   updateTechnicalSkill?: Maybe<TechnicalSkill>
+  /** Update one video */
+  updateVideo?: Maybe<Video>
   /** Upsert one asset */
   upsertAsset?: Maybe<Asset>
   /** Upsert one certificate */
@@ -3865,6 +3929,8 @@ export type Mutation = {
   upsertSoftware?: Maybe<Software>
   /** Upsert one technicalSkill */
   upsertTechnicalSkill?: Maybe<TechnicalSkill>
+  /** Upsert one video */
+  upsertVideo?: Maybe<Video>
 }
 
 export type MutationCreateAssetArgs = {
@@ -3917,6 +3983,10 @@ export type MutationCreateSoftwareArgs = {
 
 export type MutationCreateTechnicalSkillArgs = {
   data: TechnicalSkillCreateInput
+}
+
+export type MutationCreateVideoArgs = {
+  data: VideoCreateInput
 }
 
 export type MutationDeleteAssetArgs = {
@@ -4095,6 +4165,19 @@ export type MutationDeleteManyTechnicalSkillsConnectionArgs = {
   where?: InputMaybe<TechnicalSkillManyWhereInput>
 }
 
+export type MutationDeleteManyVideosArgs = {
+  where?: InputMaybe<VideoManyWhereInput>
+}
+
+export type MutationDeleteManyVideosConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>
+  before?: InputMaybe<Scalars['ID']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<VideoManyWhereInput>
+}
+
 export type MutationDeletePersonalInfoArgs = {
   where: PersonalInfoWhereUniqueInput
 }
@@ -4129,6 +4212,10 @@ export type MutationDeleteSoftwareArgs = {
 
 export type MutationDeleteTechnicalSkillArgs = {
   where: TechnicalSkillWhereUniqueInput
+}
+
+export type MutationDeleteVideoArgs = {
+  where: VideoWhereUniqueInput
 }
 
 export type MutationPublishAssetArgs = {
@@ -4357,6 +4444,22 @@ export type MutationPublishManyTechnicalSkillsConnectionArgs = {
   where?: InputMaybe<TechnicalSkillManyWhereInput>
 }
 
+export type MutationPublishManyVideosArgs = {
+  to?: Array<Stage>
+  where?: InputMaybe<VideoManyWhereInput>
+}
+
+export type MutationPublishManyVideosConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>
+  before?: InputMaybe<Scalars['ID']>
+  first?: InputMaybe<Scalars['Int']>
+  from?: InputMaybe<Stage>
+  last?: InputMaybe<Scalars['Int']>
+  skip?: InputMaybe<Scalars['Int']>
+  to?: Array<Stage>
+  where?: InputMaybe<VideoManyWhereInput>
+}
+
 export type MutationPublishPersonalInfoArgs = {
   to?: Array<Stage>
   where: PersonalInfoWhereUniqueInput
@@ -4390,6 +4493,11 @@ export type MutationPublishSoftwareArgs = {
 export type MutationPublishTechnicalSkillArgs = {
   to?: Array<Stage>
   where: TechnicalSkillWhereUniqueInput
+}
+
+export type MutationPublishVideoArgs = {
+  to?: Array<Stage>
+  where: VideoWhereUniqueInput
 }
 
 export type MutationSchedulePublishAssetArgs = {
@@ -4479,6 +4587,13 @@ export type MutationSchedulePublishTechnicalSkillArgs = {
   where: TechnicalSkillWhereUniqueInput
 }
 
+export type MutationSchedulePublishVideoArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']>
+  releaseId?: InputMaybe<Scalars['String']>
+  to?: Array<Stage>
+  where: VideoWhereUniqueInput
+}
+
 export type MutationScheduleUnpublishAssetArgs = {
   from?: Array<Stage>
   locales?: InputMaybe<Array<Locale>>
@@ -4563,6 +4678,13 @@ export type MutationScheduleUnpublishTechnicalSkillArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>
   releaseId?: InputMaybe<Scalars['String']>
   where: TechnicalSkillWhereUniqueInput
+}
+
+export type MutationScheduleUnpublishVideoArgs = {
+  from?: Array<Stage>
+  releaseAt?: InputMaybe<Scalars['DateTime']>
+  releaseId?: InputMaybe<Scalars['String']>
+  where: VideoWhereUniqueInput
 }
 
 export type MutationUnpublishAssetArgs = {
@@ -4788,6 +4910,22 @@ export type MutationUnpublishManyTechnicalSkillsConnectionArgs = {
   where?: InputMaybe<TechnicalSkillManyWhereInput>
 }
 
+export type MutationUnpublishManyVideosArgs = {
+  from?: Array<Stage>
+  where?: InputMaybe<VideoManyWhereInput>
+}
+
+export type MutationUnpublishManyVideosConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>
+  before?: InputMaybe<Scalars['ID']>
+  first?: InputMaybe<Scalars['Int']>
+  from?: Array<Stage>
+  last?: InputMaybe<Scalars['Int']>
+  skip?: InputMaybe<Scalars['Int']>
+  stage?: InputMaybe<Stage>
+  where?: InputMaybe<VideoManyWhereInput>
+}
+
 export type MutationUnpublishPersonalInfoArgs = {
   from?: Array<Stage>
   where: PersonalInfoWhereUniqueInput
@@ -4821,6 +4959,11 @@ export type MutationUnpublishSoftwareArgs = {
 export type MutationUnpublishTechnicalSkillArgs = {
   from?: Array<Stage>
   where: TechnicalSkillWhereUniqueInput
+}
+
+export type MutationUnpublishVideoArgs = {
+  from?: Array<Stage>
+  where: VideoWhereUniqueInput
 }
 
 export type MutationUpdateAssetArgs = {
@@ -5028,6 +5171,21 @@ export type MutationUpdateManyTechnicalSkillsConnectionArgs = {
   where?: InputMaybe<TechnicalSkillManyWhereInput>
 }
 
+export type MutationUpdateManyVideosArgs = {
+  data: VideoUpdateManyInput
+  where?: InputMaybe<VideoManyWhereInput>
+}
+
+export type MutationUpdateManyVideosConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>
+  before?: InputMaybe<Scalars['ID']>
+  data: VideoUpdateManyInput
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<VideoManyWhereInput>
+}
+
 export type MutationUpdatePersonalInfoArgs = {
   data: PersonalInfoUpdateInput
   where: PersonalInfoWhereUniqueInput
@@ -5066,6 +5224,11 @@ export type MutationUpdateSoftwareArgs = {
 export type MutationUpdateTechnicalSkillArgs = {
   data: TechnicalSkillUpdateInput
   where: TechnicalSkillWhereUniqueInput
+}
+
+export type MutationUpdateVideoArgs = {
+  data: VideoUpdateInput
+  where: VideoWhereUniqueInput
 }
 
 export type MutationUpsertAssetArgs = {
@@ -5126,6 +5289,11 @@ export type MutationUpsertSoftwareArgs = {
 export type MutationUpsertTechnicalSkillArgs = {
   upsert: TechnicalSkillUpsertInput
   where: TechnicalSkillWhereUniqueInput
+}
+
+export type MutationUpsertVideoArgs = {
+  upsert: VideoUpsertInput
+  where: VideoWhereUniqueInput
 }
 
 /** An object with an ID */
@@ -7974,6 +8142,14 @@ export type Query = {
   users: Array<User>
   /** Retrieve multiple users using the Relay connection interface */
   usersConnection: UserConnection
+  /** Retrieve a single video */
+  video?: Maybe<Video>
+  /** Retrieve document version */
+  videoVersion?: Maybe<DocumentVersion>
+  /** Retrieve multiple videos */
+  videos: Array<Video>
+  /** Retrieve multiple videos using the Relay connection interface */
+  videosConnection: VideoConnection
 }
 
 export type QueryAssetArgs = {
@@ -8480,6 +8656,40 @@ export type QueryUsersConnectionArgs = {
   where?: InputMaybe<UserWhereInput>
 }
 
+export type QueryVideoArgs = {
+  locales?: Array<Locale>
+  stage?: Stage
+  where: VideoWhereUniqueInput
+}
+
+export type QueryVideoVersionArgs = {
+  where: VersionWhereInput
+}
+
+export type QueryVideosArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: Array<Locale>
+  orderBy?: InputMaybe<VideoOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  stage?: Stage
+  where?: InputMaybe<VideoWhereInput>
+}
+
+export type QueryVideosConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: Array<Locale>
+  orderBy?: InputMaybe<VideoOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  stage?: Stage
+  where?: InputMaybe<VideoWhereInput>
+}
+
 /** Representing a RGBA color value: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb()_and_rgba() */
 export type Rgba = {
   a: Scalars['RGBATransparency']
@@ -8596,6 +8806,7 @@ export type ScheduledOperationAffectedDocument =
   | Project
   | Software
   | TechnicalSkill
+  | Video
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
@@ -10802,6 +11013,395 @@ export type VersionWhereInput = {
   stage: Stage
 }
 
+export type Video = Node & {
+  /** The time the document was created */
+  createdAt: Scalars['DateTime']
+  /** User that created this document */
+  createdBy?: Maybe<User>
+  /** Get the document in other stages */
+  documentInStages: Array<Video>
+  /** List of Video versions */
+  history: Array<Version>
+  /** The unique identifier */
+  id: Scalars['ID']
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>
+  /** User that last published this document */
+  publishedBy?: Maybe<User>
+  scheduledIn: Array<ScheduledOperation>
+  /** System stage field */
+  stage: Stage
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime']
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>
+  video?: Maybe<Asset>
+}
+
+export type VideoCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type VideoDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean']
+  inheritLocale?: Scalars['Boolean']
+  stages?: Array<Stage>
+}
+
+export type VideoHistoryArgs = {
+  limit?: Scalars['Int']
+  skip?: Scalars['Int']
+  stageOverride?: InputMaybe<Stage>
+}
+
+export type VideoPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type VideoScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: InputMaybe<Array<Locale>>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<ScheduledOperationWhereInput>
+}
+
+export type VideoUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type VideoVideoArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type VideoConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>
+  /** Document to connect */
+  where: VideoWhereUniqueInput
+}
+
+/** A connection to a list of items. */
+export type VideoConnection = {
+  aggregate: Aggregate
+  /** A list of edges. */
+  edges: Array<VideoEdge>
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo
+}
+
+export type VideoCreateInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>
+  updatedAt?: InputMaybe<Scalars['DateTime']>
+  video?: InputMaybe<AssetCreateOneInlineInput>
+}
+
+export type VideoCreateManyInlineInput = {
+  /** Connect multiple existing Video documents */
+  connect?: InputMaybe<Array<VideoWhereUniqueInput>>
+  /** Create and connect multiple existing Video documents */
+  create?: InputMaybe<Array<VideoCreateInput>>
+}
+
+export type VideoCreateOneInlineInput = {
+  /** Connect one existing Video document */
+  connect?: InputMaybe<VideoWhereUniqueInput>
+  /** Create and connect one Video document */
+  create?: InputMaybe<VideoCreateInput>
+}
+
+/** An edge in a connection. */
+export type VideoEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']
+  /** The item at the end of the edge. */
+  node: Video
+}
+
+/** Identifies documents */
+export type VideoManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<VideoWhereInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<VideoWhereInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<VideoWhereInput>>
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>
+  createdAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  createdBy?: InputMaybe<UserWhereInput>
+  documentInStages_every?: InputMaybe<VideoWhereStageInput>
+  documentInStages_none?: InputMaybe<VideoWhereStageInput>
+  documentInStages_some?: InputMaybe<VideoWhereStageInput>
+  id?: InputMaybe<Scalars['ID']>
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>
+  publishedAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  publishedBy?: InputMaybe<UserWhereInput>
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>
+  updatedAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  updatedBy?: InputMaybe<UserWhereInput>
+  video?: InputMaybe<AssetWhereInput>
+}
+
+export enum VideoOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC',
+}
+
+export type VideoUpdateInput = {
+  video?: InputMaybe<AssetUpdateOneInlineInput>
+}
+
+export type VideoUpdateManyInlineInput = {
+  /** Connect multiple existing Video documents */
+  connect?: InputMaybe<Array<VideoConnectInput>>
+  /** Create and connect multiple Video documents */
+  create?: InputMaybe<Array<VideoCreateInput>>
+  /** Delete multiple Video documents */
+  delete?: InputMaybe<Array<VideoWhereUniqueInput>>
+  /** Disconnect multiple Video documents */
+  disconnect?: InputMaybe<Array<VideoWhereUniqueInput>>
+  /** Override currently-connected documents with multiple existing Video documents */
+  set?: InputMaybe<Array<VideoWhereUniqueInput>>
+  /** Update multiple Video documents */
+  update?: InputMaybe<Array<VideoUpdateWithNestedWhereUniqueInput>>
+  /** Upsert multiple Video documents */
+  upsert?: InputMaybe<Array<VideoUpsertWithNestedWhereUniqueInput>>
+}
+
+export type VideoUpdateManyInput = {
+  /** No fields in updateMany data input */
+  _?: InputMaybe<Scalars['String']>
+}
+
+export type VideoUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: VideoUpdateManyInput
+  /** Document search */
+  where: VideoWhereInput
+}
+
+export type VideoUpdateOneInlineInput = {
+  /** Connect existing Video document */
+  connect?: InputMaybe<VideoWhereUniqueInput>
+  /** Create and connect one Video document */
+  create?: InputMaybe<VideoCreateInput>
+  /** Delete currently connected Video document */
+  delete?: InputMaybe<Scalars['Boolean']>
+  /** Disconnect currently connected Video document */
+  disconnect?: InputMaybe<Scalars['Boolean']>
+  /** Update single Video document */
+  update?: InputMaybe<VideoUpdateWithNestedWhereUniqueInput>
+  /** Upsert single Video document */
+  upsert?: InputMaybe<VideoUpsertWithNestedWhereUniqueInput>
+}
+
+export type VideoUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: VideoUpdateInput
+  /** Unique document search */
+  where: VideoWhereUniqueInput
+}
+
+export type VideoUpsertInput = {
+  /** Create document if it didn't exist */
+  create: VideoCreateInput
+  /** Update document if it exists */
+  update: VideoUpdateInput
+}
+
+export type VideoUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: VideoUpsertInput
+  /** Unique document search */
+  where: VideoWhereUniqueInput
+}
+
+/** This contains a set of filters that can be used to compare values internally */
+export type VideoWhereComparatorInput = {
+  /** This field can be used to request to check if the entry is outdated by internal comparison */
+  outdated_to?: InputMaybe<Scalars['Boolean']>
+}
+
+/** Identifies documents */
+export type VideoWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<VideoWhereInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<VideoWhereInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<VideoWhereInput>>
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>
+  createdAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  createdBy?: InputMaybe<UserWhereInput>
+  documentInStages_every?: InputMaybe<VideoWhereStageInput>
+  documentInStages_none?: InputMaybe<VideoWhereStageInput>
+  documentInStages_some?: InputMaybe<VideoWhereStageInput>
+  id?: InputMaybe<Scalars['ID']>
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>
+  publishedAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  publishedBy?: InputMaybe<UserWhereInput>
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>
+  updatedAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  updatedBy?: InputMaybe<UserWhereInput>
+  video?: InputMaybe<AssetWhereInput>
+}
+
+/** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
+export type VideoWhereStageInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<VideoWhereStageInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<VideoWhereStageInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<VideoWhereStageInput>>
+  /** This field contains fields which can be set as true or false to specify an internal comparison */
+  compareWithParent?: InputMaybe<VideoWhereComparatorInput>
+  /** Specify the stage to compare with */
+  stage?: InputMaybe<Stage>
+}
+
+/** References Video record uniquely */
+export type VideoWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>
+}
+
 export enum _FilterKind {
   And = 'AND',
   Not = 'NOT',
@@ -10886,6 +11486,12 @@ export enum _SystemDateTimeFieldVariation {
   Base = 'base',
   Combined = 'combined',
   Localization = 'localization',
+}
+
+export type GetVideoMemeQueryVariables = Exact<{ [key: string]: never }>
+
+export type GetVideoMemeQuery = {
+  videos: Array<{ video?: { url: string } | null }>
 }
 
 export type GetEducationInfoQueryVariables = Exact<{ [key: string]: never }>
@@ -10979,6 +11585,15 @@ export type GetTechnicalSkillQuery = {
   }>
 }
 
+export const GetVideoMemeDocument = /*#__PURE__*/ gql`
+  query GetVideoMeme {
+    videos {
+      video {
+        url
+      }
+    }
+  }
+`
 export const GetEducationInfoDocument = /*#__PURE__*/ gql`
   query GetEducationInfo {
     educations(orderBy: sequence_DESC) {
@@ -11054,7 +11669,7 @@ export const GetPersonalInfoDocument = /*#__PURE__*/ gql`
   }
 `
 export const GetProjectListDocument = /*#__PURE__*/ gql`
-  query getProjectList {
+  query GetProjectList {
     projects(orderBy: sequence_ASC) {
       id
       name
@@ -11107,6 +11722,20 @@ export function getSdk(
   withWrapper: SdkFunctionWrapper = defaultWrapper
 ) {
   return {
+    GetVideoMeme(
+      variables?: GetVideoMemeQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<GetVideoMemeQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetVideoMemeQuery>(GetVideoMemeDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'GetVideoMeme',
+        'query'
+      )
+    },
     GetEducationInfo(
       variables?: GetEducationInfoQueryVariables,
       requestHeaders?: Dom.RequestInit['headers']
@@ -11152,7 +11781,7 @@ export function getSdk(
         'query'
       )
     },
-    getProjectList(
+    GetProjectList(
       variables?: GetProjectListQueryVariables,
       requestHeaders?: Dom.RequestInit['headers']
     ): Promise<GetProjectListQuery> {
@@ -11163,7 +11792,7 @@ export function getSdk(
             variables,
             { ...requestHeaders, ...wrappedRequestHeaders }
           ),
-        'getProjectList',
+        'GetProjectList',
         'query'
       )
     },
