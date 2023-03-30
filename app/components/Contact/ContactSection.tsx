@@ -38,7 +38,7 @@ export const ContactSection = ({ video, contact }: ContactSectionProps) => {
       className="w-screen -mx-[40px] m-auto h-screen mobile:h-fit mobile:min-h-screen relative overflow-hidden bg-black border-[20px] border-black"
       ref={ref}
     >
-      <div className="flex mobile:flex-wrap gap-4 h-full">
+      <div className="flex mobile:flex-wrap-reverse gap-4 h-full">
         <div className="w-[500px] flex flex-col gap-4">
           <div className="w-full h-screen relative">
             {hasWindow && (
