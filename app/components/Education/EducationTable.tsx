@@ -14,9 +14,14 @@ export const EducationTable = ({ education }: EducationTableProps) => {
         <motion.div
           initial={{ x: 200 }}
           whileInView={{ x: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{
+            type: 'spring',
+            stiffness: 100,
+            damping: 30,
+            restDelta: 0.001,
+          }}
           viewport={{ once: true }}
-          key={edu.id}
+          key={edu.id + index}
         >
           <div className="grid grid-cols-3 gap-x-4 gap-y-8 grid-flow-row-dense mobile:grid-cols-1 tablet:grid-cols-1">
             <div className="flex flex-row gap-5">
@@ -46,8 +51,8 @@ export const EducationTable = ({ education }: EducationTableProps) => {
             </div>
             <div className="flex flex-col w-[100%]">
               {edu.programs &&
-                edu.programs.map((program) => (
-                  <ul key={program.id}>
+                edu.programs.map((program, i) => (
+                  <ul key={program.id + i || i}>
                     <li className="mb-[15px] list-disc text-lg tablet:text-base mobile:text-base">
                       {program.name}
                     </li>

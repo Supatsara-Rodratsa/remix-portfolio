@@ -25,7 +25,12 @@ export const IntroductionInfo = ({
           <motion.p
             initial={{ opacity: 0, y: 70 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ stiffness: 200 }}
+            transition={{
+              type: 'spring',
+              stiffness: 100,
+              damping: 30,
+              restDelta: 0.001,
+            }}
             className="text-2xl tablet:text-xl mobile:text-lg"
           >
             {intro[0]}

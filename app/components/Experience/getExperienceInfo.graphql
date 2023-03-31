@@ -17,5 +17,11 @@ query GetExperienceInfo {
       }
     }
     hideDash
+    meme1 {
+      url
+    }
+    meme2 {
+      url
+    }
   }
 }

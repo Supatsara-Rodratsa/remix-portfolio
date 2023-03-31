@@ -2,6 +2,7 @@ import type { MetaFunction } from '@remix-run/node'
 import { json } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 import type {
+  Certificate,
   Contact,
   Education,
   Experience,
@@ -20,6 +21,7 @@ import { EducationSection } from '~/components/Education/Education'
 import { ProjectSection } from '~/components/Project/ProjectSection'
 import { ContactSection } from '~/components/Contact/ContactSection'
 import { motion, useScroll, useSpring } from 'framer-motion'
+import { CertificateSection } from '~/components/Certificate/CertificateSection'
 
 export const meta: MetaFunction = () => {
   return {
@@ -36,6 +38,7 @@ export const loader = async () => {
     sdk.GetSoftwareDetail(),
     sdk.GetProjectList(),
     sdk.GetVideoMeme(),
+    sdk.GetCertificate(),
   ])
 
   return json({
@@ -46,6 +49,7 @@ export const loader = async () => {
     softwares: data[4].softwares,
     projects: data[5].projects,
     videos: data[6].videos,
+    certificates: data[7].certificates,
   })
 }
 
@@ -62,6 +66,7 @@ export default function Index() {
     softwares,
     projects,
     videos,
+    certificates,
   } = useLoaderData<typeof loader>()
   const info = personalInfos[0] as PersonalInfo
   const { scrollYProgress } = useScroll()
@@ -91,6 +96,7 @@ export default function Index() {
           software={softwares as Software[]}
           technicalSkills={technicalSkills as TechnicalSkill[]}
         />
+        <CertificateSection certificates={certificates as Certificate[]} />
         <ProjectSection projects={projects as Project[]} />
         <ContactSection
           contact={info.contact as Contact}

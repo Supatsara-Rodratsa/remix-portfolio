@@ -61,6 +61,12 @@ export type Asset = Node & {
   locale: Locale
   /** Get the other localizations for this document */
   localizations: Array<Asset>
+  meme1Education: Array<Education>
+  meme1Experience: Array<Experience>
+  meme1TechnicalSkill: Array<TechnicalSkill>
+  meme2Education: Array<Education>
+  meme2Experience: Array<Experience>
+  meme2TechnicalSkill: Array<TechnicalSkill>
   /** The mime type of the file */
   mimeType?: Maybe<Scalars['String']>
   profileImage1PersonalInfo: Array<PersonalInfo>
@@ -195,6 +201,84 @@ export type AssetLocalizationsArgs = {
 }
 
 /** Asset system model */
+export type AssetMeme1EducationArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: InputMaybe<Array<Locale>>
+  orderBy?: InputMaybe<EducationOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<EducationWhereInput>
+}
+
+/** Asset system model */
+export type AssetMeme1ExperienceArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: InputMaybe<Array<Locale>>
+  orderBy?: InputMaybe<ExperienceOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<ExperienceWhereInput>
+}
+
+/** Asset system model */
+export type AssetMeme1TechnicalSkillArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: InputMaybe<Array<Locale>>
+  orderBy?: InputMaybe<TechnicalSkillOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<TechnicalSkillWhereInput>
+}
+
+/** Asset system model */
+export type AssetMeme2EducationArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: InputMaybe<Array<Locale>>
+  orderBy?: InputMaybe<EducationOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<EducationWhereInput>
+}
+
+/** Asset system model */
+export type AssetMeme2ExperienceArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: InputMaybe<Array<Locale>>
+  orderBy?: InputMaybe<ExperienceOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<ExperienceWhereInput>
+}
+
+/** Asset system model */
+export type AssetMeme2TechnicalSkillArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: InputMaybe<Array<Locale>>
+  orderBy?: InputMaybe<TechnicalSkillOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<TechnicalSkillWhereInput>
+}
+
+/** Asset system model */
 export type AssetProfileImage1PersonalInfoArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
@@ -301,6 +385,12 @@ export type AssetCreateInput = {
   imageTechnicalSkill?: InputMaybe<TechnicalSkillCreateManyInlineInput>
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: InputMaybe<AssetCreateLocalizationsInput>
+  meme1Education?: InputMaybe<EducationCreateManyInlineInput>
+  meme1Experience?: InputMaybe<ExperienceCreateManyInlineInput>
+  meme1TechnicalSkill?: InputMaybe<TechnicalSkillCreateManyInlineInput>
+  meme2Education?: InputMaybe<EducationCreateManyInlineInput>
+  meme2Experience?: InputMaybe<ExperienceCreateManyInlineInput>
+  meme2TechnicalSkill?: InputMaybe<TechnicalSkillCreateManyInlineInput>
   mimeType?: InputMaybe<Scalars['String']>
   profileImage1PersonalInfo?: InputMaybe<PersonalInfoCreateManyInlineInput>
   profileImage2PersonalInfo?: InputMaybe<PersonalInfoCreateManyInlineInput>
@@ -420,6 +510,24 @@ export type AssetManyWhereInput = {
   imageTechnicalSkill_every?: InputMaybe<TechnicalSkillWhereInput>
   imageTechnicalSkill_none?: InputMaybe<TechnicalSkillWhereInput>
   imageTechnicalSkill_some?: InputMaybe<TechnicalSkillWhereInput>
+  meme1Education_every?: InputMaybe<EducationWhereInput>
+  meme1Education_none?: InputMaybe<EducationWhereInput>
+  meme1Education_some?: InputMaybe<EducationWhereInput>
+  meme1Experience_every?: InputMaybe<ExperienceWhereInput>
+  meme1Experience_none?: InputMaybe<ExperienceWhereInput>
+  meme1Experience_some?: InputMaybe<ExperienceWhereInput>
+  meme1TechnicalSkill_every?: InputMaybe<TechnicalSkillWhereInput>
+  meme1TechnicalSkill_none?: InputMaybe<TechnicalSkillWhereInput>
+  meme1TechnicalSkill_some?: InputMaybe<TechnicalSkillWhereInput>
+  meme2Education_every?: InputMaybe<EducationWhereInput>
+  meme2Education_none?: InputMaybe<EducationWhereInput>
+  meme2Education_some?: InputMaybe<EducationWhereInput>
+  meme2Experience_every?: InputMaybe<ExperienceWhereInput>
+  meme2Experience_none?: InputMaybe<ExperienceWhereInput>
+  meme2Experience_some?: InputMaybe<ExperienceWhereInput>
+  meme2TechnicalSkill_every?: InputMaybe<TechnicalSkillWhereInput>
+  meme2TechnicalSkill_none?: InputMaybe<TechnicalSkillWhereInput>
+  meme2TechnicalSkill_some?: InputMaybe<TechnicalSkillWhereInput>
   profileImage1PersonalInfo_every?: InputMaybe<PersonalInfoWhereInput>
   profileImage1PersonalInfo_none?: InputMaybe<PersonalInfoWhereInput>
   profileImage1PersonalInfo_some?: InputMaybe<PersonalInfoWhereInput>
@@ -509,6 +617,12 @@ export type AssetUpdateInput = {
   imageTechnicalSkill?: InputMaybe<TechnicalSkillUpdateManyInlineInput>
   /** Manage document localizations */
   localizations?: InputMaybe<AssetUpdateLocalizationsInput>
+  meme1Education?: InputMaybe<EducationUpdateManyInlineInput>
+  meme1Experience?: InputMaybe<ExperienceUpdateManyInlineInput>
+  meme1TechnicalSkill?: InputMaybe<TechnicalSkillUpdateManyInlineInput>
+  meme2Education?: InputMaybe<EducationUpdateManyInlineInput>
+  meme2Experience?: InputMaybe<ExperienceUpdateManyInlineInput>
+  meme2TechnicalSkill?: InputMaybe<TechnicalSkillUpdateManyInlineInput>
   mimeType?: InputMaybe<Scalars['String']>
   profileImage1PersonalInfo?: InputMaybe<PersonalInfoUpdateManyInlineInput>
   profileImage2PersonalInfo?: InputMaybe<PersonalInfoUpdateManyInlineInput>
@@ -760,6 +874,24 @@ export type AssetWhereInput = {
   imageTechnicalSkill_every?: InputMaybe<TechnicalSkillWhereInput>
   imageTechnicalSkill_none?: InputMaybe<TechnicalSkillWhereInput>
   imageTechnicalSkill_some?: InputMaybe<TechnicalSkillWhereInput>
+  meme1Education_every?: InputMaybe<EducationWhereInput>
+  meme1Education_none?: InputMaybe<EducationWhereInput>
+  meme1Education_some?: InputMaybe<EducationWhereInput>
+  meme1Experience_every?: InputMaybe<ExperienceWhereInput>
+  meme1Experience_none?: InputMaybe<ExperienceWhereInput>
+  meme1Experience_some?: InputMaybe<ExperienceWhereInput>
+  meme1TechnicalSkill_every?: InputMaybe<TechnicalSkillWhereInput>
+  meme1TechnicalSkill_none?: InputMaybe<TechnicalSkillWhereInput>
+  meme1TechnicalSkill_some?: InputMaybe<TechnicalSkillWhereInput>
+  meme2Education_every?: InputMaybe<EducationWhereInput>
+  meme2Education_none?: InputMaybe<EducationWhereInput>
+  meme2Education_some?: InputMaybe<EducationWhereInput>
+  meme2Experience_every?: InputMaybe<ExperienceWhereInput>
+  meme2Experience_none?: InputMaybe<ExperienceWhereInput>
+  meme2Experience_some?: InputMaybe<ExperienceWhereInput>
+  meme2TechnicalSkill_every?: InputMaybe<TechnicalSkillWhereInput>
+  meme2TechnicalSkill_none?: InputMaybe<TechnicalSkillWhereInput>
+  meme2TechnicalSkill_some?: InputMaybe<TechnicalSkillWhereInput>
   mimeType?: InputMaybe<Scalars['String']>
   /** All values containing the given string. */
   mimeType_contains?: InputMaybe<Scalars['String']>
@@ -1373,7 +1505,7 @@ export type Contact = Node & {
   createdAt: Scalars['DateTime']
   /** User that created this document */
   createdBy?: Maybe<User>
-  cv?: Maybe<Asset>
+  cv: Asset
   /** Get the document in other stages */
   documentInStages: Array<Contact>
   email?: Maybe<Scalars['String']>
@@ -1460,7 +1592,7 @@ export type ContactConnection = {
 export type ContactCreateInput = {
   clfr09qbo0nu901ui9gqr0lbe?: InputMaybe<PersonalInfoCreateManyInlineInput>
   createdAt?: InputMaybe<Scalars['DateTime']>
-  cv?: InputMaybe<AssetCreateOneInlineInput>
+  cv: AssetCreateOneInlineInput
   email?: InputMaybe<Scalars['String']>
   github?: InputMaybe<Scalars['String']>
   linkedIn?: InputMaybe<Scalars['String']>
@@ -2055,6 +2187,8 @@ export type Education = Node & {
   isFirstClassHonours?: Maybe<Scalars['Boolean']>
   link?: Maybe<Scalars['String']>
   location: Scalars['String']
+  meme1?: Maybe<Asset>
+  meme2?: Maybe<Asset>
   period?: Maybe<Scalars['String']>
   program: Scalars['String']
   programs: Array<Program>
@@ -2088,6 +2222,16 @@ export type EducationHistoryArgs = {
   limit?: Scalars['Int']
   skip?: Scalars['Int']
   stageOverride?: InputMaybe<Stage>
+}
+
+export type EducationMeme1Args = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type EducationMeme2Args = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  locales?: InputMaybe<Array<Locale>>
 }
 
 export type EducationProgramsArgs = {
@@ -2145,6 +2289,8 @@ export type EducationCreateInput = {
   isFirstClassHonours?: InputMaybe<Scalars['Boolean']>
   link?: InputMaybe<Scalars['String']>
   location: Scalars['String']
+  meme1?: InputMaybe<AssetCreateOneInlineInput>
+  meme2?: InputMaybe<AssetCreateOneInlineInput>
   period?: InputMaybe<Scalars['String']>
   program: Scalars['String']
   programs?: InputMaybe<ProgramCreateManyInlineInput>
@@ -2283,6 +2429,8 @@ export type EducationManyWhereInput = {
   location_not_starts_with?: InputMaybe<Scalars['String']>
   /** All values starting with the given string. */
   location_starts_with?: InputMaybe<Scalars['String']>
+  meme1?: InputMaybe<AssetWhereInput>
+  meme2?: InputMaybe<AssetWhereInput>
   period?: InputMaybe<Scalars['String']>
   /** All values containing the given string. */
   period_contains?: InputMaybe<Scalars['String']>
@@ -2427,6 +2575,8 @@ export type EducationUpdateInput = {
   isFirstClassHonours?: InputMaybe<Scalars['Boolean']>
   link?: InputMaybe<Scalars['String']>
   location?: InputMaybe<Scalars['String']>
+  meme1?: InputMaybe<AssetUpdateOneInlineInput>
+  meme2?: InputMaybe<AssetUpdateOneInlineInput>
   period?: InputMaybe<Scalars['String']>
   program?: InputMaybe<Scalars['String']>
   programs?: InputMaybe<ProgramUpdateManyInlineInput>
@@ -2619,6 +2769,8 @@ export type EducationWhereInput = {
   location_not_starts_with?: InputMaybe<Scalars['String']>
   /** All values starting with the given string. */
   location_starts_with?: InputMaybe<Scalars['String']>
+  meme1?: InputMaybe<AssetWhereInput>
+  meme2?: InputMaybe<AssetWhereInput>
   period?: InputMaybe<Scalars['String']>
   /** All values containing the given string. */
   period_contains?: InputMaybe<Scalars['String']>
@@ -2766,6 +2918,8 @@ export type Experience = Node & {
   id: Scalars['ID']
   link?: Maybe<Scalars['String']>
   location: Scalars['String']
+  meme1?: Maybe<Asset>
+  meme2?: Maybe<Asset>
   position?: Maybe<Position>
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>
@@ -2796,6 +2950,16 @@ export type ExperienceHistoryArgs = {
   limit?: Scalars['Int']
   skip?: Scalars['Int']
   stageOverride?: InputMaybe<Stage>
+}
+
+export type ExperienceMeme1Args = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type ExperienceMeme2Args = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  locales?: InputMaybe<Array<Locale>>
 }
 
 export type ExperiencePositionArgs = {
@@ -2847,6 +3011,8 @@ export type ExperienceCreateInput = {
   hideName?: InputMaybe<Scalars['Boolean']>
   link?: InputMaybe<Scalars['String']>
   location: Scalars['String']
+  meme1?: InputMaybe<AssetCreateOneInlineInput>
+  meme2?: InputMaybe<AssetCreateOneInlineInput>
   position?: InputMaybe<PositionCreateOneInlineInput>
   sequence: Scalars['Int']
   updatedAt?: InputMaybe<Scalars['DateTime']>
@@ -2985,6 +3151,8 @@ export type ExperienceManyWhereInput = {
   location_not_starts_with?: InputMaybe<Scalars['String']>
   /** All values starting with the given string. */
   location_starts_with?: InputMaybe<Scalars['String']>
+  meme1?: InputMaybe<AssetWhereInput>
+  meme2?: InputMaybe<AssetWhereInput>
   position?: InputMaybe<PositionWhereInput>
   publishedAt?: InputMaybe<Scalars['DateTime']>
   /** All values greater than the given value. */
@@ -3067,6 +3235,8 @@ export type ExperienceUpdateInput = {
   hideName?: InputMaybe<Scalars['Boolean']>
   link?: InputMaybe<Scalars['String']>
   location?: InputMaybe<Scalars['String']>
+  meme1?: InputMaybe<AssetUpdateOneInlineInput>
+  meme2?: InputMaybe<AssetUpdateOneInlineInput>
   position?: InputMaybe<PositionUpdateOneInlineInput>
   sequence?: InputMaybe<Scalars['Int']>
 }
@@ -3257,6 +3427,8 @@ export type ExperienceWhereInput = {
   location_not_starts_with?: InputMaybe<Scalars['String']>
   /** All values starting with the given string. */
   location_starts_with?: InputMaybe<Scalars['String']>
+  meme1?: InputMaybe<AssetWhereInput>
+  meme2?: InputMaybe<AssetWhereInput>
   position?: InputMaybe<PositionWhereInput>
   publishedAt?: InputMaybe<Scalars['DateTime']>
   /** All values greater than the given value. */
@@ -10218,6 +10390,8 @@ export type TechnicalSkill = Node & {
   /** The unique identifier */
   id: Scalars['ID']
   image?: Maybe<Asset>
+  meme1?: Maybe<Asset>
+  meme2?: Maybe<Asset>
   programmingLanguage: Scalars['String']
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>
@@ -10250,6 +10424,16 @@ export type TechnicalSkillHistoryArgs = {
 }
 
 export type TechnicalSkillImageArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type TechnicalSkillMeme1Args = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type TechnicalSkillMeme2Args = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
@@ -10294,6 +10478,8 @@ export type TechnicalSkillConnection = {
 export type TechnicalSkillCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>
   image?: InputMaybe<AssetCreateOneInlineInput>
+  meme1?: InputMaybe<AssetCreateOneInlineInput>
+  meme2?: InputMaybe<AssetCreateOneInlineInput>
   programmingLanguage: Scalars['String']
   updatedAt?: InputMaybe<Scalars['DateTime']>
 }
@@ -10369,6 +10555,8 @@ export type TechnicalSkillManyWhereInput = {
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>
   image?: InputMaybe<AssetWhereInput>
+  meme1?: InputMaybe<AssetWhereInput>
+  meme2?: InputMaybe<AssetWhereInput>
   programmingLanguage?: InputMaybe<Scalars['String']>
   /** All values containing the given string. */
   programmingLanguage_contains?: InputMaybe<Scalars['String']>
@@ -10440,6 +10628,8 @@ export enum TechnicalSkillOrderByInput {
 
 export type TechnicalSkillUpdateInput = {
   image?: InputMaybe<AssetUpdateOneInlineInput>
+  meme1?: InputMaybe<AssetUpdateOneInlineInput>
+  meme2?: InputMaybe<AssetUpdateOneInlineInput>
   programmingLanguage?: InputMaybe<Scalars['String']>
 }
 
@@ -10562,6 +10752,8 @@ export type TechnicalSkillWhereInput = {
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>
   image?: InputMaybe<AssetWhereInput>
+  meme1?: InputMaybe<AssetWhereInput>
+  meme2?: InputMaybe<AssetWhereInput>
   programmingLanguage?: InputMaybe<Scalars['String']>
   /** All values containing the given string. */
   programmingLanguage_contains?: InputMaybe<Scalars['String']>
@@ -11520,6 +11712,12 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization',
 }
 
+export type GetCertificateQueryVariables = Exact<{ [key: string]: never }>
+
+export type GetCertificateQuery = {
+  certificates: Array<{ id: string; name: string; year: string }>
+}
+
 export type GetVideoMemeQueryVariables = Exact<{ [key: string]: never }>
 
 export type GetVideoMemeQuery = {
@@ -11538,7 +11736,9 @@ export type GetEducationInfoQuery = {
     program: string
     universityName: string
     link?: string | null
-    programs: Array<{ id: string; name?: string | null }>
+    programs: Array<{ name?: string | null }>
+    meme1?: { url: string } | null
+    meme2?: { url: string } | null
   }>
 }
 
@@ -11560,6 +11760,8 @@ export type GetExperienceInfoQuery = {
       startDate?: any | null
       positionDetails: Array<{ id: string; detail?: string | null }>
     } | null
+    meme1?: { url: string } | null
+    meme2?: { url: string } | null
   }>
 }
 
@@ -11582,7 +11784,7 @@ export type GetPersonalInfoQuery = {
       email?: string | null
       github?: string | null
       linkedIn?: string | null
-      cv?: { url: string } | null
+      cv: { url: string }
     } | null
     profileImage1: { url: string }
     profileImage2: { url: string }
@@ -11615,9 +11817,20 @@ export type GetTechnicalSkillQuery = {
     id: string
     programmingLanguage: string
     image?: { url: string; stage: Stage } | null
+    meme1?: { url: string } | null
+    meme2?: { url: string } | null
   }>
 }
 
+export const GetCertificateDocument = /*#__PURE__*/ gql`
+  query GetCertificate {
+    certificates {
+      id
+      name
+      year
+    }
+  }
+`
 export const GetVideoMemeDocument = /*#__PURE__*/ gql`
   query GetVideoMeme {
     videos {
@@ -11637,11 +11850,16 @@ export const GetEducationInfoDocument = /*#__PURE__*/ gql`
       period
       program
       programs {
-        id
         name
       }
       universityName
       link
+      meme1 {
+        url
+      }
+      meme2 {
+        url
+      }
     }
   }
 `
@@ -11665,6 +11883,12 @@ export const GetExperienceInfoDocument = /*#__PURE__*/ gql`
         }
       }
       hideDash
+      meme1 {
+        url
+      }
+      meme2 {
+        url
+      }
     }
   }
 `
@@ -11737,6 +11961,12 @@ export const GetTechnicalSkillDocument = /*#__PURE__*/ gql`
         url
         stage
       }
+      meme1 {
+        url
+      }
+      meme2 {
+        url
+      }
     }
   }
 `
@@ -11758,6 +11988,21 @@ export function getSdk(
   withWrapper: SdkFunctionWrapper = defaultWrapper
 ) {
   return {
+    GetCertificate(
+      variables?: GetCertificateQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<GetCertificateQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetCertificateQuery>(
+            GetCertificateDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'GetCertificate',
+        'query'
+      )
+    },
     GetVideoMeme(
       variables?: GetVideoMemeQueryVariables,
       requestHeaders?: Dom.RequestInit['headers']

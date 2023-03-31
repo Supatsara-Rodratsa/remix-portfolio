@@ -14,7 +14,12 @@ export const ExperienceTable = ({ experience }: ExperienceTableProps) => {
         <motion.div
           initial={{ x: 200 }}
           whileInView={{ x: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{
+            type: 'spring',
+            stiffness: 100,
+            damping: 30,
+            restDelta: 0.001,
+          }}
           viewport={{ once: true }}
           key={exp.id}
         >

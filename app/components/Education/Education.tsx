@@ -16,8 +16,8 @@ export const EducationSection = ({ education }: EducationProps) => {
         color="bg-lemon"
         textColor="text-darkBlue"
         label="Education"
-        firstMeme="assets/images/meme4.gif"
-        secondMeme="assets/images/meme6.gif"
+        firstMeme={education[0].meme1?.url || ''}
+        secondMeme={education[0].meme2?.url || ''}
         isHeadingLeft
       />
       <section className="w-full m-auto h-full min-h-[100vh] relative pb-[20px] overflow-hidden">

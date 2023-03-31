@@ -47,7 +47,12 @@ export const ProjectDetail = ({ projects }: ProjectDetailProps) => {
               initial={{ x: i % 2 == 0 ? 200 : -200 }}
               whileInView={{ x: 0 }}
               viewport={{ once: true }}
-              transition={{ type: 'spring', mass: 0.5 }}
+              transition={{
+                type: 'spring',
+                stiffness: 100,
+                damping: 30,
+                restDelta: 0.001,
+              }}
               key={project.id}
               className={clsx(
                 'p-[20px] flex gap-12 justify-center items-center',

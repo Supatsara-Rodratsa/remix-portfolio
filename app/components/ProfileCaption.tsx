@@ -9,11 +9,17 @@ type ProfileCaptionProp = {
 
 const ProfileCaption = ({ image, caption, link }: ProfileCaptionProp) => {
   const navigate = useNavigate()
+  const transition = {
+    type: 'spring',
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  }
   return (
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ stiffness: 500 }}
+      transition={transition}
       className="relative m-auto overflow-hidden border-white border-[10px] rounded-[20px] max-w-[500px] max-h-[500px] tablet:max-w-[400px] tablet:max-h-[400px] cursor-pointer"
       onClick={() => navigate(link)}
     >
@@ -21,7 +27,7 @@ const ProfileCaption = ({ image, caption, link }: ProfileCaptionProp) => {
       <motion.div
         initial={{ y: 150 }}
         animate={{ y: 0 }}
-        transition={{ stiffness: 200 }}
+        transition={transition}
         className="absolute bottom-0 w-full p-[30px] pb-[20px] bg-r_orange custom-clip-path shadow-md font-lalezar text-4xl font-bolder text-blue"
       >
         {caption}

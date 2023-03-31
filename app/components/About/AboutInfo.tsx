@@ -27,7 +27,12 @@ export const AboutInfo = ({ image, details }: AboutInfoProps) => {
           <motion.div
             initial={{ opacity: 0, x: 200 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ stiffness: 500 }}
+            transition={{
+              type: 'spring',
+              stiffness: 100,
+              damping: 30,
+              restDelta: 0.001,
+            }}
             className="pb-[40px]"
           >
             {info[0]}

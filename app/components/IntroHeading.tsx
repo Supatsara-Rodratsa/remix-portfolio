@@ -11,6 +11,33 @@ type IntroHeadingProps = {
   isHeadingLeft?: boolean
 }
 
+const Heading = ({
+  bg,
+  label,
+  color,
+  textColor,
+}: Pick<IntroHeadingProps, 'bg' | 'label' | 'color' | 'textColor'>) => (
+  <div
+    style={{ backgroundImage: "url('assets/icons/bg-table.svg')" }}
+    className={clsx(
+      'w-full rounded-lg bg-[length:30px] mobile:min-h-[300px]',
+      bg
+    )}
+  >
+    <div className="w-full h-full flex justify-center items-center">
+      <Header
+        label={label}
+        color={color}
+        textColor={textColor}
+        isRotate={false}
+        variant="big"
+        isScale
+        enabledClick
+      />
+    </div>
+  </div>
+)
+
 const IntroHeading = ({
   color,
   label,
@@ -20,31 +47,12 @@ const IntroHeading = ({
   bg = 'bg-r_orange',
   isHeadingLeft = false,
 }: IntroHeadingProps) => {
-  const Heading = () => (
-    <div
-      style={{ backgroundImage: "url('assets/icons/bg-table.svg')" }}
-      className={clsx(
-        'w-full rounded-lg bg-[length:30px] mobile:min-h-[300px]',
-        bg
-      )}
-    >
-      <div className="w-full h-full flex justify-center items-center">
-        <Header
-          label={label}
-          color={color}
-          textColor={textColor}
-          isRotate={false}
-          variant="big"
-          isScale
-          enabledClick
-        />
-      </div>
-    </div>
-  )
   return (
     <section className="w-screen -mx-[40px] m-auto h-screen mobile:h-fit mobile:min-h-screen relative overflow-hidden bg-black border-[20px] border-black">
       <div className="flex mobile:flex-wrap gap-4 h-full">
-        {isHeadingLeft && <Heading />}
+        {isHeadingLeft && (
+          <Heading bg={bg} color={color} label={label} textColor={textColor} />
+        )}
         <div className="w-full flex flex-col gap-4">
           <img
             className={clsx(
@@ -62,10 +70,12 @@ const IntroHeading = ({
             />
           )}
         </div>
-        {!isHeadingLeft && <Heading />}
+        {!isHeadingLeft && (
+          <Heading bg={bg} color={color} label={label} textColor={textColor} />
+        )}
       </div>
     </section>
   )
 }
 
-export { IntroHeading }
+export { IntroHeading, Heading }

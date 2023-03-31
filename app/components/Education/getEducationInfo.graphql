@@ -7,10 +7,15 @@ query GetEducationInfo {
     period
     program
     programs {
-      id
       name
     }
     universityName
     link
+    meme1 {
+      url
+    }
+    meme2 {
+      url
+    }
   }
 }

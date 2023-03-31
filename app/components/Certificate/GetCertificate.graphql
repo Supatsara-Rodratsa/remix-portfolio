@@ -1,0 +1,7 @@
+query GetCertificate {
+  certificates {
+    id
+    name
+    year
+  }
+}

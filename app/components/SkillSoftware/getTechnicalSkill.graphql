@@ -6,5 +6,11 @@ query GetTechnicalSkill {
       url
       stage
     }
+    meme1 {
+      url
+    }
+    meme2 {
+      url
+    }
   }
 }

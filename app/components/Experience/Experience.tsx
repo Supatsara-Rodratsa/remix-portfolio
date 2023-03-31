@@ -17,8 +17,8 @@ export const ExperienceSection = ({ experience }: ExperienceProps) => {
         color="bg-r_orange"
         textColor="text-white"
         label="Experience"
-        firstMeme="assets/images/workMeme.gif"
-        secondMeme="assets/images/workMeme2.gif"
+        firstMeme={experience[0].meme1?.url || ''}
+        secondMeme={experience[0].meme2?.url || ''}
       />
       <section className="w-screen -mx-[40px] m-auto h-full min-h-[100vh] relative pb-[20px] overflow-hidden bg-blue">
         <motion.div

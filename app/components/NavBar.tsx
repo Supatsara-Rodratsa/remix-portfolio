@@ -70,7 +70,7 @@ const NavBar = () => {
       />
       <motion.div
         initial={{ opacity: 0, x: 400 }}
-        animate={isOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: 400 }}
+        animate={isOpen ? { opacity: 1, x: 5 } : { opacity: 0, x: 400 }}
         transition={{
           y: { stiffness: 1000 },
         }}
