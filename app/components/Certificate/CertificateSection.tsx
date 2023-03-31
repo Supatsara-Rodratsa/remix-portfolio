@@ -19,7 +19,9 @@ export const CertificateSection = ({
         />
         <div className="relative w-full bg-lemon rounded-lg h-full flex justify-center items-center text-black p-[80px] tablet:p-[40px] mobile:p-[40px]">
           <div className="flex flex-col gap-4 justify-center items-center">
-            <div className="text-4xl font-lalezar">Certificate</div>
+            <div className="text-4xl font-lalezar tablet:text-3xl mobile:text-2xl uppercase">
+              Certificate
+            </div>
             <ul className="flex flex-col gap-2">
               {certificates.map((certificate) => (
                 <li
