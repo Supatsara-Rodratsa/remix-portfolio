@@ -26,6 +26,7 @@ import { CertificateSection } from '~/components/Certificate/CertificateSection'
 export const meta: MetaFunction = () => {
   return {
     title: "Supatsara's Portfolio",
+    description: 'This is my personal website',
   }
 }
 
