@@ -1,4 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
+import { COLORS } from '~/constants/constant'
 
 type AboutIntroProps = {
   name: string
@@ -16,8 +17,8 @@ export const AboutIntro = ({ name, surname }: AboutIntroProps) => {
   const AboutMe = () => {
     return (
       <motion.div
-        style={{ x: x2 }}
-        className="text-[120px] tablet:text-[100px] mobile:text-[80px] font-lalezar uppercase whitespace-nowrap text-blue"
+        style={{ x: x2, WebkitTextStroke: `2px ${COLORS.blue}` }}
+        className="text-[120px] tablet:text-[100px] mobile:text-[80px] font-lalezar uppercase whitespace-nowrap text-transparent"
       >
         {aboutMe}
       </motion.div>
