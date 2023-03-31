@@ -76,35 +76,31 @@ export default function Index() {
     restDelta: 0.001,
   })
 
-  if (info) {
-    return (
-      <div className="w-full m-auto">
-        <motion.div
-          className="fixed w-full bottom-0 left-0 right-0 h-[10px] bg-lemon z-[99]"
-          style={{ scaleX, transformOrigin: '0%' }}
-        />
-        <Introduction
-          name={info.name}
-          surname={info.surname}
-          position={info.currentPosition || ''}
-          image={info.image?.url}
-        />
-        <AboutSection details={info} />
-        <ExperienceSection experience={experiences as Experience[]} />
-        <EducationSection education={educations as Education[]} />
-        <SkillSoftwareSection
-          software={softwares as Software[]}
-          technicalSkills={technicalSkills as TechnicalSkill[]}
-        />
-        <CertificateSection certificates={certificates as Certificate[]} />
-        <ProjectSection projects={projects as Project[]} />
-        <ContactSection
-          contact={info.contact as Contact}
-          video={videos[0].video?.url as string}
-        />
-      </div>
-    )
-  }
-
-  return <ErrorState error={new Error('Data Not found')} />
+  return (
+    <div className="w-full m-auto">
+      <motion.div
+        className="fixed w-full bottom-0 left-0 right-0 h-[10px] bg-lemon z-[99]"
+        style={{ scaleX, transformOrigin: '0%' }}
+      />
+      <Introduction
+        name={info.name}
+        surname={info.surname}
+        position={info.currentPosition || ''}
+        image={info.image?.url}
+      />
+      <AboutSection details={info} />
+      <ExperienceSection experience={experiences as Experience[]} />
+      <EducationSection education={educations as Education[]} />
+      <SkillSoftwareSection
+        software={softwares as Software[]}
+        technicalSkills={technicalSkills as TechnicalSkill[]}
+      />
+      <CertificateSection certificates={certificates as Certificate[]} />
+      <ProjectSection projects={projects as Project[]} />
+      <ContactSection
+        contact={info.contact as Contact}
+        video={videos[0].video?.url as string}
+      />
+    </div>
+  )
 }
