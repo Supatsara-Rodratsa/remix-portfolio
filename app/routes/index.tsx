@@ -26,7 +26,7 @@ import { CertificateSection } from '~/components/Certificate/CertificateSection'
 export const meta: MetaFunction = () => {
   return {
     title: "Supatsara's Portfolio",
-    description: 'This is my personal website',
+    description: 'Supatsara Rodratsa Portfolio',
   }
 }
 
@@ -76,6 +76,7 @@ export default function Index() {
     damping: 30,
     restDelta: 0.001,
   })
+  console.log(experiences, 'eee')
 
   return (
     <div className="w-full m-auto">
