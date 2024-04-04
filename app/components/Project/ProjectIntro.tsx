@@ -18,7 +18,7 @@ export const ProjectIntro = () => {
           color="bg-lemon"
           textColor="text-darkBlue"
           isRotate={false}
-          isScale
+          // isScale
         />
       </div>
 
