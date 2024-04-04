@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { MenuButton } from './MenuButton'
 import { COLORS, NAV_TOPIC, WINDOW_SIZE } from '~/constants/constant'
 import { motion } from 'framer-motion'
@@ -11,6 +11,7 @@ const NavBar = () => {
   const [mouseEnter, setMouseEnter] = useState(false)
   const windowSize = useWindowSize()
   const navigate = useNavigate()
+  const ref = useRef<HTMLDivElement>(null)
 
   const container = {
     open: {
@@ -36,8 +37,24 @@ const NavBar = () => {
     NAV_TOPIC.CONTACT,
   ]
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        setOpen(false)
+      }
+    }
+
+    document.addEventListener('click', handleClickOutside)
+    return () => {
+      document.removeEventListener('click', handleClickOutside)
+    }
+  }, [])
+
   return (
-    <div className="flex w-full justify-between items-center fixed z-[99]">
+    <div
+      className="flex w-full justify-between items-center fixed z-[99]"
+      ref={ref}
+    >
       <div
         className={clsx(
           'relative w-[200px] h-[40px] transition-all duration-700 z-30',
@@ -47,7 +64,7 @@ const NavBar = () => {
         onMouseLeave={() => setMouseEnter(false)}
         onClick={() => navigate('/')}
       >
-        <div
+        {/* <div
           className={clsx(
             'text-3xl text-black font-bold absolute z-1 transition-all duration-500 cursor-pointer top-[4px] left-[5px] mobile:text-2xl'
           )}
@@ -56,7 +73,7 @@ const NavBar = () => {
         </div>
         <h1 className="text-3xl text-white hover:text-lemon font-bold transition-all duration-500 absolute z-10 top-0 left-0 mobile:text-2xl">
           !!ROSEJHH
-        </h1>
+        </h1> */}
       </div>
       <MenuButton
         isOpen={isOpen}

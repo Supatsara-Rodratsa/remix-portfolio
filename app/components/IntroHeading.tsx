@@ -31,7 +31,7 @@ const Heading = ({
         textColor={textColor}
         isRotate={false}
         variant="big"
-        isScale
+        // isScale
         enabledClick
       />
     </div>
